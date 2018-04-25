@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {Card, Transfer, Button } from 'antd';
+import { buttom_Back_next } from '../';
 
 class Questionary extends React.Component {
 
@@ -74,9 +75,7 @@ class Questionary extends React.Component {
                         targetKeys={this.state.targetKeys}
                         onChange={this.handleChange}
                         render={item => item.title}/>
-                   <Button type="primary" style={{ marginTop: 30 }}>
-                   Siguiente
-                   </Button>
+                         {buttom_Back_next()}
                 </Card>
             </div>
 

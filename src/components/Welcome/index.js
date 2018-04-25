@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {Card, Transfer, Button } from 'antd';
+import { Link } from 'react-router-dom';
 
 class Welcome extends React.Component {
 
@@ -67,9 +68,11 @@ class Welcome extends React.Component {
                     style={{
                         width: '70%'
                     }}>
-                   <Button type="primary" style={{ marginTop: 30 }}>
-                   Siguiente
+                    <Link to='/cuestionario'>
+                    <Button type="primary" style={{ marginTop: 30 }}>
+                    Siguiente
                    </Button>
+                    </Link>
                 </Card>
             </div>
 
