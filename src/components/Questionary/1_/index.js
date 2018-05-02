@@ -1,11 +1,13 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import {Card, Transfer, Button } from 'antd';
-import { buttom_Back_next } from '../';
+import {Card, Transfer } from 'antd';
+import { cardstyle } from '../../globalcss'
+import { buttom_Back_next } from '../../';
 
 class Questionary extends React.Component {
 
     state = {
+        
         mockData: [],
         targetKeys: [],
         loading: false,
@@ -55,19 +57,10 @@ class Questionary extends React.Component {
     render() {
 
         return (
-            <div
-                style={{
-                    background: '#ECECEC',
-                    padding: '30px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}>
                 <Card
                     title="Seleccione 5 empresas que según usted representan mayor empatía"
                     bordered={false}
-                    style={{
-                        width: '70%'
-                    }}>
+                    style={cardstyle}>
                     <Transfer
                         dataSource={this.state.mockData}
                         showSearch
@@ -75,9 +68,9 @@ class Questionary extends React.Component {
                         targetKeys={this.state.targetKeys}
                         onChange={this.handleChange}
                         render={item => item.title}/>
-                         {buttom_Back_next()}
+                        
+                         {buttom_Back_next('/','seleccion')}
                 </Card>
-            </div>
 
         );
     }
