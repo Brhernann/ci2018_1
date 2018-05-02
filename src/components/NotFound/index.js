@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
+import { token_invalid } from '../';
 
 class NotFound extends Component {
   
     render() {
-        return (
-          <div className="NotFound">
-            <header className="App-header">
-              <h1 className="App-title">Welcome to React</h1>
-            </header>
-            <p className="App-intro">
-              To get started, edit <code>src/App.js</code> and save to reload.
-            </p>
-          </div>
-        );
+        return token_invalid('Hola, La pagina que intentas acceder no existe!')
       }
     }
 

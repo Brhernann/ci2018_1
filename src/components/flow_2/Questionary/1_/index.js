@@ -1,8 +1,8 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {Card, Transfer } from 'antd';
-import { cardstyle } from '../../globalcss'
-import { buttom_Back_next } from '../../';
+import { cardstyle } from '../../../globalcss'
+import { buttom_Back_next } from '../../../';
 
 class Questionary extends React.Component {
 

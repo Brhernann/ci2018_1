@@ -40,8 +40,8 @@ class Register extends Component {
                         <Input placeholder="input placeholder"/>
                     </Item>
                     <Item>
-                        <Link to='/cuestionario'>
-                            <Button type="primary">Connect</Button>
+                        <Link to='/gracias'>
+                            <Button type="primary">Generate</Button>
                         </Link>
                     </Item>
                 </Form>

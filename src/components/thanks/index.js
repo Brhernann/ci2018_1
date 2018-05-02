@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import 'antd/dist/antd.css';
 import {Card, Progress} from 'antd';
-import {cardstyle} from '../../globalcss'
+import {cardstyle} from '../globalcss'
 
 class Goodbay extends Component {
 
@@ -15,7 +15,7 @@ class Goodbay extends Component {
                     <div><Progress type="circle" percent={100}/></div>
                     <br/>
                     <div>
-                        <p>Gracias por  <strong style={{ color: '#1088e9' }}> Dedicar </strong> un poco de tu tiempo.</p>
+                        <p>Gracias por  <strong style={{ color: '#1088e9' }}> dedicar </strong> un poco de tu tiempo.</p>
                     </div>
                 </div>
             </Card>

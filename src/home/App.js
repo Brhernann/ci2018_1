@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Routes from './routes';
-import {ThemeConsumer} from './context';
-import logo from './images/logo.png';
+import Routes from '../routes';
+//import {ThemeConsumer} from '../context';
+import logo from '../images/logo.png';
 import './app.css';
 export default class App extends Component {
 
@@ -12,7 +12,7 @@ export default class App extends Component {
         };
     }
     render() {
-        console.log(ThemeConsumer._defaultValue)
+      //  console.log(ThemeConsumer._defaultValue)
         return (
             <div className="App">
                 <div className="App-header">

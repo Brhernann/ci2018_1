@@ -1,9 +1,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {Card, Radio} from 'antd';
-import {cardstyle} from '../../globalcss'
+import {cardstyle} from '../../../globalcss'
 import {content, contentItem} from './css';
-import {buttom_Back_next} from '../../';
+import {buttom_Back_next} from '../../../';
 
 const RadioGroup = Radio.Group;
 
