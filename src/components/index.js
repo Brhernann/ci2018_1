@@ -46,21 +46,18 @@ export const token_valid = () => {
             <div>
                 <div>
                     <Alert
-                        message="Token valido"
+                        message="Link valido"
                         description="Bienvenido, gracias por participar con nosotros, continua respondiendo el siguiente cuestionario."
                         type="success"
                         showIcon="showIcon"/>
                 </div>
                 <br/>
                 <div>
-                    <p>Gracias por
-                        <strong
-                            style={{
-                                color: '#1088e9'
-                            }}>
-                            dedicar
-                        </strong>
-                        un poco de tu tiempo.</p>
+                <Link to='/cuestionario'>
+                    <Button type="primary" style={{ marginTop: 30 }}>
+                    Comenzar
+                   </Button>
+                    </Link>
                 </div>
             </div>
         </Card>
@@ -81,14 +78,7 @@ export const token_invalid = (descript) => {
                 </div>
                 <br/>
                 <div>
-                    <p>Gracias por
-                        <strong
-                            style={{
-                                color: '#1088e9'
-                            }}>
-                            dedicar 
-                        </strong>
-                         un poco de tu tiempo.</p>
+                    <p>Gracias por <strong style={{ color: '#1088e9'}}> dedicar </strong> un poco de tu tiempo.</p>
                 </div>
             </div>
         </Card>

@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import {Card, Input, Button, Icon} from 'antd';
 import { Link } from 'react-router-dom'
 import { contentButtom } from './css';
-import {cardstyle, separatorLeft, separatorRight} from '../../../globalcss'
+import {cardstyle, separatorLeft, separatorRight} from '../../globalcss'
 
 const {TextArea} = Input;
 
@@ -26,7 +26,7 @@ class Selection extends React.Component {
                     </Link>
                     </div>
                     <div style={separatorLeft}>
-                    <Link to='gracias'>
+                    <Link to='gracias/respondido'>
                         <Button>Finalizar Encuesta</Button>
                     </Link>    
                     </div>

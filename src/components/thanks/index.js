@@ -1,14 +1,19 @@
 import React, {Component} from 'react'
 import 'antd/dist/antd.css';
 import {Card, Progress} from 'antd';
+import { END_MSSAGE } from '../../config/constants'
 import {cardstyle} from '../globalcss'
 
 class Goodbay extends Component {
 
     render() {
+
+        const string = this.props.match.params.string;
+        console.log(string); 
+
         return (
             <Card
-                title="Haz finalizado exitosamente la encuesta."
+                title={string === 'registrado' ? END_MSSAGE.FROM_REGISTER : string === 'respondido' ? END_MSSAGE.FROM_QUESTIONARY : '¿WHO ARE YOU?' }
                 bordered={false}
                 style={cardstyle}>
                 <div>

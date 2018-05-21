@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import jwt from 'jwt-simple';
 import { Spin } from 'antd';
-import { SECRET_TOKEN } from '../../../../config/constants';
-import { token_valid, token_invalid } from '../../../';
+import { SECRET_TOKEN } from '../../../config/constants';
+import { token_valid, token_invalid } from '../../';
 
 export default class Validator extends Component {
     constructor(props){
@@ -56,11 +56,11 @@ export default class Validator extends Component {
                     case 0:
                     return token_valid();
                     case 1:
-                    return token_invalid('Lamentamos informarte que el Link ha expirado en el tiempo.');
+                    return token_invalid('Lamentamos informarte que el Link ha expirado con el tiempo.');
                     case 2:
                     return token_invalid('El Link que intentas abrir NO existe.');
                     case 3:
-                    return token_invalid('El Link es invalido');
+                    return token_invalid('El Link con el que te haz redireccionado es invalido');
                     default:
                     return <Spin tip='Estamos validando tu Link'/>
                 }

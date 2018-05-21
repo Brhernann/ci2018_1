@@ -4,15 +4,15 @@ import jwt from 'jwt-simple';
 import moment from 'moment'
 import { SECRET_TOKEN } from '../config/constants';
 
-import Welcome from '../components/Welcome'; 
+import Welcome from '../components/welcome'; 
 import Thanks from '../components/thanks'; 
 import NotFound from '../components/NotFound';
-import Register from '../components/flow_1/Register';
+import Register from '../components/Register';
 
-import Questionary_1 from '../components/flow_2/Questionary/1_'; 
-import key_validator from '../components/flow_2/Questionary/1_/valid'
-import Questionary_2 from '../components/flow_2/Questionary/2_'; 
-import Questionary_3 from '../components/flow_2/Questionary/3_'; 
+import Questionary_1 from '../components/Questionary/1_'; 
+import key_validator from '../components/Questionary/1_/valid'
+import Questionary_2 from '../components/Questionary/2_'; 
+import Questionary_3 from '../components/Questionary/3_'; 
 
 const createToken = () => {
 
@@ -35,7 +35,7 @@ export default () => (
 	<Route path="/Cuestionario" exact component={ Questionary_1 }/>
 	<Route path="/Seleccion" exact component={ Questionary_2 }/>
 	<Route path="/Pregunta" exact component={ Questionary_3 }/>
-	<Route path="/Gracias" exact component={ Thanks }/>
+	<Route path="/Gracias/:string" exact component={ Thanks }/>
 	<Route path="/Registro" exact component={ Register }/>
 	<Route component={ NotFound } />
 	{/* <Route path="" render={ NotFound }/> */}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { token_invalid } from '../';
 
 class NotFound extends Component {

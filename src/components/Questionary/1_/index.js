@@ -1,0 +1,165 @@
+import React from 'react';
+import 'antd/dist/antd.css';
+import {
+  Form,
+  Cascader,
+  Card,
+  Button,
+  Tooltip,
+  Icon
+} from 'antd';
+import { Redirect } from 'react-router';
+import { cardstyle } from '../../globalcss'
+import { QUESTIONARY_1 }  from '../../../config/constants';
+import ReactHtmlParser from 'react-html-parser';
+
+const Item = Form.Item;
+
+function hasErrors(fieldsError) {
+  return Object.keys(fieldsError).some(field => fieldsError[field]);
+}
+
+class Questionary extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.state = {
+            redirect: false,     
+            options:[{
+                value: 'zhejiang',
+                label: 'Zhejiang',
+                children: [{
+                  value: 'hangzhou',
+                  label: 'Hangzhou',
+                  children: [{
+                    value: 'xihu',
+                    label: 'West Lake',
+                  }],
+                }],
+              }, {
+                value: 'jiangsu',
+                label: 'Jiangsu',
+                children: [{
+                  value: 'nanjing',
+                  label: 'Nanjing',
+                  children: [{
+                    value: 'zhonghuamen',
+                    label: 'Zhong Hua Men',
+                  }],
+                }],
+              }]
+        }
+
+    }
+    
+  componentDidMount() {
+      this.props.form.validateFields();
+  }
+
+  handleSubmit = (e) => {
+      e.preventDefault();
+      this.props.form.validateFields((err, values) => {
+        if (!err) {
+          var obj = JSON.parse(JSON.stringify(values));
+          console.log(obj);          
+          // this.setState({redirect: true});
+        }
+      });
+  }
+
+    render() {
+      const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
+      const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
+      const label_2_Error = isFieldTouched('label_2') && getFieldError('label_2');
+      const label_3_Error = isFieldTouched('label_3') && getFieldError('label_3');
+      const label_4_Error = isFieldTouched('label_4') && getFieldError('label_4');
+      const label_5_Error = isFieldTouched('label_5') && getFieldError('label_5');
+
+      if (this.state.redirect) {
+        return <Redirect push to="/Seleccion" />;
+      }
+      
+      return (
+      <Card title={QUESTIONARY_1.title} bordered={false} style={cardstyle}>
+        
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <p style={{marginBottom:'40px', width:'69%', textAlign:'justify'}}>
+          {QUESTIONARY_1.subtitle}<br/>{ReactHtmlParser(QUESTIONARY_1.resumen)}
+        </p>
+        </div>
+
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+          <p style={{marginBottom:'40px', width:'69%', textAlign:'justify'}}>
+            {ReactHtmlParser(QUESTIONARY_1.question)} 
+          </p>
+        </div>
+
+        {/* FORM */}
+
+        <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
+
+        <Form layout='horizontal' onSubmit={this.handleSubmit}>
+        <Item label='' validateStatus={label_1_Error ? 'error' : ''} help={label_1_Error || ''}>
+        {getFieldDecorator('label_1', { rules: [{ type: 'array', required: true, message: 'Seleccione almenos una empresa por sector' }],})(
+          <Cascader options={this.state.options} style={{marginBottom:'10px', width:'50%'}} placeholder="Seleccione una empresa por sector"/>
+        )}
+        </Item>
+        <Item label='' validateStatus={label_2_Error ? 'error' : ''} help={label_2_Error || ''}>
+        {getFieldDecorator('label_2', { rules: [{ type: 'array', required: false, }],})(
+          <Cascader options={this.state.options} style={{marginBottom:'10px', width:'50%'}} placeholder="Seleccione una empresa por sector"/>
+        )}
+        </Item>
+        <Item label='' validateStatus={label_3_Error ? 'error' : ''} help={label_3_Error || ''}>
+        {getFieldDecorator('label_3', { rules: [{ type: 'array', required: false, }],})(
+          <Cascader options={this.state.options} style={{marginBottom:'10px', width:'50%'}} placeholder="Seleccione una empresa por sector"/>
+        )}
+        </Item>
+        <Item label='' validateStatus={label_4_Error ? 'error' : ''} help={label_4_Error || ''}>
+        {getFieldDecorator('label_4', { rules: [{ type: 'array', required: false, }],})(
+          <Cascader options={this.state.options} style={{marginBottom:'10px', width:'50%'}} placeholder="Seleccione una empresa por sector"/>
+        )}
+        </Item>
+        <Item label='' validateStatus={label_5_Error ? 'error' : ''} help={label_5_Error || ''}>
+        {getFieldDecorator('label_5', { rules: [{ type: 'array', required: false, }],})(
+          <Cascader options={this.state.options} style={{marginBottom:'10px', width:'50%'}} placeholder="Seleccione una empresa por sector"/>
+        )}
+        </Item>    
+        <Item style={{paddingTop: 50}}>
+            <Button.Group size='large'>
+            <div>
+            <Tooltip placement="bottomLeft" title={'Volver'}>
+                        <Button
+                            type="primary"
+                            style={{ marginRight: 5}}>
+                            <Icon type="left"/>
+                        </Button>
+                    </Tooltip>
+                    <Tooltip placement="bottomRight" title={'Continuar'}>
+                        <Button
+                            type="primary"
+                            style={{ marginRight: 5 }}
+                            htmlType="submit" 
+                            disabled={hasErrors(getFieldsError())}>
+                            <Icon type="right"/>
+                        </Button>
+                    </Tooltip>
+            </div>
+            </Button.Group>
+        </Item>
+
+        </Form>
+
+        </div>
+
+      </Card>
+
+        );
+    }
+}
+
+const WrappedNormalLoginForm = Form.create()(Questionary);
+
+export default WrappedNormalLoginForm;
+                       
