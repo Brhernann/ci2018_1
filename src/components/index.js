@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Icon, Tooltip, Alert, Card} from 'antd';
 import {cardstyle} from './globalcss';
 import {Link} from 'react-router-dom';
+import {Flex} from 'react-flex-material';
 
 export const buttom_Back_next = (back, next) => {
 

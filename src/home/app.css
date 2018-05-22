@@ -10,15 +10,13 @@ body {
 }
 
 .App-logo{
-  width: 8%; 
+  max-width:7%;
   height: auto;
 }
 
 .App-header {
   background-color: #878787;
-  height: 150px;
   padding: 20px;
-  margin-bottom: 20px;
   text-align: center;
 }
 

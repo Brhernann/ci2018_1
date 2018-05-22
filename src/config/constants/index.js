@@ -30,7 +30,7 @@ export const WELCOME_MESSAGE = {
 
 export const QUESTIONARY_1 = {
     title:'LAS EMPRESAS CON MEJOR EMPATÍA CORPORATIVA',
-    subtitle:'La empatía corporativa a nivel empresarial se define como: ',
+    subtitle:' La empatía corporativa a nivel empresarial se define como: ',
     resumen: '<b>El inpacto emocional, económico que produce una organización en la sociedad,</b>' + 
     ' en las <b>Nuevas generaciones, trabajadores/as, clientes, audiencias, accionistas,</b> y que ' +
     'aporta al desarrollo sostenible.',

@@ -10,6 +10,7 @@ import {
 } from 'antd';
 import { Redirect } from 'react-router';
 import { cardstyle } from '../../globalcss'
+import { firstContent, p, formContent } from './css'; 
 import { QUESTIONARY_1 }  from '../../../config/constants';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -64,41 +65,47 @@ class Questionary extends React.Component {
         if (!err) {
           var obj = JSON.parse(JSON.stringify(values));
           console.log(obj);          
-          // this.setState({redirect: true});
+           this.setState({redirect: true});
         }
       });
   }
 
     render() {
+
       const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
       const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
       const label_2_Error = isFieldTouched('label_2') && getFieldError('label_2');
       const label_3_Error = isFieldTouched('label_3') && getFieldError('label_3');
       const label_4_Error = isFieldTouched('label_4') && getFieldError('label_4');
       const label_5_Error = isFieldTouched('label_5') && getFieldError('label_5');
-
-      if (this.state.redirect) {
-        return <Redirect push to="/Seleccion" />;
-      }
       
-      return (
+      if (this.state.redirect) {
+        return <Redirect push to="/Seleccion" />
+      }
+    return (
       <Card title={QUESTIONARY_1.title} bordered={false} style={cardstyle}>
-        
-        <div style={{display: 'flex', justifyContent: 'center'}}>
-        <p style={{marginBottom:'40px', width:'69%', textAlign:'justify'}}>
-          {QUESTIONARY_1.subtitle}<br/>{ReactHtmlParser(QUESTIONARY_1.resumen)}
-        </p>
-        </div>
 
-        <div style={{display: 'flex', justifyContent: 'center'}}>
-          <p style={{marginBottom:'40px', width:'69%', textAlign:'justify'}}>
-            {ReactHtmlParser(QUESTIONARY_1.question)} 
-          </p>
-        </div>
+      <div style={firstContent}>
+          <div style={firstContent.firstChild}>
+              <h3 style={p}>
+              <Icon type="info-circle-o" style={{ fontSize: 16, color: '#339900' }}/> {QUESTIONARY_1.subtitle}</h3>
+              <p style={p}>
+                  {ReactHtmlParser(QUESTIONARY_1.resumen)}
+              </p>
+          </div>
+      </div>
+
+      <div style={firstContent}>
+      <div style={firstContent.firstChild}>
+              <p style={p}>
+              {ReactHtmlParser(QUESTIONARY_1.question)} 
+              </p>
+          </div>      
+      </div>
 
         {/* FORM */}
 
-        <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
+        <div style={formContent}>
 
         <Form layout='horizontal' onSubmit={this.handleSubmit}>
         <Item label='' validateStatus={label_1_Error ? 'error' : ''} help={label_1_Error || ''}>

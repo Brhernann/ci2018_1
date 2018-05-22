@@ -1,7 +1,8 @@
     export const cardstyle = {
-        width: '70%',
+        width: '90%',
         textAlign: 'center',
         marginTop: '2%',
+        fontSize: 12
       };
 
     export const separatorLeft = {
