@@ -8,11 +8,14 @@ import {
   Tooltip,
   Icon
 } from 'antd';
+import propTypes from 'prop-types';
 import { Redirect } from 'react-router';
-import { cardstyle } from '../../globalcss'
+import { cardstyle } from '../../globalcss';
+import { connect } from 'react-redux';
 import { firstContent, p, formContent } from './css'; 
 import { QUESTIONARY_1 }  from '../../../config/constants';
 import ReactHtmlParser from 'react-html-parser';
+import { SetCompany } from '../../../actions';
 
 const Item = Form.Item;
 
@@ -57,6 +60,7 @@ class Questionary extends React.Component {
     
   componentDidMount() {
       this.props.form.validateFields();
+      console.log(this.props);
   }
 
   handleSubmit = (e) => {
@@ -64,8 +68,10 @@ class Questionary extends React.Component {
       this.props.form.validateFields((err, values) => {
         if (!err) {
           var obj = JSON.parse(JSON.stringify(values));
-          console.log(obj);          
-           this.setState({redirect: true});
+
+          this.props.Company(obj);      
+
+          this.setState({redirect: true});
         }
       });
   }
@@ -83,29 +89,31 @@ class Questionary extends React.Component {
         return <Redirect push to="/Seleccion" />
       }
     return (
+
       <Card title={QUESTIONARY_1.title} bordered={false} style={cardstyle}>
 
       <div style={firstContent}>
           <div style={firstContent.firstChild}>
               <h3 style={p}>
-              <Icon type="info-circle-o" style={{ fontSize: 16, color: '#339900' }}/> {QUESTIONARY_1.subtitle}</h3>
+                  <Icon type="info-circle-o" style={{ fontSize: 16, color: '#339900' } }/>
+                  {QUESTIONARY_1.subtitle}</h3>
               <p style={p}>
                   {ReactHtmlParser(QUESTIONARY_1.resumen)}
               </p>
           </div>
       </div>
-
+      
       <div style={firstContent}>
-      <div style={firstContent.firstChild}>
+          <div style={firstContent.firstChild}>
               <p style={p}>
-              {ReactHtmlParser(QUESTIONARY_1.question)} 
+                  {ReactHtmlParser(QUESTIONARY_1.question)}
               </p>
-          </div>      
+          </div>
       </div>
 
         {/* FORM */}
 
-        <div style={formContent}>
+      <div style={formContent}>
 
         <Form layout='horizontal' onSubmit={this.handleSubmit}>
         <Item label='' validateStatus={label_1_Error ? 'error' : ''} help={label_1_Error || ''}>
@@ -166,7 +174,14 @@ class Questionary extends React.Component {
     }
 }
 
-const WrappedNormalLoginForm = Form.create()(Questionary);
+Questionary.propTypes = {
+  SetCompany: propTypes.func.isRequired,
+}
 
-export default WrappedNormalLoginForm;
-                       
+const thisQuestionary = Form.create()(Questionary);
+
+const mapDispatchToPropsAction = dispatch => ({ 
+  Company: value => dispatch(SetCompany(value))
+});
+
+export default connect(null, mapDispatchToPropsAction)(thisQuestionary);

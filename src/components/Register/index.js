@@ -8,21 +8,23 @@ import {
     Icon
 } from 'antd';
 import { Redirect } from 'react-router';
-import { REGISTER } from '../../config/constants'
-import Sector from '../../config/constants/sector.json'
+import jwt from 'jwt-simple';
+import moment from 'moment';
+import { REGISTER, SECRET_TOKEN } from '../../config/constants';
+import Sector from '../../config/constants/sector.json';
 const Option = Select.Option;
 const Item = Form.Item;
 
 function hasErrors(fieldsError) {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
-
 class Register extends Component {
 
     constructor(props) {
         super(props);
         this.state={
-            redirect: false
+            redirect: false,
+            tokenGenerated: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -31,16 +33,27 @@ class Register extends Component {
         this.props.form.validateFields();
     }
 
+    createToken = () => {
+        const payload = {
+            sub: 'VALIDO',
+            iat: moment().unix(),
+            exp: moment().add(1, 'minute').unix(),
+        }
+
+        let token = jwt.encode(payload, SECRET_TOKEN);
+        console.log(token);
+    }
+
     handleSubmit = (e) => {
+
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
           if (!err) {
-            console.log('Received values of form: ', values);
             this.setState({redirect: true});
           }
         });
     }
-
+    
     render() {
 
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;

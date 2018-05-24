@@ -3,14 +3,8 @@ import Routes from '../routes';
 //import {ThemeConsumer} from '../context';
 import logo from '../images/logo.png';
 import './app.css';
-export default class App extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            hi: 0
-        };
-    }
+export default class App extends Component {
     render() {
       //  console.log(ThemeConsumer._defaultValue)
         return (

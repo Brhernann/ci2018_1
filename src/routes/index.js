@@ -1,8 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
-import jwt from 'jwt-simple';
-import moment from 'moment'
-import { SECRET_TOKEN } from '../config/constants';
 
 import Welcome from '../components/welcome'; 
 import Thanks from '../components/thanks'; 
@@ -13,19 +10,6 @@ import Questionary_1 from '../components/Questionary/1_';
 import key_validator from '../components/Questionary/1_/valid'
 import Questionary_2 from '../components/Questionary/2_'; 
 import Questionary_3 from '../components/Questionary/3_'; 
-
-const createToken = () => {
-
-	const payload = {
-		sub: 'VALIDO',
-		iat: moment().unix(),
-		exp: moment().add(1, 'minute').unix(),
-	}
-
-	return jwt.encode(payload, SECRET_TOKEN)
-}
-
-console.log(createToken())
 
 export default () => (
 	<BrowserRouter>

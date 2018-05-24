@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom';
 import { cardstyle } from '../globalcss'
 
 class Welcome extends React.Component {
-
-    state = {
-        mockData: [],
-    }
-
     render() {
 
         return (

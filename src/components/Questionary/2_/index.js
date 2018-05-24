@@ -1,12 +1,16 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import {Card, Radio, Breadcrumb, Tooltip,Icon} from 'antd';
-import {cardstyle} from '../../globalcss'
-import Factor from '../../../config/constants/factors.json'
+import {Card, Radio, Tooltip,Icon} from 'antd';
+import {cardstyle} from '../../globalcss';
+// import { createStore } from 'redux';
+import Factor from '../../../config/constants/factors.json';
 import {content, contentItem} from './css';
 import {buttom_Back_next} from '../../';
 
 const RadioGroup = Radio.Group;
+
+// const store = createStore(() => {}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// const action = value => ({ type: 'factory', value});
 
 class Selection extends React.Component {
 
@@ -20,16 +24,17 @@ class Selection extends React.Component {
 
     componentDidMount() {
         this.splitInHalf();
+        console.log(this.props);
     }
 
     splitInHalf() {
         let firstArr = [];
         let secondArr = [];
         const arr10 = Factor.data.map(q => q.SubFactor.filter(item => item.index < 10));
-        arr10.map(q => { firstArr.push(...q) });
+        arr10.map(q => firstArr.push(...q));
         
         const arr17 = Factor.data.map(q => q.SubFactor.filter(item => item.index > 9));
-        arr17.map(q => { secondArr.push(...q) });
+        arr17.map(q => secondArr.push(...q));
 
         this.setState({firstArr, secondArr});
     }
