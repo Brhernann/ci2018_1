@@ -8,10 +8,12 @@ import {
     Icon
 } from 'antd';
 import { Redirect } from 'react-router';
+import { connect } from 'react-redux';
 import jwt from 'jwt-simple';
 import moment from 'moment';
-import { REGISTER, SECRET_TOKEN } from '../../config/constants';
+import { L_REGISTER, SECRET_TOKEN } from '../../config/constants';
 import Sector from '../../config/constants/sector.json';
+import { getRegister, getToken } from '../../actions/Register'
 const Option = Select.Option;
 const Item = Form.Item;
 
@@ -41,7 +43,7 @@ class Register extends Component {
         }
 
         let token = jwt.encode(payload, SECRET_TOKEN);
-        console.log(token);
+        this.props.Token(token);
     }
 
     handleSubmit = (e) => {
@@ -49,7 +51,9 @@ class Register extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
           if (!err) {
-            this.setState({redirect: true});
+              this.props.Company(values);
+              this.createToken();
+           // this.setState({redirect: true});
           }
         });
     }
@@ -81,33 +85,33 @@ class Register extends Component {
 
                 <Form layout='horizontal' onSubmit={this.handleSubmit}>
 
-                    <Item label={REGISTER.LABEL_1} validateStatus={label_1_Error ? 'error' : ''} help={label_1_Error || ''}>
-                    {getFieldDecorator('label_1', { rules: [{ required: true, message: 'Porfavor ingrese ' + REGISTER.LABEL_1 }],})(
+                    <Item label={L_REGISTER.LABEL_1} validateStatus={label_1_Error ? 'error' : ''} help={label_1_Error || ''}>
+                    {getFieldDecorator('label_1', { rules: [{ required: true, message: 'Porfavor ingrese ' + L_REGISTER.LABEL_1 }],})(
                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ejemplo" />)}
                     </Item>
 
-                    <Item label={REGISTER.LABEL_2} validateStatus={label_2_Error ? 'error' : ''} help={label_2_Error || ''}>
-                    {getFieldDecorator('label_2', { rules: [{ required: true, message: 'Porfavor ingrese ' + REGISTER.LABEL_2 }],})(
+                    <Item label={L_REGISTER.LABEL_2} validateStatus={label_2_Error ? 'error' : ''} help={label_2_Error || ''}>
+                    {getFieldDecorator('label_2', { rules: [{ required: true, message: 'Porfavor ingrese ' + L_REGISTER.LABEL_2 }],})(
                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ejemplo" />)}
                     </Item>
 
-                    <Item label={REGISTER.LABEL_3} validateStatus={label_3_Error ? 'error' : ''} help={label_3_Error || ''}>
-                    {getFieldDecorator('label_3', { rules: [{ required: true, message: 'Porfavor ingrese ' + REGISTER.LABEL_3 }],})(
+                    <Item label={L_REGISTER.LABEL_3} validateStatus={label_3_Error ? 'error' : ''} help={label_3_Error || ''}>
+                    {getFieldDecorator('label_3', { rules: [{ required: true, message: 'Porfavor ingrese ' + L_REGISTER.LABEL_3 }],})(
                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ejemplo" />)}
                     </Item>
 
-                    <Item label={REGISTER.LABEL_4} validateStatus={label_4_Error ? 'error' : ''} help={label_4_Error || ''}>
-                    {getFieldDecorator('label_4', { rules: [{ required: true, message: 'Porfavor ingrese ' + REGISTER.LABEL_4 }],})(
+                    <Item label={L_REGISTER.LABEL_4} validateStatus={label_4_Error ? 'error' : ''} help={label_4_Error || ''}>
+                    {getFieldDecorator('label_4', { rules: [{ required: true, message: 'Porfavor ingrese ' + L_REGISTER.LABEL_4 }],})(
                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ejemplo" />)}
                     </Item>
 
-                    <Item label={REGISTER.LABEL_5} validateStatus={label_5_Error ? 'error' : ''} help={label_5_Error || ''}>
-                    {getFieldDecorator('label_5', { rules: [{ required: true, message: 'Porfavor ingrese ' + REGISTER.LABEL_5 }],})(
+                    <Item label={L_REGISTER.LABEL_5} validateStatus={label_5_Error ? 'error' : ''} help={label_5_Error || ''}>
+                    {getFieldDecorator('label_5', { rules: [{ required: true, message: 'Porfavor ingrese ' + L_REGISTER.LABEL_5 }],})(
                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ejemplo" />)}
                     </Item>
 
-                    <Item label={REGISTER.LABEL_6} validateStatus={label_6_Error ? 'error' : ''} help={label_6_Error || ''}>
-                    {getFieldDecorator('label_6', { rules: [{ required: true, message: 'Porfavor ingrese ' + REGISTER.LABEL_6 }],})(
+                    <Item label={L_REGISTER.LABEL_6} validateStatus={label_6_Error ? 'error' : ''} help={label_6_Error || ''}>
+                    {getFieldDecorator('label_6', { rules: [{ required: true, message: 'Porfavor ingrese ' + L_REGISTER.LABEL_6 }],})(
                         <Select placeholder="Ejemplo">
                         {Sector.data.map((q,i) =>
                         <Option key={i} value={q}>{q}</Option>
@@ -115,13 +119,13 @@ class Register extends Component {
                         </Select>)}
                     </Item>
 
-                    <Item label={REGISTER.LABEL_7} validateStatus={label_7_Error ? 'error' : ''} help={label_7_Error || ''}>
-                    {getFieldDecorator('label_7', { rules: [{ required: true, message: 'Porfavor ingrese ' + REGISTER.LABEL_7 }],})(
+                    <Item label={L_REGISTER.LABEL_7} validateStatus={label_7_Error ? 'error' : ''} help={label_7_Error || ''}>
+                    {getFieldDecorator('label_7', { rules: [{ required: true, message: 'Porfavor ingrese ' + L_REGISTER.LABEL_7 }],})(
                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ejemplo" />)}
                     </Item>
 
-                    <Item label={REGISTER.LABEL_8} validateStatus={label_8_Error ? 'error' : ''} help={label_8_Error || ''}>
-                    {getFieldDecorator('label_8', { rules: [{ required: true, message: 'Porfavor ingrese ' + REGISTER.LABEL_8 }],})(
+                    <Item label={L_REGISTER.LABEL_8} validateStatus={label_8_Error ? 'error' : ''} help={label_8_Error || ''}>
+                    {getFieldDecorator('label_8', { rules: [{ required: true, message: 'Porfavor ingrese ' + L_REGISTER.LABEL_8 }],})(
                     <Select placeholder="Ejemplo">
                     <Option value="little">Empresa pequeña</Option>
                     <Option value="medium">Empresa mediana</Option>
@@ -143,4 +147,9 @@ class Register extends Component {
 }
 const WrappedNormalLoginForm = Form.create()(Register);
 
-export default WrappedNormalLoginForm;
+const mapDispatchToPropsAction = dispatch => ({ 
+    Company: value => dispatch(getRegister(value)),
+    Token: value => dispatch(getToken(value))
+  });
+
+export default connect(null, mapDispatchToPropsAction)(WrappedNormalLoginForm); 

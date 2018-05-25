@@ -2,15 +2,13 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import {Card, Radio, Tooltip,Icon} from 'antd';
 import {cardstyle} from '../../globalcss';
-// import { createStore } from 'redux';
+import { connect } from 'react-redux';
 import Factor from '../../../config/constants/factors.json';
 import {content, contentItem} from './css';
 import {buttom_Back_next} from '../../';
+import { Company } from '../../../actions/Questionary';
 
 const RadioGroup = Radio.Group;
-
-// const store = createStore(() => {}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-// const action = value => ({ type: 'factory', value});
 
 class Selection extends React.Component {
 
@@ -93,4 +91,12 @@ class Selection extends React.Component {
     }
 }
 
-export default Selection;
+const mapStateToProps = state => {
+    return  state.companyReducers 
+  }
+
+const mapDispatchToPropsAction = dispatch => ({ 
+    Company: value => dispatch(Company(value))
+  });
+  
+export default connect(mapStateToProps, mapDispatchToPropsAction)(Selection);

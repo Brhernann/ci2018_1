@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import { firstContent, p, formContent } from './css'; 
 import { QUESTIONARY_1 }  from '../../../config/constants';
 import ReactHtmlParser from 'react-html-parser';
-import { SetCompany } from '../../../actions';
+import { Company } from '../../../actions/Questionary';
 
 const Item = Form.Item;
 
@@ -60,18 +60,18 @@ class Questionary extends React.Component {
     
   componentDidMount() {
       this.props.form.validateFields();
-      console.log(this.props);
   }
 
   handleSubmit = (e) => {
       e.preventDefault();
       this.props.form.validateFields((err, values) => {
         if (!err) {
-          var obj = JSON.parse(JSON.stringify(values));
 
-          this.props.Company(obj);      
-
-          this.setState({redirect: true});
+          let arr = Object.values(JSON.parse(JSON.stringify(values)))
+          let companysWithUndefined = arr.map(q =>{ return {name: q[0]+'/'+q[1]+'/'+q[2]}});
+          let companys = companysWithUndefined.filter(x => x.name !== 'undefined/undefined/undefined');
+           this.props.Company(companys);      
+           this.setState({redirect: true});
         }
       });
   }
@@ -175,13 +175,13 @@ class Questionary extends React.Component {
 }
 
 Questionary.propTypes = {
-  SetCompany: propTypes.func.isRequired,
+  Company: propTypes.func.isRequired,
 }
 
 const thisQuestionary = Form.create()(Questionary);
 
 const mapDispatchToPropsAction = dispatch => ({ 
-  Company: value => dispatch(SetCompany(value))
+  Company: value => dispatch(Company(value))
 });
 
 export default connect(null, mapDispatchToPropsAction)(thisQuestionary);

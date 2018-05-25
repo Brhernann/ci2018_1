@@ -7,7 +7,7 @@ export const EMPATIA_DEFINITON = 'Se define como  el impacto emocional, económ
  ' que produce una entidad en la sociedad, nuevas generaciones, trabajadores, clientes, proveedores, beneficiarios, audiencias y accionistas';
 
 // FORM TEXT register
-export const REGISTER = {
+export const L_REGISTER = {
     LABEL_1 : 'Persona de contacto al interior de la empresa',
     LABEL_2 : 'Cargo',
     LABEL_3 : 'Email de contacto',
@@ -39,4 +39,16 @@ export const QUESTIONARY_1 = {
     'Señale almenos una empresa que usted considera <b>más empáticas</b> en su que hacer empresarial'+
     ' (desplegable de empresas con nombre predeterminado según catastro).'
 
+}
+
+export const REDUX_Q = {
+    GET_EMAIL:'GET_EMAIL',
+    GET_COMPANY: 'GET_COMPANY',
+    GET_FACTOR: 'GET_FACTOR',
+    GET_OPENQUESTION:'GET_OPENQUESTION'
+}
+
+export const REDUX_R = {
+    GET_REGISTER:'GET_REGISTER',
+    GET_TOKEN:'GET_TOKEN'
 }
