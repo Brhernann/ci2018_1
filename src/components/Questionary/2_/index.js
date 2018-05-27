@@ -59,6 +59,9 @@ class Selection extends React.Component {
                                 <Radio value={2}>2</Radio>
                                 <Radio value={3}>3</Radio>
                                 <Radio value={4}>4</Radio>
+                                <Radio value={5}>5</Radio>
+                                <Radio value={6}>6</Radio>
+                                <Radio value={7}>7</Radio>
                             </RadioGroup>
                         </div>
                     </div>
@@ -78,6 +81,9 @@ class Selection extends React.Component {
                                 <Radio value={2}>2</Radio>
                                 <Radio value={3}>3</Radio>
                                 <Radio value={4}>4</Radio>
+                                <Radio value={5}>5</Radio>
+                                <Radio value={6}>6</Radio>
+                                <Radio value={7}>7</Radio>
                             </RadioGroup>
                         </div>
                     </div>

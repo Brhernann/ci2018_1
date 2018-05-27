@@ -32,14 +32,14 @@ class Questionary extends React.Component {
         this.state = {
             redirect: false,     
             options:[{
-                value: 'zhejiang',
-                label: 'Zhejiang',
+                value: 'Industria Manufacturera',
+                label: 'Industria Manufacturera',
                 children: [{
-                  value: 'hangzhou',
-                  label: 'Hangzhou',
+                  value: 'Celulosa',
+                  label: 'Celulosa',
                   children: [{
-                    value: 'xihu',
-                    label: 'West Lake',
+                    value: 'Arboles',
+                    label: 'Arboles',
                   }],
                 }],
               }, {
@@ -116,7 +116,7 @@ class Questionary extends React.Component {
       <div style={formContent}>
 
         <Form layout='horizontal' onSubmit={this.handleSubmit}>
-        <Item label='' validateStatus={label_1_Error ? 'error' : ''} help={label_1_Error || ''}>
+        <Item label='ajskajs' validateStatus={label_1_Error ? 'error' : ''} help={label_1_Error || ''}>
         {getFieldDecorator('label_1', { rules: [{ type: 'array', required: true, message: 'Seleccione almenos una empresa por sector' }],})(
           <Cascader options={this.state.options} style={{marginBottom:'10px', width:'50%'}} placeholder="Seleccione una empresa por sector"/>
         )}

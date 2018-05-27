@@ -53,7 +53,7 @@ class Register extends Component {
           if (!err) {
               this.props.Company(values);
               this.createToken();
-           // this.setState({redirect: true});
+              this.setState({redirect: true});
           }
         });
     }
