@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import jwt from 'jwt-simple';
 import moment from 'moment';
 import { L_REGISTER, SECRET_TOKEN } from '../../config/constants';
-import Sector from '../../config/constants/sector.json';
+import Sector from '../../json/sector.json';
 import { getRegister, getToken } from '../../actions/Register'
 const Option = Select.Option;
 const Item = Form.Item;

@@ -37,10 +37,6 @@ class Questionary extends React.Component {
                 children: [{
                   value: 'Celulosa',
                   label: 'Celulosa',
-                  children: [{
-                    value: 'Arboles',
-                    label: 'Arboles',
-                  }],
                 }],
               }, {
                 value: 'jiangsu',
@@ -48,10 +44,6 @@ class Questionary extends React.Component {
                 children: [{
                   value: 'nanjing',
                   label: 'Nanjing',
-                  children: [{
-                    value: 'zhonghuamen',
-                    label: 'Zhong Hua Men',
-                  }],
                 }],
               }]
         }
@@ -68,8 +60,8 @@ class Questionary extends React.Component {
         if (!err) {
 
           let arr = Object.values(JSON.parse(JSON.stringify(values)))
-          let companysWithUndefined = arr.map(q =>{ return {name: q[0]+'/'+q[1]+'/'+q[2]}});
-          let companys = companysWithUndefined.filter(x => x.name !== 'undefined/undefined/undefined');
+          let companysWithUndefined = arr.map(q =>{ return {name: q[0]+'/'+q[1]}});
+          let companys = companysWithUndefined.filter(x => x.name !== 'undefined/undefined');
            this.props.Company(companys);      
            this.setState({redirect: true});
         }
@@ -91,7 +83,6 @@ class Questionary extends React.Component {
     return (
 
       <Card title={QUESTIONARY_1.title} bordered={false} style={cardstyle}>
-
       <div style={firstContent}>
           <div style={firstContent.firstChild}>
               <h3 style={p}>

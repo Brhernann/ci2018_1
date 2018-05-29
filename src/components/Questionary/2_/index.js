@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import {Card, Radio, Tooltip,Icon} from 'antd';
 import {cardstyle} from '../../globalcss';
 import { connect } from 'react-redux';
-import Factor from '../../../config/constants/factors.json';
+import Factor from '../../../json/factors.json';
 import {content, contentItem} from './css';
 import {buttom_Back_next} from '../../';
 import { Company } from '../../../actions/Questionary';
@@ -90,7 +90,7 @@ class Selection extends React.Component {
                 )}
                 </div>
             </div>
-            {buttom_Back_next('cuestionario', 'pregunta')}
+            {buttom_Back_next('cuestionario', 'pregunta')} 
             </Card>
 
         );
