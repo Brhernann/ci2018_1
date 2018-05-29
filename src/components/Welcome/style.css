@@ -1,11 +1,15 @@
 .slide {
+    margin-left: 2px;
     height: 160px;
-    background: #878787;
+    background: #d6f9b4;
     overflow: hidden;
+    font-size: 1em;
+    line-height: 1em;
+    display: table-cell;
+    vertical-align: middle;
+    margin: auto;
 }
 
 .title {
     color: rgb(29, 27, 27);
 }
-
-.holi {}

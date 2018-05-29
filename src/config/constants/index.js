@@ -11,13 +11,15 @@ export const VISION = {
 };
 export const EMPATIA = {
     TITLE: 'EMPATÍA CORPORATIVA:',
-    RESUMEN: '<b>nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones.</b>' +
+    RESUMEN:
+        '<b>nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones.</b>' +
         '<b>Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE.</b>' +
         '<b>Estámos veríficados en nuestras tres fases de investigación por la norma internacional ISAE 3.000 que se aplica para auditorías no financieras. </b>'
 };
 export const MISION = {
     TITLE: 'Nuestra Misión:',
-    RESUMEN: '<b>Forlalecer y consolidar nuestro capital intelectual constantemente, a través de investigaciones asociadas a empatía corporativa y cumpimiento de los ODS, para entregar reportes, estudios y consultorías de excelencia a nuestros clientes.</b>' +
+    RESUMEN:
+        '<b>Forlalecer y consolidar nuestro capital intelectual constantemente, a través de investigaciones asociadas a empatía corporativa y cumpimiento de los ODS, para entregar reportes, estudios y consultorías de excelencia a nuestros clientes.</b>' +
         '<b>El ÍNDICE DE EMPATÍA CORPORATIVA es nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones.</b>' +
         '<b> Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE.</b>' +
         '<b>Estámos veríficados en nuestras tres fases de investigación por la norma internacional ISAE 3.000 que se aplica para auditorías no financieras.</p > '
