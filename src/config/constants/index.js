@@ -7,22 +7,22 @@ export const INTRODUCTION = '';
 
 export const VISION = {
     TITLE: 'Nuestra Visión:',
-    RESUMEN: '<b>Ser una referencia intelectual y profesional en la investigación y gestión de la emparía corporativa a nivel empresarial en alineación con indicadores de cumplimiento general y por industrias de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.</b>'
+    RESUMEN: '<p>Ser una referencia intelectual y profesional en la investigación y gestión de la emparía corporativa a nivel empresarial en alineación con indicadores de cumplimiento general y por industrias de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.</p>'
 };
 export const EMPATIA = {
     TITLE: 'EMPATÍA CORPORATIVA:',
     RESUMEN:
-        '<b>nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones.</b>' +
-        '<b>Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE.</b>' +
-        '<b>Estámos veríficados en nuestras tres fases de investigación por la norma internacional ISAE 3.000 que se aplica para auditorías no financieras. </b>'
+        '<p>nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones. </p>' +
+        '<p>Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE. </p>' +
+        '<p>Estámos veríficados en nuestras tres fases de investigación por la norma internacional ISAE 3.000 que se aplica para auditorías no financieras. </p>'
 };
 export const MISION = {
     TITLE: 'Nuestra Misión:',
     RESUMEN:
-        '<b>Forlalecer y consolidar nuestro capital intelectual constantemente, a través de investigaciones asociadas a empatía corporativa y cumpimiento de los ODS, para entregar reportes, estudios y consultorías de excelencia a nuestros clientes.</b>' +
-        '<b>El ÍNDICE DE EMPATÍA CORPORATIVA es nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones.</b>' +
-        '<b> Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE.</b>' +
-        '<b>Estámos veríficados en nuestras tres fases de investigación por la norma internacional ISAE 3.000 que se aplica para auditorías no financieras.</p > '
+        '<p>Forlalecer y consolidar nuestro capital intelectual constantemente, a través de investigaciones asociadas a empatía corporativa y cumpimiento de los ODS, para entregar reportes, estudios y consultorías de excelencia a nuestros clientes. </p>' +
+        '<p><b>El ÍNDICE DE EMPATÍA CORPORATIVA</b> es nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones. </p>' +
+        '<p>Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE. </p>' +
+        '<p>Estámos veríficados en nuestras tres fases de investigación por la norma internacional ISAE 3.000 que se aplica para auditorías no financieras.</p > '
 };
 
 export const LINK_CREATED = {
@@ -56,12 +56,12 @@ export const WELCOME_MESSAGE = {
 export const QUESTIONARY_1 = {
     title: 'LAS EMPRESAS CON MEJOR EMPATÍA CORPORATIVA',
     subtitle: ' La empatía corporativa a nivel empresarial se define como: ',
-    resumen: '<b>El inpacto emocional, económico que produce una organización en la sociedad,</b>' +
-        ' en las <b>Nuevas generaciones, trabajadores/as, clientes, audiencias, accionistas,</b> y que ' +
+    resumen: '<p>El inpacto emocional, económico que produce una organización en la sociedad,</p>' +
+        ' en las <p>Nuevas generaciones, trabajadores/as, clientes, audiencias, accionistas,</p> y que ' +
         'aporta al desarrollo sostenible.',
     question: 'Considerando la definición anterior y según su punto de vista personal.' +
         '<br><br>' +
-        'Señale almenos una empresa que usted considera <b>más empáticas</b> en su que hacer empresarial' +
+        'Señale almenos una empresa que usted considera <p>más empáticas</p> en su que hacer empresarial' +
         ' (desplegable de empresas con nombre predeterminado según catastro).'
 
 }
