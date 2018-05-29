@@ -24,8 +24,8 @@ class Goodbay extends Component {
                     <div>
                         <p>Gracias por  <strong style={{ color: '#1088e9' }}> dedicar </strong> un poco de tu tiempo.</p>
 
-                        {string === 'registrado' ? <p>Haz generado el siguiente Link unico para ... </p> : null}
-                        {string === 'registrado' ? <p>Link: {this.props.registerReducers.Token}</p>: null}
+                        {string === 'registrado' && <p>Haz generado el siguiente Link unico para ... </p>}
+                        {string === 'registrado' && <p>Link: {this.props.registerReducers.Token}</p>}
                     </div>
                 </div>
             </Card>

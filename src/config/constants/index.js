@@ -1,10 +1,24 @@
-
-export const TITLE_WELCOME = 'Encuesta empresarial';
-export const MESSAGE_WELCOME = ''; 
 export const SECRET_TOKEN = 'CORPINDEXORATION';
 
 export const EMPATIA_DEFINITON = 'Se define como  el impacto emocional, económico y de desarrollo sostenible'+
  ' que produce una entidad en la sociedad, nuevas generaciones, trabajadores, clientes, proveedores, beneficiarios, audiencias y accionistas';
+
+export const INTRODUCTION = '';
+
+export const VISION = {
+    TITLE:'Nuestra Visión:',
+    RESUMEN:''
+};
+
+export const MISION = {
+    TITLE:'',
+    RESUMEN:''
+};
+
+export const LINK_CREATED = {
+    TITLE:'Gracias por su participación.',
+    RESUMEN:'Aquí puede descargar un LINK PÚBLICO, el que puede adjuntar y pegar en su correo de invitación a contestar la encuesta.'
+}
 
 // FORM TEXT register
 export const L_REGISTER = {
@@ -25,7 +39,8 @@ export const END_MSSAGE = {
 }
 
 export const WELCOME_MESSAGE = {
-    titleencuesta2: 'Marque el factor mas relevante de la empatía de la empresa',
+    FROM_REGISTER: 'Bienvenido (a) a la plataforma de nuestra área de investigación, estudios públicos de Corporate Index...',
+    FROM_QUESTIONARY : 'Encuesta empresarial'
 }
 
 export const QUESTIONARY_1 = {
