@@ -7,6 +7,7 @@ import { VISION, MISION } from '../../config/constants';
 import { WELCOME_MESSAGE } from '../../config/constants';
 import { EMPATIA } from '../../config/constants';
 import ReactHtmlParser from 'react-html-parser';
+import style from './style.css';
 
 class Welcome extends React.Component {
     render() {
@@ -18,16 +19,16 @@ class Welcome extends React.Component {
                 style={cardstyle}>
                 <Carousel autoplay>
                     <div>
-                        <h3>{VISION.TITLE}</h3>
-                        <h4>{ReactHtmlParser(VISION.RESUMEN)}</h4>
+                        <h3 className='title'>{VISION.TITLE}</h3>
+                        <h4 className='slide'>{ReactHtmlParser(VISION.RESUMEN)}</h4>
                     </div>
                     <div>
-                        <h3>{MISION.TITLE}</h3>
-                        <h4>{ReactHtmlParser(MISION.RESUMEN)}</h4>
+                        <h3 className='title'>{MISION.TITLE}</h3>
+                        <h4 className='slide'>{ReactHtmlParser(MISION.RESUMEN)}</h4>
                     </div>
                     <div>
-                        <h3>{EMPATIA.TITLE}</h3>
-                        <h4>{ReactHtmlParser(EMPATIA.RESUMEN)} </h4>
+                        <h3 className='title'>{EMPATIA.TITLE}</h3>
+                        <h4 className='slide'>{ReactHtmlParser(EMPATIA.RESUMEN)} </h4>
                     </div>
                 </Carousel>
                 <p></p>
@@ -36,7 +37,7 @@ class Welcome extends React.Component {
                         Comenzar
                    </Button>
                 </Link>
-            </Card>
+            </Card >
         );
     }
 }

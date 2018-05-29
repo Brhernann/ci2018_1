@@ -1,0 +1,9 @@
+.slide {
+    height: 160px;
+    background: #878787;
+    overflow: hidden;
+}
+
+.title {
+    color: rgb(29, 27, 27);
+}
