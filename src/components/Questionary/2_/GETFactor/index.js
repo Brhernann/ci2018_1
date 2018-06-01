@@ -98,12 +98,8 @@ class GETFactor extends Component {
         return (
             <Card title={FactorJSON.title} bordered={false} style={cardstyle}>
                 <Form layout='horizontal' onSubmit={this.handleSubmit}>
-                    <div
-                        style={{
-                        display: 'flex',
-                        justifyContent: 'space-around'
-                    }}>
-
+                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    
                         <div style={content}>
                             {/* 2A Recorrer la wea creada y generar div con title tooltip y radiogroup */}
                             {firstArr.map((q, i) => <div key={i} style={contentItem}>

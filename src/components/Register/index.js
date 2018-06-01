@@ -79,7 +79,7 @@ class Register extends Component {
             <Card
                 title="Bienvenido, te invitamos a registrar los datos de empresa."
                 bordered={false}
-                style={{width: '40%',
+                style={{width: '80%',
                 textAlign: 'left',
                 marginTop: '2%',}}>
 
