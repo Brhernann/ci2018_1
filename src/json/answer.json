@@ -1,0 +1,14 @@
+{
+    "Name": "Aguas/Smapa",
+    "User": "example@example.com",
+    "Data": {
+        "Selection":[
+            {"Factor": "Comportamiento Ético", "Answer":1},
+            {"Factor": "Empatía Corporativa", "Answer":1},
+            {"Factor": "Percepción de Marca", "Answer":1}
+        ],
+        "openQuestion":[
+            {"Question":"¿How are you?","Answer": "Fine."}
+        ]
+    }
+}

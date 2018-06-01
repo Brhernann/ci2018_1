@@ -90,7 +90,7 @@ class Questionary extends React.Component {
                   {QUESTIONARY_1.subtitle}</h3>
               <p style={p}>
                   {ReactHtmlParser(QUESTIONARY_1.resumen)}
-              </p>
+              </p> 
           </div>
       </div>
       

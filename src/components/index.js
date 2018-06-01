@@ -39,6 +39,35 @@ export const buttom_Back_next = (back, next) => {
     )
 }
 
+export const buttom_with_function = (back, next) => {
+    return (
+        <div style={{
+                paddingTop: 50
+            }}>
+            <Button.Group size='large'>
+                <Tooltip placement="bottomRight" title={'Volver'}>
+                    <Button
+                        type="primary"
+                        style={{ marginRight: 5 }}
+                        onClick={back}>
+                        <Icon type="left"/>
+                    </Button>
+                </Tooltip>
+
+                <Tooltip placement="bottomLeft" title={'Siguiente'}>
+                    <Button
+                        type="primary"
+                        style={{ marginLeft: 5 }}
+                        onClick={next}>
+                        <Icon type="right"/>
+                    </Button>
+                </Tooltip>
+
+            </Button.Group>
+        </div>
+    )
+}
+
 export const token_valid = () => {
 
     return (

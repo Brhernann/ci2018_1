@@ -3,11 +3,8 @@ import 'antd/dist/antd.css';
 import { Card, Button, Carousel } from 'antd';
 import { Link } from 'react-router-dom';
 import { cardstyle } from '../globalcss';
-import { VISION, MISION } from '../../config/constants';
-import { WELCOME_MESSAGE } from '../../config/constants';
-import { EMPATIA } from '../../config/constants';
+import { VISION, MISION, WELCOME_MESSAGE, EMPATIA } from '../../config/constants';
 import ReactHtmlParser from 'react-html-parser';
-import style from './style.css';
 
 class Welcome extends React.Component {
     render() {

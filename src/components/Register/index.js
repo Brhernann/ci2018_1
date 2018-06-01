@@ -84,7 +84,6 @@ class Register extends Component {
                 marginTop: '2%',}}>
 
                 <Form layout='horizontal' onSubmit={this.handleSubmit}>
-
                     <Item label={L_REGISTER.LABEL_1} validateStatus={label_1_Error ? 'error' : ''} help={label_1_Error || ''}>
                     {getFieldDecorator('label_1', { rules: [{ required: true, message: 'Porfavor ingrese ' + L_REGISTER.LABEL_1 }],})(
                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ejemplo" />)}
