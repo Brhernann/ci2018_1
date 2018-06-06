@@ -66,15 +66,25 @@ export const QUESTIONARY_1 = {
 
 }
 
+export const INCOMPLETE_QUESTIONAY = {
+    title:'¡Tienes un formulario incompleto!',
+    content:'Puedes guardar el siguiente cuestionario y continuar, pero se perderá el progreso del anterior.',
+    okButtom:'Continuar',
+    cancelButtom:'Terminar anterior'
+}
+
 export const REDUX = {
-    STATE: 'STATE'
+    COLLAPSE_BOOLEAN: 'COLLAPSE_BOOLEAN',
+    COLLAPSE_ACTIVE: 'COLLAPSE_ACTIVE',
+    QUESTIONARY_ACTIVE: 'QUESTIONARY_ACTIVE'
 }
 
 export const REDUX_Q = {
     GET_EMAIL: 'GET_EMAIL',
     GET_COMPANY: 'GET_COMPANY',
     GET_FACTOR: 'GET_FACTOR',
-    GET_OPENQUESTION: 'GET_OPENQUESTION'
+    GET_OPENQUESTION: 'GET_OPENQUESTION',
+    GET_ALL_THE_ANSWER: 'GET_ALL_THE_ANSWER'
 }
 
 export const REDUX_R = {

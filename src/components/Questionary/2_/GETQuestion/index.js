@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import { contentButtom } from './css';
 import {cardstyle, separatorLeft, separatorRight} from '../../../globalcss';
 import {openQuestion} from '../../../../actions/Questionary';
-import {Booleano} from '../../../../actions/booleanControl';
+import {Booleano} from '../../../../actions/collapseControl';
 
 const {TextArea} = Input;
 const Item = Form.Item;
@@ -52,7 +52,7 @@ class GETQuestion extends React.Component {
 
         return (
             <Card
-                title="¿Como considera usted la empresa saltala en aspecto empatico?"
+                title="¿Como considera usted la empresa Sáltala en aspecto empatico?"
                 bordered={false}
                 style={cardstyle}>
 

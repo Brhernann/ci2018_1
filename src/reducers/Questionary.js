@@ -4,7 +4,8 @@ const initialState = {
     email_selected : '',
     company_selected: {},
     factor_selected: {},
-    openQuestion_selected: ''
+    openQuestion_selected: '',
+    AllTheAnswer:[]
 }
 
 const companyReducers = (state = initialState, action) => {
@@ -28,6 +29,11 @@ const companyReducers = (state = initialState, action) => {
             return {
                 ...state,
                 openQuestion_selected: action.openQuestion
+            }
+        case REDUX_Q.GET_ALL_THE_ANSWER:
+            return {
+                ...state,
+                AllTheAnswer: action.AllTheAnswer
             }
         default:
             return state;

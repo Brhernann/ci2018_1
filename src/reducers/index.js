@@ -2,12 +2,12 @@
 import { combineReducers } from 'redux'; 
 import companyReducers from './Questionary';
 import registerReducers from './Register';
-import BooleanReducers from './booleanControl'
+import CollapseReducers from './CollapseControl';
 
 //creo reducers con una clave que define el estado:
 // availableDoctors.
 export default combineReducers({
     companyReducers,
     registerReducers,
-    BooleanReducers
+    CollapseReducers
 })

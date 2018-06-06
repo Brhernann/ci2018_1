@@ -29,3 +29,10 @@ export const openQuestion = openQuestion => (
         openQuestion
     }
 );
+
+export const AllTheAnswer = AllTheAnswer => (
+    {
+        type: REDUX_Q.GET_ALL_THE_ANSWER, 
+        AllTheAnswer
+    }
+);
