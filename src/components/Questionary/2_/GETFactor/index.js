@@ -40,12 +40,13 @@ class GETFactor extends Component {
             .bind(this);
     }
 
-    async componentDidMount() {
-        await this.splitInHalf();
+    componentWillReceiveProps(nextProps) {
+        const {firstArr, secondArr} = this.state
+        this.Addfactortojson(firstArr, secondArr, nextProps.CollapseReducers.CollapseActive)
     }
 
-    componentDidUpdate() {
-        console.log('a')
+    async componentDidMount() {
+        await this.splitInHalf();
     }
 
     setStateAsync(state) {
@@ -66,63 +67,68 @@ class GETFactor extends Component {
             .onQuestionChanged(parseInt(this.props.CollapseReducers.CollapseActive[0], 10));
     }
 
-    async splitInHalf() { //Divide Los factor para poder ponerlos con flex
-
-        const factor_selected = this.props.companyReducers.factor_selected;
-        const CollapseActive = this.props.CollapseReducers.CollapseActive;
-        const QuestionaryActive = this.props.CollapseReducers.QuestionaryActive;
+    async splitInHalf(CollapseActive) { //Divide Los factor para poder ponerlos con flex
 
         let firstArr = [],
             secondArr = [];
 
         /////////////////////////
 
-        let arr10 = FactorJSON 
+        let arr10 = FactorJSON
             .data
             .map(q => q.SubFactor.filter(item => item.index < 10));
 
-        arr10.map(q => firstArr.push(...q)); 
+        arr10.map(q => firstArr.push(...q));
 
         /////////////////////////
 
-        let arr17 = FactorJSON 
+        let arr17 = FactorJSON
             .data
             .map(q => q.SubFactor.filter(item => item.index > 9));
 
         arr17.map(q => secondArr.push(...q)); // push para borrar arreglos vacios que quedaron post filter inside mapeo
 
-        /////////////////////////
+        ///////////////////////// bien ahora pregunto agrego en el caso y y guardo en el caso
 
-        if (Object.keys(factor_selected).length !== 0 
-        && parseInt(CollapseActive[0], 10) === QuestionaryActive) {
-
-            let values = await Object
-                .values(factor_selected)
-                .map((value, index) => {
-                    return {
-                        name: 'label_' + (
-                            index + 1
-                        ),
-                        value: value,
-                        index: index + 1
-                    }
-                });
-            
-            let arr1 = values.filter(item => item.index < 10)
-            let arr2 = values.filter(item => item.index > 9)
-
-            arr1.map((q, i) => firstArr[i].value = q.value);
-            arr2.map((q, i) => secondArr[i].value = q.value );
-
-        } 
-            await this.setStateAsync({firstArr, secondArr});
-        
-        ///////////////////////
+        await this.Addfactortojson(firstArr, secondArr, this.props.CollapseReducers.CollapseActive);
 
         this
-            .props
-            .form
-            .validateFields()
+        .props
+        .form
+        .validateFields();
+    }
+
+    Addfactortojson(firstArr, secondArr, CollapseActive) {
+
+        const factor_selected = this.props.companyReducers.factor_selected;
+        const QuestionaryActive = this.props.CollapseReducers.QuestionaryActive;
+
+        let values = Object
+            .values(factor_selected)
+            .map((value, index) => {
+                return {
+                    name: 'label_' + (
+                        index + 1
+                    ),
+                    value: value,
+                    index: index + 1
+                }
+            });
+
+        let arr1 = values.filter(item => item.index < 10)
+        let arr2 = values.filter(item => item.index > 9)
+
+        if (Object.keys(factor_selected).length !== 0 && parseInt(CollapseActive[0], 10) === QuestionaryActive) {
+
+            arr1.map((q, i) => firstArr[i].value = q.value);
+            arr2.map((q, i) => secondArr[i].value = q.value);
+            this.setStateAsync({firstArr, secondArr})
+        } else {
+
+            arr1.map((q, i) => firstArr[i].value = '');
+            arr2.map((q, i) => secondArr[i].value = '');
+            this.setStateAsync({firstArr, secondArr})
+        }
     }
 
     handleSubmit = (e) => {
@@ -133,7 +139,10 @@ class GETFactor extends Component {
             .validateFields((err, values) => {
                 if (!err) {
 
-                    if (this.props.CollapseReducers.QuestionaryActive !== null) {
+                    if (this.props.CollapseReducers.QuestionaryActive !== null
+                        && parseInt(this.props.CollapseReducers.CollapseActive[0],10) 
+                        !== this.props.CollapseReducers.QuestionaryActive)
+                    {
 
                         let props = this.props,
                             thiss = this,
