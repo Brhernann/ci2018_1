@@ -19,7 +19,6 @@ class GETQuestion extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        console.log(props)
     }
 
     componentDidMount() {

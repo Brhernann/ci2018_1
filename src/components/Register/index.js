@@ -39,7 +39,7 @@ class Register extends Component {
         const payload = {
             sub: 'VALIDO',
             iat: moment().unix(),
-            exp: moment().add(1, 'minute').unix(),
+            exp: moment().add(5, 'minute').unix(),
         }
 
         let token = jwt.encode(payload, SECRET_TOKEN);

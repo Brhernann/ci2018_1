@@ -44,7 +44,7 @@ class Selection extends React.Component {
         let QuestionaryActive = this.props.CollapseReducers.QuestionaryActive;
 
         return (
-            <Card title={'Bienvenido '} bordered={false} style={cardstyle}>
+            <Card title={'Bienvenido '} style={cardstyle}>
                 <div style={content}>
                     <div style={contentItem}>
                         <Collapse  activeKey={CollapseActive} onChange={this.callback}>
