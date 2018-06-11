@@ -50,7 +50,7 @@ class GETQuestion extends React.Component {
                     this
                         .props
                         .onOpenQuestionChanged(all);
-
+                    localStorage.removeItem('root');
                     this.setState({redirect: true});
 
                 }

@@ -97,7 +97,7 @@ class Selection extends React.Component {
                             }}
                             disabled={Companys.length !== this.props.company_selected.length}
                             onClick={this.enterLoading} >
-                            Finalizar
+                            Continuar
                         </Button>
                     </div>
                 </div>

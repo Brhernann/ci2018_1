@@ -1,5 +1,5 @@
 {
-    "title":"Indique una nota para la empresa en cada una de estás categorias.",
+    "title":"Póngale nota a la empresa en cada una de estas categorías.",
     "data": [
         { "FactorName": "Valor emocional", "index": 1, "SubFactor": [
             { "name": "Comportamiento Ético", "Description": "Conjunto de principios y valores que la empresa adhiere a sus políticas y normas internas y que forman parte de la estructura de la organización, se reflejan en su cultura y logra una mayor sintonía con la sociedad", "index":1, "value":"" }, 

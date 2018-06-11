@@ -19,7 +19,7 @@ const Item = Form.Item;
 
 function hasErrors(fieldsError) {
     return Object
-        .keys(fieldsError)
+        .keys(fieldsError) 
         .some(field => fieldsError[field]);
 }
 
@@ -47,6 +47,7 @@ class Goodbay extends Component {
             .validateFields((err, values) => {
                 if (!err) {
                     console.log(values)
+                    notification.success({message: 'Correo Guardado', description: ''})
                 }
             });
     }
