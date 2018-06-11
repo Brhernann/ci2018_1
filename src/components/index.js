@@ -71,16 +71,19 @@ export const buttom_with_function = (back, next) => {
 export const token_valid = () => {
 
     return (
-        <Card title="Bienvenido usuario" bordered={false} style={cardstyle}>
+        <Card title="Bienvenido a Corporate Index" bordered={false} style={cardstyle}>
             <div>
                 <div>
                     <Alert
                         message="Link valido"
-                        description="Bienvenido, gracias por participar con nosotros, continua respondiendo el siguiente cuestionario."
+                        description="Gracias por participar con nosotros, continua respondiendo el siguiente cuestionario."
                         type="success"
                         showIcon="showIcon"/>
                 </div>
                 <br/>
+                <div>
+                    <h4>A continuación...</h4>
+                </div>
                 <div>
                 <Link to='/cuestionario'>
                     <Button type="primary" style={{ marginTop: 30 }}>

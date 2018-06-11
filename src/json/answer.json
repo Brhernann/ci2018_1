@@ -1,32 +1,15 @@
-[
-    {
-    "Name": "Aguas/Smapa",
-    "Index":"1",
+[{
     "User": "example@example.com",
-    "Data": {
-        "Selection":[
-            {"Factor": "Comportamiento Ético", "Answer":1},
-            {"Factor": "Empatía Corporativa", "Answer":1},
-            {"Factor": "Percepción de Marca", "Answer":1}
-        ],
-        "openQuestion":[
-            {"Question":"¿How are you?","Answer": "Fine."}
-        ]
-    }
-},
-{
-    "Name": "Comestibles/Neste",
-    "Index":"2",
-    "User": "example@example.com",
-    "Data": {
-        "Selection":[
-            {"Factor": "Comportamiento Ético", "Answer":1},
-            {"Factor": "Empatía Corporativa", "Answer":1},
-            {"Factor": "Percepción de Marca", "Answer":1}
-        ],
-        "openQuestion":[
-            {"Question":"¿How are you?","Answer": "Fine."}
-        ]
-    }
-}
-]
+    "FreeQuestion": "",
+    "Companys": [
+        {
+            "Name": "Aguas/Smapa",
+            "Index":"1",
+            "Data": [
+                    {"Factor": "Comportamiento Ético", "Answer":1},
+                    {"Factor": "Empatía Corporativa", "Answer":1},
+                    {"Factor": "Percepción de Marca", "Answer":1}
+                ]
+        }
+    ]
+}]

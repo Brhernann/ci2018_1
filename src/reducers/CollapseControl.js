@@ -3,7 +3,7 @@ import { REDUX } from '../config/constants';
 const initialState = {
     Booleano: false,
     CollapseActive: ['0'],
-    QuestionaryActive: null
+    QuestionaryActive: []
 }
 
 const BooleanReducers = (state = initialState, action) => {

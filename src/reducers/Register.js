@@ -2,7 +2,10 @@ import { REDUX_R } from '../config/constants';
 
 const initialState = {
     Register: {},
-    Token: ''
+    Token: {
+        token:'',
+        rand:''
+    }
 }
 
 const registerReducers = (state = initialState, action) => {

@@ -7,19 +7,16 @@ import {
     Tooltip,
     Icon,
     Form,
-    Button,
-    Modal
+    Button
 } from 'antd';
 import {Booleano, QuestionaryActive, CollapseActive} from '../../../../actions/collapseControl';
 import FactorJSON from '../../../../json/factors.json';
-import {INCOMPLETE_QUESTIONAY} from '../../../../config/constants'
 import {cardstyle} from '../../../globalcss';
 import {content, contentItem} from './css';
-import {Factor} from '../../../../actions/Questionary';
+import {Factor, AllTheAnswer} from '../../../../actions/Questionary';
 
 const RadioGroup = Radio.Group;
 const Item = Form.Item;
-const confirm = Modal.confirm;
 
 function hasErrors(fieldsError) {
     return Object
@@ -41,8 +38,14 @@ class GETFactor extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const {firstArr, secondArr} = this.state
-        this.Addfactortojson(firstArr, secondArr, nextProps.CollapseReducers.CollapseActive)
+        const {firstArr, secondArr} = this
+            .state
+            this
+            .Addfactortojson(
+                firstArr,
+                secondArr,
+                nextProps.CollapseReducers.CollapseActive
+            )
     }
 
     async componentDidMount() {
@@ -56,15 +59,48 @@ class GETFactor extends Component {
     }
 
     SaveQuestion(values) {
-        this
+
+        let All = this.props.companyReducers.AllTheAnswer;
+        let active = parseInt(this.props.CollapseReducers.CollapseActive[0], 10);
+        let name = this
             .props
-            .onFactorChanged(values);
+            .companyReducers
+            .company_selected[active]
+            .name;
+
+        let factors = Object
+            .values(values)
+            .map((value, index) => {
+                return {
+                    Factor: 'label_' + (
+                        index + 1
+                    ),
+                    Answer: value
+                }
+            });
+
+        let data = {
+            "Name": name,
+            "Index": active,
+            "Data": factors
+        }
+
+        All
+            .Companys
+            .push(data)
+
         this
             .props
             .onBooleanChanged(true);
         this
             .props
-            .onQuestionChanged(parseInt(this.props.CollapseReducers.CollapseActive[0], 10));
+            .onQuestionChanged(active);
+        this
+            .props
+            .onAllTheAnswerChanged(All)
+        this
+            .props
+            .onCollapseChanged([])
     }
 
     async splitInHalf(CollapseActive) { //Divide Los factor para poder ponerlos con flex
@@ -90,15 +126,19 @@ class GETFactor extends Component {
 
         ///////////////////////// bien ahora pregunto agrego en el caso y y guardo en el caso
 
-        await this.Addfactortojson(firstArr, secondArr, this.props.CollapseReducers.CollapseActive);
+        await this.Addfactortojson(
+            firstArr,
+            secondArr,
+            this.props.CollapseReducers.CollapseActive
+        );
 
         this
-        .props
-        .form
-        .validateFields();
+            .props
+            .form
+            .validateFields();
     }
 
-    Addfactortojson(firstArr, secondArr, CollapseActive) {
+    Addfactortojson(firstArr, secondArr, CollapseActive) { //agrega factores guardados en value al json
 
         const factor_selected = this.props.companyReducers.factor_selected;
         const QuestionaryActive = this.props.CollapseReducers.QuestionaryActive;
@@ -139,45 +179,8 @@ class GETFactor extends Component {
             .validateFields((err, values) => {
                 if (!err) {
 
-                    if (this.props.CollapseReducers.QuestionaryActive !== null
-                        && parseInt(this.props.CollapseReducers.CollapseActive[0],10) 
-                        !== this.props.CollapseReducers.QuestionaryActive)
-                    {
+                    this.SaveQuestion(values);
 
-                        let props = this.props,
-                            thiss = this,
-                            QuestionaryActive = [
-                                this
-                                    .props
-                                    .CollapseReducers
-                                    .QuestionaryActive
-                                    .toString()
-                            ];
-
-                        confirm({
-                            title: INCOMPLETE_QUESTIONAY.title,
-                            content: INCOMPLETE_QUESTIONAY.content,
-                            okText: INCOMPLETE_QUESTIONAY.okButtom,
-                            cancelText: INCOMPLETE_QUESTIONAY.cancelButtom,
-                            onOk() {
-                                return new Promise((resolve, reject) => {
-                                    setTimeout(
-                                        Math.random() > 0.5
-                                            ? resolve
-                                            : reject,
-                                        1000
-                                    );
-                                    thiss.SaveQuestion(values);
-                                }).catch(() => console.log('Oops errors!'));
-                            },
-                            onCancel() {
-                                props.onCollapseChanged(QuestionaryActive);
-                            }
-                        });
-
-                    } else {
-                        this.SaveQuestion(values);
-                    }
                 }
             });
     }
@@ -322,7 +325,7 @@ class GETFactor extends Component {
                                 }}
                                 htmlType="submit"
                                 disabled={hasErrors(getFieldsError())}>
-                                Siguiente
+                                Terminar
                             </Button>
                         </Item>
                     </div>
@@ -343,7 +346,8 @@ const mapDispatchToPropsAction = dispatch => ({
     onFactorChanged: value => dispatch(Factor(value)),
     onBooleanChanged: value => dispatch(Booleano(value)),
     onQuestionChanged: value => dispatch(QuestionaryActive(value)),
-    onCollapseChanged: value => dispatch(CollapseActive(value))
+    onCollapseChanged: value => dispatch(CollapseActive(value)),
+    onAllTheAnswerChanged: value => dispatch(AllTheAnswer(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToPropsAction)(

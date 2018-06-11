@@ -1,9 +1,25 @@
-export const SECRET_TOKEN = 'CORPINDEXORATION';
+export const SECRET_TOKEN = 'CLIENTASHJDJHASHJB3';
+
+// FETCH
+export const FETCHING_DATA = 'FETCHING_DATA';
+export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS';
+export const FETCHING_DATA_FAILURE = 'FETCHING_DATA_FAILURE';
+export const URL = 'http://icorp.wyj2nvk7ic.us-west-2.elasticbeanstalk.com/webservices/';
+
+export const WSSET = {
+    InsertEnterprise: URL+'InsertEnterprise',
+    InsertLink: URL+'InsertLink'
+
+}
 
 export const EMPATIA_DEFINITON = 'Se define como  el impacto emocional, económico y de desarrollo sostenible' +
     ' que produce una entidad en la sociedad, nuevas generaciones, trabajadores, clientes, proveedores, beneficiarios, audiencias y accionistas';
 
 export const INTRODUCTION = '';
+
+export const FETCH_COMPANY={
+
+}
 
 export const VISION = {
     TITLE: 'Nuestra Visión:',
@@ -12,7 +28,7 @@ export const VISION = {
 export const EMPATIA = {
     TITLE: 'EMPATÍA CORPORATIVA:',
     RESUMEN:
-        '<p>nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones. </p>' +
+        '<p>Nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones. </p>' +
         '<p>Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE. </p>' +
         '<p>Estámos veríficados en nuestras tres fases de investigación por la norma internacional ISAE 3.000 que se aplica para auditorías no financieras. </p>'
 };
@@ -32,19 +48,20 @@ export const LINK_CREATED = {
 
 // FORM TEXT register
 export const L_REGISTER = {
-    LABEL_1: 'Persona de contacto al interior de la empresa',
-    LABEL_2: 'Cargo',
-    LABEL_3: 'Email de contacto',
+    LABEL_1: 'Nombre de la persona de contacto',
+    LABEL_2: 'Cargo de la persona de contacto',
+    LABEL_3: 'Email de la persona de contacto',
     LABEL_4: 'Nombre de la empresa',
     LABEL_5: 'Dirección principal de la empresa',
     LABEL_6: 'Sector de actividad',
-    LABEL_7: 'Municipalidad a la cual pertenece la empresa ',
+    LABEL_7: 'Comuna',
     LABEL_8: ' Tipo de empresa',
 }
 
 export const END_MSSAGE = {
     FROM_REGISTER: 'Haz finalizado exitosamente el registro.',
     FROM_QUESTIONARY: 'Haz finalizado exitosamente el cuestionario.',
+    FROM_ENDFACTOR: 'Tu respuesta ha sido guardada.',
     END_EMAIL_MESSAGE: 'Si usted desea recibir los resultados finales antes de la publicación en el medio, ingrese su correo acá.'
 }
 
@@ -59,10 +76,12 @@ export const QUESTIONARY_1 = {
     resumen: 'El inpacto emocional, económico que produce una organización en la sociedad,' +
         ' en las Nuevas generaciones, trabajadores/as, clientes, audiencias, accionistas, y que ' +
         'aporta al desarrollo sostenible.',
-    question: 'Considerando la definición anterior y según su punto de vista personal.' +
+    question: 'Considerando la definición anterior y según su punto de vista personal,' +
         '<br><br>' +
-        'Señale almenos una empresa que usted considera más empáticas en su que hacer empresarial' +
-        ' (desplegable de empresas con nombre predeterminado según catastro).'
+        'Señale al menos una empresa que usted considera más "empática" en su quehacer empresarial' +
+        ' (desplegable de empresas con nombre predeterminado según catastro).'+
+        '<br><br>'+
+        '<b>Nota: Usted no puede votar por su misma empresa.<b>'
 
 }
 

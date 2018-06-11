@@ -11,6 +11,7 @@ import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import jwt from 'jwt-simple';
 import moment from 'moment';
+import rand from 'random-key';
 import { L_REGISTER, SECRET_TOKEN } from '../../config/constants';
 import Sector from '../../json/sector.json';
 import { getRegister, getToken } from '../../actions/Register'
@@ -42,8 +43,11 @@ class Register extends Component {
             exp: moment().add(5, 'minute').unix(),
         }
 
-        let token = jwt.encode(payload, SECRET_TOKEN);
-        this.props.Token(token);
+        let objtoken = {
+            token: jwt.encode(payload, SECRET_TOKEN),
+            rand: rand.generateBase30(5)
+        } 
+        this.props.Token(objtoken);
     }
 
     handleSubmit = (e) => {

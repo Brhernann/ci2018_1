@@ -1,11 +1,13 @@
 import { REDUX_Q } from '../config/constants';
 
 const initialState = {
-    email_selected : '',
-    company_selected: {},
     factor_selected: {},
-    openQuestion_selected: '',
-    AllTheAnswer:[]
+    company_selected: {},
+    AllTheAnswer:{
+        "User": "",
+        "FreeQuestion": "",
+        "Companys": []
+    }
 }
 
 const companyReducers = (state = initialState, action) => {
