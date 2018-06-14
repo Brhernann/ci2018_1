@@ -85,20 +85,8 @@ class Goodbay extends Component {
                     <div><Progress type="circle" percent={100}/></div>
                     <br/>
                     <div>
-                        <p>Gracias por
-                            <strong
-                                style={{
-                                    color: '#1088e9'
-                                }}>
-                                dedicar
-                            </strong>
-                            un poco de tu tiempo.</p>
-
                         {
-                            string === 'registrado' && <p>Haz generado el siguiente
-                                    <b>Link</b>
-                                    unico para ...
-                                </p>
+                            string === 'registrado' && <p>Copie y pegue en el portapapeles el siguiente link para responder la encuesta.</p>
                         }
 
                         <div
@@ -120,9 +108,7 @@ class Goodbay extends Component {
                             }
 
                             {
-                                string === 'respondido' && <p>Para poder informarte del resultado, te invitados a dejarnos tu correo
-                                        electronico.
-                                    </p>
+                                string === 'respondido' && <p>Si usted desea recibir los resultados finales de este estudio, antes de su publicación, indíquenos por favor, su correo electrónico</p>
                             }
 
                             {

@@ -23,6 +23,8 @@ const BooleanReducers = (state = initialState, action) => {
                 ...state,
                 QuestionaryActive: action.QuestionaryActive
             }
+        case 'RESET_ACTION':
+            return initialState;
         default:
             return state;
     }

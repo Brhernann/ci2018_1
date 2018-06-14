@@ -37,6 +37,8 @@ const companyReducers = (state = initialState, action) => {
                 ...state,
                 AllTheAnswer: action.AllTheAnswer
             }
+        case 'RESET_ACTION':
+               return initialState;
         default:
             return state;
     }

@@ -4,6 +4,7 @@ export const SECRET_TOKEN = 'CLIENTASHJDJHASHJB3';
 export const FETCHING_DATA = 'FETCHING_DATA';
 export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS';
 export const FETCHING_DATA_FAILURE = 'FETCHING_DATA_FAILURE';
+
 export const URL = 'http://icorp.wyj2nvk7ic.us-west-2.elasticbeanstalk.com/webservices/';
 
 export const WSSET = {
@@ -23,10 +24,10 @@ export const FETCH_COMPANY={
 
 export const VISION = {
     TITLE: 'Nuestra Visión:',
-    RESUMEN: '<p>Ser una referencia intelectual y profesional en la investigación y gestión de la emparía corporativa a nivel empresarial en alineación con indicadores de cumplimiento general y por industrias de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.</p>'
+    RESUMEN: '<p>Ser una referencia intelectual y profesional en la investigación y gestión de la empatía corporativa a nivel empresarial en alineación con indicadores de cumplimiento general y por industrias de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.</p>'
 };
 export const EMPATIA = {
-    TITLE: 'EMPATÍA CORPORATIVA:',
+    TITLE: 'Empatía corporativa:',
     RESUMEN:
         '<p>Nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones. </p>' +
         '<p>Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE. </p>' +
@@ -59,8 +60,8 @@ export const L_REGISTER = {
 }
 
 export const END_MSSAGE = {
-    FROM_REGISTER: 'Haz finalizado exitosamente el registro.',
-    FROM_QUESTIONARY: 'Haz finalizado exitosamente el cuestionario.',
+    FROM_REGISTER: 'Finalizaste exitosamente el registro.',
+    FROM_QUESTIONARY: 'Ha finalizado exitosamente el cuestionario.',
     FROM_ENDFACTOR: 'Tu respuesta ha sido guardada.',
     END_EMAIL_MESSAGE: 'Si usted desea recibir los resultados finales antes de la publicación en el medio, ingrese su correo acá.'
 }

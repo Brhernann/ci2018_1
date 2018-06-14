@@ -36,3 +36,10 @@ export const AllTheAnswer = AllTheAnswer => (
         AllTheAnswer
     }
 );
+
+export const resetCompany = resetCompany => (
+    {
+        type: 'RESET_ACTION',
+        resetCompany
+    }
+);

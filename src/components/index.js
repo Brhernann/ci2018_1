@@ -75,14 +75,13 @@ export const token_valid = () => {
             <div>
                 <div>
                     <Alert
-                        message="Link valido"
-                        description="Gracias por participar con nosotros, continua respondiendo el siguiente cuestionario."
+                        message="Link válido"
+                        description="Gracias por participar con nosotros, continúa respondiendo el siguiente cuestionario."
                         type="success"
                         showIcon="showIcon"/>
                 </div>
                 <br/>
                 <div>
-                    <h4>A continuación...</h4>
                 </div>
                 <div>
                 <Link to='/cuestionario'>

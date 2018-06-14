@@ -2,7 +2,7 @@
         width: '90%',
         textAlign: 'center',
         marginTop: '2%',
-        fontSize: 12
+        fontSize: 12,
       };
 
     export const separatorLeft = {

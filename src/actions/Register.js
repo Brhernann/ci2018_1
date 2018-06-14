@@ -13,3 +13,10 @@ export const getToken = getToken => (
         getToken
     }
 );
+
+export const resetRegister = resetRegister => (
+    {
+        type: 'RESET_ACTION',
+        resetRegister
+    }
+);

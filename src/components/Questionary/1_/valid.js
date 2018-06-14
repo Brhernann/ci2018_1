@@ -24,6 +24,8 @@ export default class Validator extends Component {
         try{
             let  auth = jwt.decode(TOKEN, SECRET_TOKEN)
 
+            console.log(auth);
+
             if (auth.sub === 'VALIDO') {
                 this.setState({ err: 0 });
             }

@@ -76,7 +76,7 @@ class Selection extends React.Component {
                                                         style={{
                                                             color: '#5fdd9d'
                                                         }}type="check"/>
-                                                : q.name}
+                                                : q.name.split('/')[2]}
                                             icon="retweet"
                                             key={i}>
                                             {

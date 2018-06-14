@@ -12,7 +12,7 @@ import {
 import {Booleano, QuestionaryActive, CollapseActive} from '../../../../actions/collapseControl';
 import FactorJSON from '../../../../json/factors.json';
 import {cardstyle} from '../../../globalcss';
-import {content, contentItem} from './css';
+import {Content, contentItem, Fullcontent} from './css';
 import {Factor, AllTheAnswer} from '../../../../actions/Questionary';
 
 const RadioGroup = Radio.Group;
@@ -72,9 +72,7 @@ class GETFactor extends Component {
             .values(values)
             .map((value, index) => {
                 return {
-                    Factor: 'label_' + (
-                        index + 1
-                    ),
+                    Factor: 'label_' + (index + 1),
                     Answer: value
                 }
             });
@@ -147,9 +145,7 @@ class GETFactor extends Component {
             .values(factor_selected)
             .map((value, index) => {
                 return {
-                    name: 'label_' + (
-                        index + 1
-                    ),
+                    name: 'label_' + (index + 1),
                     value: value,
                     index: index + 1
                 }
@@ -191,18 +187,13 @@ class GETFactor extends Component {
         const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
 
         return (
-            <Card title={FactorJSON.title} bordered={false} style={cardstyle}>
+            <Card title={FactorJSON.title} bordered={false} className={cardstyle} bodyStyle={{padding:0}}>
                 <Form layout='horizontal' onSubmit={this.handleSubmit}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-around'
-                        }}>
-
-                        <div style={content}>
+                    <Fullcontent>
+                        <Content>
                             {
                                 firstArr.map(
-                                    (q, i) => <div key={i} style={contentItem}>
+                                    (q, i) => <div key={i}>
                                         <div>
                                             <Tooltip title={q.Description}>
                                                 <h3>
@@ -243,7 +234,7 @@ class GETFactor extends Component {
                                                             }
                                                         ]
                                                     })(
-                                                        <RadioGroup name="radiogroup">
+                                                        <RadioGroup size='small' name="radiogroup">
                                                             <Radio value={1}>1</Radio>
                                                             <Radio value={2}>2</Radio>
                                                             <Radio value={3}>3</Radio>
@@ -259,13 +250,13 @@ class GETFactor extends Component {
                                     </div>
                                 )
                             }
-                        </div>
+                        </Content>
 
-                        <div style={content}>
+                        <Content>
                             {/* 2B Recorrer la wea creada y generar div con title tooltip y radiogroup */}
                             {
                                 secondArr.map(
-                                    (q, i) => <div key={i} style={contentItem}>
+                                    (q, i) => <div key={i}>
                                         <div>
                                             <Tooltip title={q.Description}>
                                                 <h3>
@@ -310,11 +301,11 @@ class GETFactor extends Component {
                                     </div>
                                 )
                             }
-                        </div>
+                        </Content>
 
-                    </div>
+                    </Fullcontent>
                     <div
-                        style={{
+                        className={{
                             paddingTop: 50
                         }}>
                         <Item>

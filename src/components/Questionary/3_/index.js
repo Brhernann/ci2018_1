@@ -5,7 +5,9 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router';
 import {contentButtom} from './css';
 import {cardstyle, separatorLeft, separatorRight} from '../../globalcss';
-import {AllTheAnswer} from '../../../actions/Questionary';
+import {AllTheAnswer, resetCompany} from '../../../actions/Questionary';
+import {resetCollapse} from '../../../actions/collapseControl';
+import {resetRegister} from '../../../actions/Register';
 import {Booleano} from '../../../actions/collapseControl';
 
 const {TextArea} = Input;
@@ -50,7 +52,10 @@ class GETQuestion extends React.Component {
                     this
                         .props
                         .onOpenQuestionChanged(all);
-                    localStorage.removeItem('root');
+
+                    this.props.onResetCompanyChanged();
+                    this.props.onResetCollapseChanged();
+                    this.props.onResetRegisterChanged();
                     this.setState({redirect: true});
 
                 }
@@ -69,14 +74,18 @@ class GETQuestion extends React.Component {
         const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
         const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
         if (this.state.redirect) {
-            return <Redirect push to="/Gracias/respondido"/>
+            return <Redirect push={true} to="/Gracias/respondido"/>
         }
 
         return (
             <Card
-                title="¿Como considera usted la empresa Sáltala en aspecto empatico?"
+                title="Corporate Index"
                 bordered={false}
                 style={cardstyle}>
+                <div>
+                    <p>La Empatía Corporativa se considera el drivers de negocio asociado al cumplimiento de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.</p>
+                    <p>¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?</p>
+                </div>
 
                 <Form layout='horizontal' onSubmit={this.handleSubmit}>
                     <Item
@@ -108,7 +117,7 @@ class GETQuestion extends React.Component {
                                 </Button>
                             </div>
                             <div style={separatorLeft}>
-                                <Button htmlType="submit" disabled={hasErrors(getFieldsError())}>Finalizar Encuesta</Button>
+                                <Button htmlType="submit" disabled={hasErrors(getFieldsError())}>Finalizar Cuestionario</Button>
                             </div>
                         </div>
                     </Item>
@@ -127,7 +136,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToPropsAction = dispatch => ({
     onOpenQuestionChanged: value => dispatch(AllTheAnswer(value)),
-    onBooleanChanged: value => dispatch(Booleano(value))
+    onBooleanChanged: value => dispatch(Booleano(value)),
+    onResetCompanyChanged: value => dispatch(resetCompany(value)),
+    onResetCollapseChanged: value => dispatch(resetCollapse(value)),
+    onResetRegisterChanged: value => dispatch(resetRegister(value))
+
 });
 
 export default connect(mapStateToProps, mapDispatchToPropsAction)(

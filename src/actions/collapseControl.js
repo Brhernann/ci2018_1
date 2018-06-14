@@ -19,3 +19,10 @@ export const QuestionaryActive = QuestionaryActive => ({
         QuestionaryActive
     }
 );
+
+export const resetCollapse = resetCollapse => (
+    {
+        type: 'RESET_ACTION',
+        resetCollapse
+    }
+);

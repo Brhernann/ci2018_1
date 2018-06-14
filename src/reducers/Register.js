@@ -20,6 +20,8 @@ const registerReducers = (state = initialState, action) => {
                 ...state,
                 Token: action.getToken
             }
+        case 'RESET_ACTION':
+            return initialState;
         default:
             return state;
     }

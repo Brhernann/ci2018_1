@@ -13,7 +13,7 @@ import IGJSON from '../../../json/industryGroup.json';
 import {Redirect} from 'react-router';
 import {cardstyle} from '../../globalcss';
 import {connect} from 'react-redux';
-import {firstContent, p, formContent} from './css';
+import {FirstContent, FirstChild, p, formContent, FormContent} from './css';
 import {QUESTIONARY_1} from '../../../config/constants';
 import ReactHtmlParser from 'react-html-parser';
 import {Company} from '../../../actions/Questionary';
@@ -47,12 +47,30 @@ class Questionary extends React.Component {
             .form
             .validateFields();
 
-        let bb = IGJSON.map(q => q.Cluster.map((p) => {
+        let cc = IGJSON.map(q => {
+            let cc_a = q.Cluster.map(a => {
+                let cc_b = a.Business.map(h => {
+                    return {
+                        value:h.name,
+                        label:h.name,          
+                    }
+                })
+                return cc_b;
+            })
+            return cc_a;
+        })
+
+        let please  = cc[0]
+
+        let bb = IGJSON.map(q => q.Cluster.map((p,i) => {
           return {
             value:p.name,
-            label:p.name, 
+            label:p.name,
+            children: please[i]
           }
         }))
+    
+       console.log(bb)
 
         let aa = IGJSON.map((q,i) => {
           return {
@@ -77,11 +95,12 @@ class Questionary extends React.Component {
                     let arr = Object.values(JSON.parse(JSON.stringify(values)))
                     let companysWithUndefined = arr.map(q => {
                         return {
-                            name: q[0] + '/' + q[1]
+                            name: q[0] + '/' + q[1] + '/' + q[2]
                         }
                     });
+
                     let companys = companysWithUndefined.filter(
-                        x => x.name !== 'undefined/undefined'
+                        x => x.name !== 'undefined/undefined/undefined'
                     );
                     this
                         .props
@@ -101,39 +120,40 @@ class Questionary extends React.Component {
         const label_5_Error = isFieldTouched('label_5') && getFieldError('label_5');
 
         if (this.state.redirect) {
-            return <Redirect push="push" to="/Seleccion"/>
+            return <Redirect push to="/Seleccion"/>
         }
         return (
 
             <Card title={QUESTIONARY_1.title} bordered={false} style={cardstyle}>
-                <div style={firstContent}>
-                    <div style={firstContent.firstChild}>
-                        <h3 style={p}>
+                <FirstContent>
+                    <FirstChild>
+                        <p style={p}>
                             <Icon
                                 type="info-circle-o"
                                 style={{
                                     fontSize: 16,
                                     color: '#339900'
-                                }}/> {QUESTIONARY_1.subtitle}</h3>
+                                }}/> {QUESTIONARY_1.subtitle}
+                        </p>
                         <p style={p}>
                             {ReactHtmlParser(QUESTIONARY_1.resumen)}
                         </p>
-                    </div>
-                </div>
+                    </FirstChild>
+                </FirstContent>
 
-                <div style={firstContent}>
-                    <div style={firstContent.firstChild}>
+                <FirstContent>
+                    <FirstChild>
                         <p style={p}>
                             {ReactHtmlParser(QUESTIONARY_1.question)}
                         </p>
-                    </div>
-                </div>
+                    </FirstChild>
+                </FirstContent>
 
                 {/* FORM */}
 
-                <div style={formContent}>
-
-                    <Form layout='horizontal' onSubmit={this.handleSubmit}>
+                <Form layout='horizontal' onSubmit={this.handleSubmit}>
+                <FormContent>
+                <FirstChild>
                         <Item
                             label=''
                             validateStatus={label_1_Error
@@ -150,16 +170,16 @@ class Questionary extends React.Component {
                                         }
                                     ]
                                 })(
+
                                     <Cascader
-                                        options={this.state.options}
-                                        style={{
-                                            marginBottom: '10px',
-                                            width: '50%'
-                                        }}
-                                        placeholder="Seleccione una empresa por sector"/>
+                                    options={this.state.options}
+                                    placeholder="Seleccione una empresa por sector"/>
+                                
                                 )
                             }
                         </Item>
+                        </FirstChild>
+                        <FirstChild>
                         <Item
                             label=''
                             validateStatus={label_2_Error
@@ -177,14 +197,12 @@ class Questionary extends React.Component {
                                 })(
                                     <Cascader
                                         options={this.state.options}
-                                        style={{
-                                            marginBottom: '10px',
-                                            width: '50%'
-                                        }}
                                         placeholder="Seleccione una empresa por sector"/>
                                 )
                             }
                         </Item>
+                        </FirstChild>
+                        <FirstChild>
                         <Item
                             label=''
                             validateStatus={label_3_Error
@@ -202,14 +220,12 @@ class Questionary extends React.Component {
                                 })(
                                     <Cascader
                                         options={this.state.options}
-                                        style={{
-                                            marginBottom: '10px',
-                                            width: '50%'
-                                        }}
                                         placeholder="Seleccione una empresa por sector"/>
                                 )
                             }
                         </Item>
+                        </FirstChild>
+                        <FirstChild>
                         <Item
                             label=''
                             validateStatus={label_4_Error
@@ -227,14 +243,12 @@ class Questionary extends React.Component {
                                 })(
                                     <Cascader
                                         options={this.state.options}
-                                        style={{
-                                            marginBottom: '10px',
-                                            width: '50%'
-                                        }}
                                         placeholder="Seleccione una empresa por sector"/>
                                 )
                             }
                         </Item>
+                        </FirstChild>
+                        <FirstChild>
                         <Item
                             label=''
                             validateStatus={label_5_Error
@@ -252,30 +266,18 @@ class Questionary extends React.Component {
                                 })(
                                     <Cascader
                                         options={this.state.options}
-                                        style={{
-                                            marginBottom: '10px',
-                                            width: '50%'
-                                        }}
                                         placeholder="Seleccione una empresa por sector"/>
                                 )
                             }
                         </Item>
+                        </FirstChild>
+                        <FirstChild>
                         <Item
                             style={{
                                 paddingTop: 50
                             }}>
-                            <Button.Group size='large'>
+
                                 <div>
-                                    <Tooltip placement="bottomLeft" title={'Volver'}>
-                                        <Button
-                                            type="primary"
-                                            style={{
-                                                marginRight: 5
-                                            }}>
-                                            <Icon type="left"/>
-                                        </Button>
-                                    </Tooltip>
-                                    <Tooltip placement="bottomRight" title={'Continuar'}>
                                         <Button
                                             type="primary"
                                             style={{
@@ -283,16 +285,14 @@ class Questionary extends React.Component {
                                             }}
                                             htmlType="submit"
                                             disabled={hasErrors(getFieldsError())}>
-                                            <Icon type="right"/>
+                                           Continuar
                                         </Button>
-                                    </Tooltip>
                                 </div>
-                            </Button.Group>
+
                         </Item>
-
+                        </FirstChild>
+                        </FormContent>
                     </Form>
-
-                </div>
 
             </Card>
 
