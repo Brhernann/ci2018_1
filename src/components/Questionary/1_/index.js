@@ -13,7 +13,7 @@ import IGJSON from '../../../json/industryGroup.json';
 import {Redirect} from 'react-router';
 import {cardstyle} from '../../globalcss';
 import {connect} from 'react-redux';
-import {FirstContent, FirstChild, p, formContent, FormContent} from './css';
+import {FirstContent, FirstChild, p, FormContent} from './css';
 import {QUESTIONARY_1} from '../../../config/constants';
 import ReactHtmlParser from 'react-html-parser';
 import {Company} from '../../../actions/Questionary';
@@ -116,8 +116,6 @@ class Questionary extends React.Component {
         const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
         const label_2_Error = isFieldTouched('label_2') && getFieldError('label_2');
         const label_3_Error = isFieldTouched('label_3') && getFieldError('label_3');
-        const label_4_Error = isFieldTouched('label_4') && getFieldError('label_4');
-        const label_5_Error = isFieldTouched('label_5') && getFieldError('label_5');
 
         if (this.state.redirect) {
             return <Redirect push to="/Seleccion"/>
@@ -211,52 +209,6 @@ class Questionary extends React.Component {
                             help={label_3_Error || ''}>
                             {
                                 getFieldDecorator('label_3', {
-                                    rules: [
-                                        {
-                                            type: 'array',
-                                            required: false
-                                        }
-                                    ]
-                                })(
-                                    <Cascader
-                                        options={this.state.options}
-                                        placeholder="Seleccione una empresa por sector"/>
-                                )
-                            }
-                        </Item>
-                        </FirstChild>
-                        <FirstChild>
-                        <Item
-                            label=''
-                            validateStatus={label_4_Error
-                                ? 'error'
-                                : ''}
-                            help={label_4_Error || ''}>
-                            {
-                                getFieldDecorator('label_4', {
-                                    rules: [
-                                        {
-                                            type: 'array',
-                                            required: false
-                                        }
-                                    ]
-                                })(
-                                    <Cascader
-                                        options={this.state.options}
-                                        placeholder="Seleccione una empresa por sector"/>
-                                )
-                            }
-                        </Item>
-                        </FirstChild>
-                        <FirstChild>
-                        <Item
-                            label=''
-                            validateStatus={label_5_Error
-                                ? 'error'
-                                : ''}
-                            help={label_5_Error || ''}>
-                            {
-                                getFieldDecorator('label_5', {
                                     rules: [
                                         {
                                             type: 'array',

@@ -18,10 +18,6 @@ export const EMPATIA_DEFINITON = 'Se define como  el impacto emocional, económ
 
 export const INTRODUCTION = '';
 
-export const FETCH_COMPANY={
-
-}
-
 export const VISION = {
     TITLE: 'Nuestra Visión:',
     RESUMEN: '<p>Ser una referencia intelectual y profesional en la investigación y gestión de la empatía corporativa a nivel empresarial en alineación con indicadores de cumplimiento general y por industrias de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.</p>'
@@ -53,10 +49,11 @@ export const L_REGISTER = {
     LABEL_2: 'Cargo de la persona de contacto',
     LABEL_3: 'Email de la persona de contacto',
     LABEL_4: 'Nombre de la empresa',
-    LABEL_5: 'Dirección principal de la empresa',
-    LABEL_6: 'Sector de actividad',
-    LABEL_7: 'Comuna',
-    LABEL_8: ' Tipo de empresa',
+    LABEL_5: 'Sector de actividad',
+    LABEL_6: 'Dirección principal de la empresa',
+    LABEL_7: 'Región', 
+    LABEL_8: 'Comuna',
+    LABEL_9: ' Tipo de empresa',
 }
 
 export const END_MSSAGE = {

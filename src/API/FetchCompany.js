@@ -1,19 +1,17 @@
 import axios from 'axios';
 import qs from 'qs';
-import { WSSE } from '../config/constants';
+import { WSSET } from '../config/constants';
 
-export const InsertEnterprise = async (BIGDATA) => {
-    return { data } = await axios.post( WSSE.InsertEnterprise, qs.stringify({
-        BIGDATA
+export default async () => {
+    return  await axios.post( WSSET.InsertEnterprise, qs.stringify({
+        Contact: 'Contact' , 
+        Position: 'Position',
+        Mail: 'Mail',
+        company_name: 'company_name',
+        Address: 'Address',
+        Activity_sector: 'Activity_sector',
+        Municipality: 'Municipality',
+        Company_size: 'Company_size' ,
       })
     )
 }
-
-// Contact: data.Contact , 
-// Position: data.Position,
-// Mail: data.Mail,
-// company_name: data.company_name,
-// Address: data.Address,
-// Activity_sector: data.Activity_sector,
-// Municipality: data.Municipality,
-// Company_size: data.Company_size ,
