@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     Form,
     Input,
@@ -7,17 +7,17 @@ import {
     Card,
     Icon
 } from 'antd';
-import {Redirect} from 'react-router';
-import {connect} from 'react-redux';
+import { Redirect } from 'react-router';
+import { connect } from 'react-redux';
 import jwt from 'jwt-simple';
 import moment from 'moment';
 import rand from 'random-key';
-import {FirstChild, FormContent} from './css'
-import {cardstyle} from '../globalcss'
-import {L_REGISTER, SECRET_TOKEN} from '../../config/constants';
+import { FirstChild, FormContent } from './css'
+import { cardstyle } from '../globalcss'
+import { L_REGISTER, SECRET_TOKEN } from '../../config/constants';
 import REGION from '../../json/Chile.json';
-import {getRegister, getToken} from '../../actions/Register';
-import {fetchData_1, fetchData_2, fetchData_4} from '../../actions/Fetch'
+import { getRegister, getToken } from '../../actions/Register';
+import { fetchData_1, fetchData_2, fetchData_4 } from '../../actions/fetch'
 const Option = Select.Option;
 const Item = Form.Item;
 
@@ -47,7 +47,7 @@ class Register extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setStateAsync({isFetching: nextProps.FetchReducers.isFetching})
+        this.setStateAsync({ isFetching: nextProps.FetchReducers.isFetching })
     }
 
     async componentDidMount() {
@@ -108,7 +108,7 @@ class Register extends Component {
                         .props
                         .FetchEV(values)
                     //ENDFETCH
-                    this.setState({redirect: true});
+                    this.setState({ redirect: true });
                 }
             });
     }
@@ -118,13 +118,13 @@ class Register extends Component {
         let Communes = REGION
             .regiones
             .filter(q => q.region === value)
-        this.setState({Communes, CommunesBool: false})
+        this.setState({ Communes, CommunesBool: false })
     }
 
     render() {
 
-        const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
-        const {CommunesBool, Communes} = this.state;
+        const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
+        const { CommunesBool, Communes } = this.state;
 
         const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
         const label_2_Error = isFieldTouched('label_2') && getFieldError('label_2');
@@ -137,7 +137,7 @@ class Register extends Component {
         const label_9_Error = isFieldTouched('label_9') && getFieldError('label_9');
 
         if (this.state.redirect) {
-            return <Redirect push to="/gracias/registrado"/>;
+            return <Redirect push to="/gracias/registrado" />;
         }
 
         return (
@@ -164,8 +164,8 @@ class Register extends Component {
                                         ]
                                     })(
                                         <Input
-                                            prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>}
-                                            placeholder="Ejemplo"/>
+                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Ejemplo" />
                                     )
                                 }
                             </Item>
@@ -188,8 +188,8 @@ class Register extends Component {
                                         ]
                                     })(
                                         <Input
-                                            prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>}
-                                            placeholder="Ejemplo"/>
+                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Ejemplo" />
                                     )
                                 }
                             </Item>
@@ -213,8 +213,8 @@ class Register extends Component {
                                         ]
                                     })(
                                         <Input
-                                            prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>}
-                                            placeholder="Ejemplo"/>
+                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Ejemplo" />
                                     )
                                 }
                             </Item>
@@ -237,8 +237,8 @@ class Register extends Component {
                                         ]
                                     })(
                                         <Input
-                                            prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>}
-                                            placeholder="Ejemplo"/>
+                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Ejemplo" />
                                     )
                                 }
                             </Item>
@@ -295,8 +295,8 @@ class Register extends Component {
                                         ]
                                     })(
                                         <Input
-                                            prefix={<Icon type = "user" style = {{ color: 'rgba(0,0,0,.25)' }}/>}
-                                            placeholder="Ejemplo"/>
+                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Ejemplo" />
                                     )
                                 }
                             </Item>
@@ -407,7 +407,7 @@ class Register extends Component {
 const WrappedNormalLoginForm = Form.create()(Register);
 
 const mapStateToProps = state => {
-    return {FetchReducers: state.FetchReducers}
+    return { FetchReducers: state.FetchReducers }
 }
 
 const mapDispatchToPropsAction = dispatch => ({
