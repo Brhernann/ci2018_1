@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import media from '../../media';
 
 export const FirstContent = styled.div `

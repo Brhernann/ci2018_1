@@ -15,10 +15,9 @@ import rand from 'random-key';
 import {FirstChild, FormContent} from './css'
 import {cardstyle} from '../globalcss'
 import {L_REGISTER, SECRET_TOKEN} from '../../config/constants';
-import Sector from '../../json/sector.json';
 import REGION from '../../json/Chile.json';
 import {getRegister, getToken} from '../../actions/Register';
-import { fetchData } from '../../actions/fetch'
+import {fetchData_1, fetchData_2, fetchData_4} from '../../actions/Fetch'
 const Option = Select.Option;
 const Item = Form.Item;
 
@@ -34,6 +33,7 @@ class Register extends Component {
         this.state = {
             redirect: false,
             tokenGenerated: '',
+            isFetching: true,
             Communes: [
                 {
                     "comunas": ["HERHU"]
@@ -46,11 +46,25 @@ class Register extends Component {
             .bind(this);
     }
 
-    componentDidMount() {
+    componentWillReceiveProps(nextProps) {
+        this.setStateAsync({isFetching: nextProps.FetchReducers.isFetching})
+    }
+
+    async componentDidMount() {
         this
             .props
             .form
             .validateFields();
+        await this
+            .props
+            .FetchSector();
+
+    }
+
+    setStateAsync(state) {
+        return new Promise((resolve) => {
+            this.setState(state, resolve)
+        })
     }
 
     createToken = () => {
@@ -58,17 +72,22 @@ class Register extends Component {
             sub: 'VALIDO',
             iat: moment().unix(),
             exp: moment()
-                .add(5, 'minute')
+                .add(300, 'minute')
                 .unix()
         }
 
         let objtoken = {
             token: jwt.encode(payload, SECRET_TOKEN),
-            rand: rand.generateBase30(5)
+            rand: rand.generateBase30(5),
+            Url: 'empty'
         }
         this
             .props
             .Token(objtoken);
+
+        this
+            .props
+            .FetchL(objtoken)
     }
 
     handleSubmit = (e) => {
@@ -83,9 +102,11 @@ class Register extends Component {
                         .props
                         .Company(values);
                     this.createToken();
-
+                    console.log(values)
                     //INFETCH
-                    this.props.Fetch()
+                    this
+                        .props
+                        .FetchEV(values)
                     //ENDFETCH
                     this.setState({redirect: true});
                 }
@@ -241,9 +262,15 @@ class Register extends Component {
                                     })(
                                         <Select placeholder="Ejemplo">
                                             {
-                                                Sector
-                                                    .data
-                                                    .map((q, i) => <Option key={i} value={q}>{q}</Option>)
+
+                                                this.state.isFetching
+                                                    ? console.log('cargando')
+                                                    : this
+                                                        .props
+                                                        .FetchReducers
+                                                        .data
+                                                        .data
+                                                        .map((q, i) => <Option key={i} value={q.ID}>{q.Name}</Option>)
                                             }
                                         </Select>
                                     )
@@ -379,10 +406,18 @@ class Register extends Component {
 }
 const WrappedNormalLoginForm = Form.create()(Register);
 
+const mapStateToProps = state => {
+    return {FetchReducers: state.FetchReducers}
+}
+
 const mapDispatchToPropsAction = dispatch => ({
     Company: value => dispatch(getRegister(value)),
     Token: value => dispatch(getToken(value)),
-    Fetch: value => dispatch(fetchData(value))
+    FetchEV: value => dispatch(fetchData_1(value)),
+    FetchL: value => dispatch(fetchData_2(value)),
+    FetchSector: value => dispatch(fetchData_4(value))
 });
 
-export default connect(null, mapDispatchToPropsAction)(WrappedNormalLoginForm);
+export default connect(mapStateToProps, mapDispatchToPropsAction)(
+    WrappedNormalLoginForm
+);

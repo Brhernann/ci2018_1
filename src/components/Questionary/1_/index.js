@@ -5,7 +5,6 @@ import {
     Cascader,
     Card,
     Button,
-    Tooltip,
     Icon
 } from 'antd';
 import propTypes from 'prop-types';

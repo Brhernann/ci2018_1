@@ -12,7 +12,7 @@ import {
 import {Booleano, QuestionaryActive, CollapseActive} from '../../../../actions/collapseControl';
 import FactorJSON from '../../../../json/factors.json';
 import {cardstyle} from '../../../globalcss';
-import {Content, contentItem, Fullcontent} from './css';
+import {Content, Fullcontent} from './css';
 import {Factor, AllTheAnswer} from '../../../../actions/Questionary';
 
 const RadioGroup = Radio.Group;

@@ -1,45 +1,64 @@
 import {FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE} from '../config/constants'
-import InsertEnterprise from '../API/FetchCompany';
+import InsertEnterprise_evaluation from '../API/InsertEnterprise_evaluation';
+import InsertLink from '../API/InsertLink';
+import ReadSector from '../API/ReadSector';
+import ReadLink from '../API/ReadLink';
 
 export const getDataSuccess = data => {
-    return {
-        type: FETCHING_DATA_SUCCESS, 
-        data
-    }
+    return {type: FETCHING_DATA_SUCCESS, data}
 }
 
 export const getDataFailure = error => {
-    return {
-        type: FETCHING_DATA_FAILURE, 
-        error
-    }
+    return {type: FETCHING_DATA_FAILURE, error}
 }
 
-export const fetchData = () => async dispatch => {
+export const fetchData_1 = (data) => async dispatch => {
     dispatch({type: FETCHING_DATA});
-    InsertEnterprise()
-        .then(response => {
-            console.log('HERE DATA: ', response)
-            // switch (response) {
-            //     case '0':
-            //         dispatch(getDataSuccess(response))
-            //         break;
-            //     case '1':
-            //         dispatch(getDataFailure(response))
-            //         break;
-            //     case '2':
-            //         dispatch(getDataFailure(response))
-            //         break;
-            //     case '3':
-            //         dispatch(getDataFailure(response))
-            //         break;
-            //     case '4':
-            //         dispatch(getDataFailure(response))
-            //         break;
 
-            //     default:
-            //         break;
-            // }
+    InsertEnterprise_evaluation(data)
+        .then(response => {
+            response.data.success
+            ? dispatch(getDataSuccess(response.data))
+            : dispatch(getDataFailure(response.data.error))
+
+        })
+        .catch((err) => console.log(err))
+    }
+
+export const fetchData_2 = (data) => async dispatch => {
+    dispatch({type: FETCHING_DATA});
+
+    InsertLink(data)
+        .then(response => {
+            response.data.success
+                ? dispatch(getDataSuccess(response.data))
+                : dispatch(getDataFailure(response.data.error))
+
+        })
+        .catch((err) => console.log(err))
+    }
+
+export const fetchData_3 = (data) => async dispatch => {
+    dispatch({type: FETCHING_DATA});
+
+    ReadLink(data)
+        .then(response => {
+            response.data.success
+            ? dispatch(getDataSuccess(response.data))
+            : dispatch(getDataFailure(response.data.error))
+
+        })
+        .catch((err) => console.log(err))
+    }
+
+export const fetchData_4 = (data) => async dispatch => {
+    dispatch({type: FETCHING_DATA});
+
+    ReadSector(data)
+        .then(response => {
+            response.data.success
+                ? dispatch(getDataSuccess(response.data))
+                : dispatch(getDataFailure(response.data.error))
         })
         .catch((err) => console.log(err))
     }
