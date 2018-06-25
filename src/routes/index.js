@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Welcome from '../components/welcome';
+import Welcome from '../components/Welcome';
 import Thanks from '../components/thanks/index';
 import NotFound from '../components/NotFound/index';
 import Register from '../components/Register/index';
