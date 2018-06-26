@@ -22,21 +22,24 @@ export const EMPATIA_DEFINITON = 'Se define como  el impacto emocional, económ
 export const INTRODUCTION = '';
 
 export const VISION = {
-    TITLE: 'Nuestra Visión:',
+    TITLE: 'Nuestra Visión',
     RESUMEN: '<p>Ser una referencia intelectual y profesional en la investigación y gestión de la empatía corporativa a nivel empresarial en alineación con indicadores de cumplimiento general y por industrias de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.</p>'
 };
 export const EMPATIA = {
-    TITLE: 'Empatía corporativa:',
+    TITLE: 'Empatía corporativa',
     RESUMEN:
         '<p>Nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones. </p>' +
         '<p>Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE. </p>' +
         '<p>Estámos veríficados en nuestras tres fases de investigación por la norma internacional ISAE 3.000 que se aplica para auditorías no financieras. </p>'
 };
+
+let color = "<b style='color:khaki'>El ÍNDICE DE EMPATÍA CORPORATIVA</b>";
+
 export const MISION = {
-    TITLE: 'Nuestra Misión:',
+    TITLE: 'Nuestra Misión',
     RESUMEN:
         '<p>Forlalecer y consolidar nuestro capital intelectual constantemente, a través de investigaciones asociadas a empatía corporativa y cumpimiento de los ODS, para entregar reportes, estudios y consultorías de excelencia a nuestros clientes. </p>' +
-        '<p><b>El ÍNDICE DE EMPATÍA CORPORATIVA</b> es nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones. </p>' +
+        '<p>'+color+' es nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial y tiene como misión evaluar los niveles de empatía y sus criterios de valoración en las empresas y grandes corporaciones. </p>' +
         '<p>Nuestra metodología está validada en Inglaterra, contiene una parte similiar, al estudio que se aplica, desde hace tres años en ese país y se encuentra adaptada a la cultura local. Su propiedad intelectual corresponde al país de origen CHILE. </p>' +
         '<p>Estámos veríficados en nuestras tres fases de investigación por la norma internacional ISAE 3.000 que se aplica para auditorías no financieras.</p > '
 };
