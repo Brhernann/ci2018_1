@@ -89,14 +89,15 @@ padding:1vw;
 color:white;
 font-weight:100;
 text-align:justify;
+font-size:85%;
 `;
 
 export const Divh42 = styled.h4 `
 padding:1vw;
 color:white;
-font-weight:700;
+font-weight:100;
 text-align:justify;
-font-size:81%
+font-size:77%
 `;
 
 /* .slide {

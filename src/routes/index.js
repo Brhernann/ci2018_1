@@ -12,7 +12,7 @@ import Questionary_2 from '../components/Questionary/2_';
 import Questionary_3 from '../components/Questionary/3_';
 
 export default () => (
-	<BrowserRouter>
+	<BrowserRouter basename="/EmpatiaCorporativa">
 		<Switch>
 			<Route path="/" exact component={Welcome} />
 			<Route path="/Bienvenido/:id" exact component={key_validator} />
