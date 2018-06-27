@@ -55,13 +55,6 @@
     height: 600px;
 }
 
-/* .slide {
-    background: none;
-    color: rgba(255, 255, 255, 0.85);
-    font-weight: 500;
-    font-family: origin-super-condensed, sans-serif;
-} */
-
 .ant-carousel .slick-dots li button {
     background: rgb(252, 4, 4);
 }
