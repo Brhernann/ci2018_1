@@ -16,6 +16,7 @@ export default class Validator extends Component {
 
     componentDidMount() {
         this.ValidateToken();
+        console.log(this.state.RAND)
     }
 
     ValidateToken = () => {
@@ -23,21 +24,20 @@ export default class Validator extends Component {
         const { RAND } = this.state;
 
         ReadLink({Rand: RAND}).then(res => {
-
-        let TOKEN = res.data.data.Token;
-
+       
         try{
-            let  auth = jwt.decode(TOKEN, SECRET_TOKEN)
 
-            console.log(auth);
-
-            if (auth.sub === 'VALIDO') {
-                this.setState({ err: 0 });
+            if (res.data.data !== null){
+                let TOKEN  = res.data.data.Token;
+                let  auth = jwt.decode(TOKEN, SECRET_TOKEN)
+                if (auth.sub === 'VALIDO') {
+                    this.setState({ err: 0 });
+                }
+            } else {
+                this.setState({ err: 2 });
             }
 
         }catch(e){
-            console.log(e.toString())
-
             switch (e.toString()) {
                 case 'Error: Token expired':
                 this.setState({ err: 1 })
@@ -53,7 +53,7 @@ export default class Validator extends Component {
                     break;
             }
         }
-        })
+        }).catch(err => console.log(err))
     }
 
     render(){

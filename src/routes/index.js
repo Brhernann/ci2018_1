@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, HashRouter } from 'react-router-dom';
 
 import Welcome from '../components/welcome';
 import Thanks from '../components/thanks/index';
@@ -12,7 +12,7 @@ import Questionary_2 from '../components/Questionary/2_';
 import Questionary_3 from '../components/Questionary/3_';
 
 export default () => (
-	<BrowserRouter basename="/EmpatiaCorporativa">
+	<HashRouter>
 		<Switch>
 			<Route path="/" exact component={Welcome} />
 			<Route path="/Bienvenido/:id" exact component={key_validator} />
@@ -24,5 +24,5 @@ export default () => (
 			<Route component={NotFound} />
 			{/* <Route path="" render={ NotFound }/> */}
 		</Switch>
-	</BrowserRouter>
+	</HashRouter>
 )

@@ -63,7 +63,7 @@ class Goodbay extends Component {
         const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
 
         let rand = this.props.registerReducers.Token.rand
-        const URL = 'http://www.corporateindex.cl/EmpatiaCorporativa/bienvenido/' +
+        const URL = 'http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/' +
                 rand;
 
         return (
