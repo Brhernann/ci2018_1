@@ -63,11 +63,8 @@ class Goodbay extends Component {
         const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
 
         let rand = this.props.registerReducers.Token.rand
-        let token = this.props.registerReducers.Token.token;
         const URL = 'http://indexcorporation.s3-website-us-west-2.amazonaws.com/bienvenido/' +
                 rand;
-        const URLtoken = 'http://indexcorporation.s3-website-us-west-2.amazonaws.com/bienvenido/' +
-                token;
 
         return (
             <Card
@@ -101,7 +98,7 @@ class Goodbay extends Component {
 
                             {
                                 string === 'registrado' && <CopyToClipboard
-                                        text={URLtoken}
+                                        text={URL}
                                         onCopy={() => notification.success({message: 'Copiado', description: ''})}>
                                         <Button type="primary" icon="copy" size="small"/>
                                     </CopyToClipboard>

@@ -6,7 +6,7 @@ const initialState = {
     error: false
 }
 
-const FetchReducers = (state = initialState, action) => {
+const FetchSector = (state = initialState, action) => {  
 
     switch (action.type) {
 
@@ -34,4 +34,4 @@ const FetchReducers = (state = initialState, action) => {
     }
 }
 
-export default FetchReducers;
+export default FetchSector;

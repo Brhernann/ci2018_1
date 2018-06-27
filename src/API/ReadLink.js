@@ -4,6 +4,6 @@ import {WS} from '../config/constants';
 
 export default async (data) => {
     return await axios.post(WS.ReadLink, qs.stringify({
-        Rand: 'HERE',
+        Rand: data.Rand,
     })) 
 }

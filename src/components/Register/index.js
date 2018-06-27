@@ -16,8 +16,10 @@ import { FirstChild, FormContent } from './css'
 import { cardstyle } from '../globalcss'
 import { L_REGISTER, SECRET_TOKEN } from '../../config/constants';
 import REGION from '../../json/Chile.json';
-import { getRegister, getToken } from '../../actions/Register';
-import { fetchData_1, fetchData_2, fetchData_4 } from '../../actions/fetch'
+import {getRegister, getToken} from '../../actions/Register';
+import fetchSector from '../../actions/FetchSector';
+import InsertEnterprise_E from '../../API/InsertEnterprise_evaluation';
+import InsertLink from '../../API/InsertLink';
 const Option = Select.Option;
 const Item = Form.Item;
 
@@ -39,26 +41,25 @@ class Register extends Component {
                     "comunas": ["HERHU"]
                 }
             ],
+            sectors: [],
             CommunesBool: true
         }
-        this.handleSubmit = this
-            .handleSubmit
-            .bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setStateAsync({ isFetching: nextProps.FetchReducers.isFetching })
+    componentWillReceiveProps(NextProps) {
+        this.setStateAsync(
+            {isFetching: NextProps.GetSector.isFetching, sectors: NextProps.GetSector.data.data}
+        )
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         this
             .props
             .form
             .validateFields();
-        await this
+        this
             .props
             .FetchSector();
-
     }
 
     setStateAsync(state) {
@@ -67,7 +68,8 @@ class Register extends Component {
         })
     }
 
-    createToken = () => {
+    createToken = (id) => {
+
         const payload = {
             sub: 'VALIDO',
             iat: moment().unix(),
@@ -75,41 +77,39 @@ class Register extends Component {
                 .add(300, 'minute')
                 .unix()
         }
-
         let objtoken = {
             token: jwt.encode(payload, SECRET_TOKEN),
             rand: rand.generateBase30(5),
-            Url: 'empty'
+            Url: 'empty',
+            ID: id
         }
+
         this
             .props
             .Token(objtoken);
 
-        this
-            .props
-            .FetchL(objtoken)
-    }
+        InsertLink(objtoken)
+            .then(res => {
+                console.log(res);
+                this.setState({redirect: true});
+            })
+            .catch(err => console.log(err))
+        }
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
 
         e.preventDefault();
-        this
+        await this
             .props
             .form
             .validateFields((err, values) => {
                 if (!err) {
-                    this
-                        .props
-                        .Company(values);
-                    this.createToken();
-                    console.log(values)
-                    //INFETCH
-                    this
-                        .props
-                        .FetchEV(values)
-                    //ENDFETCH
-                    this.setState({ redirect: true });
-                }
+                    InsertEnterprise_E(values)
+                        .then(res => {
+                            this.createToken(res.data.id);
+                        })
+                        .catch(err => console.log(err))
+                    }
             });
     }
 
@@ -137,7 +137,7 @@ class Register extends Component {
         const label_9_Error = isFieldTouched('label_9') && getFieldError('label_9');
 
         if (this.state.redirect) {
-            return <Redirect push to="/gracias/registrado" />;
+            return <Redirect push to="/gracias/registrado"/>;
         }
 
         return (
@@ -145,7 +145,11 @@ class Register extends Component {
                 title="Bienvenido, te invitamos a registrar los datos de empresa."
                 bordered={false}
                 style={cardstyle}>
-                <Form layout='horizontal' onSubmit={this.handleSubmit}>
+                <Form
+                    layout='horizontal'
+                    onSubmit={this
+                        .handleSubmit
+                        .bind(this)}>
                     <FormContent>
                         <FirstChild>
                             <Item
@@ -266,10 +270,8 @@ class Register extends Component {
                                                 this.state.isFetching
                                                     ? console.log('cargando')
                                                     : this
-                                                        .props
-                                                        .FetchReducers
-                                                        .data
-                                                        .data
+                                                        .state
+                                                        .sectors
                                                         .map((q, i) => <Option key={i} value={q.ID}>{q.Name}</Option>)
                                             }
                                         </Select>
@@ -407,15 +409,13 @@ class Register extends Component {
 const WrappedNormalLoginForm = Form.create()(Register);
 
 const mapStateToProps = state => {
-    return { FetchReducers: state.FetchReducers }
+    return {GetSector: state.FetchSector}
 }
 
 const mapDispatchToPropsAction = dispatch => ({
     Company: value => dispatch(getRegister(value)),
     Token: value => dispatch(getToken(value)),
-    FetchEV: value => dispatch(fetchData_1(value)),
-    FetchL: value => dispatch(fetchData_2(value)),
-    FetchSector: value => dispatch(fetchData_4(value))
+    FetchSector: value => dispatch(fetchSector(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToPropsAction)(

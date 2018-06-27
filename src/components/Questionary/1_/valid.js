@@ -3,12 +3,13 @@ import jwt from 'jwt-simple';
 import { Spin } from 'antd';
 import { SECRET_TOKEN } from '../../../config/constants';
 import { token_valid, token_invalid } from '../../';
+import ReadLink from '../../../API/ReadLink'
 
 export default class Validator extends Component {
     constructor(props){
         super(props);
         this.state = {
-            TOKEN: this.props.match.params.id,
+            RAND: this.props.match.params.id,
             err: 9,
         }
     }
@@ -19,7 +20,11 @@ export default class Validator extends Component {
 
     ValidateToken = () => {
         
-        const { TOKEN } = this.state;
+        const { RAND } = this.state;
+
+        ReadLink({Rand: RAND}).then(res => {
+
+        let TOKEN = res.data.data.Token;
 
         try{
             let  auth = jwt.decode(TOKEN, SECRET_TOKEN)
@@ -48,6 +53,7 @@ export default class Validator extends Component {
                     break;
             }
         }
+        })
     }
 
     render(){
