@@ -13,7 +13,7 @@ import {Redirect} from 'react-router';
 import {cardstyle} from '../../globalcss';
 import {connect} from 'react-redux';
 import {FirstContent, FirstChild, p, FormContent} from './css';
-import {QUESTIONARY_1} from '../../../config/constants';
+import {QUESTIONARY_1} from '../../../constants';
 import ReactHtmlParser from 'react-html-parser';
 import {Company} from '../../../actions/Questionary';
 

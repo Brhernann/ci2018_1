@@ -1,6 +1,6 @@
 //puedo tener muchas acciones, failure, success, warning,!
 
-import { REDUX_Q } from '../config/constants';
+import { REDUX_Q } from '../constants';
 
 export const Email = Email => (
     {

@@ -1,4 +1,4 @@
-import { FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE} from '../config/constants'
+import { FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE} from '../constants'
 
 export const getSuccess = data => {
     return {type: FETCHING_DATA_SUCCESS, data}

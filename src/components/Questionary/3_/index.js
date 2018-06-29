@@ -8,7 +8,10 @@ import {cardstyle, separatorLeft, separatorRight} from '../../globalcss';
 import {AllTheAnswer, resetCompany} from '../../../actions/Questionary';
 import {resetCollapse} from '../../../actions/collapseControl';
 import {resetRegister} from '../../../actions/Register';
-import {Booleano} from '../../../actions/collapseControl';
+import InsertAnswers_to_question from '../../../API/InsertAnswers_to_question';
+import InsertEnterprise_Selected from '../../../API/InsertEnterprise_Selected';
+import InsertVariablesSelected from '../../../API/InsertVariablesSelected';
+import InsertRelationship from '../../../API/InsertRelationship';
 
 const {TextArea} = Input;
 const Item = Form.Item;
@@ -40,32 +43,61 @@ class GETQuestion extends React.Component {
 
     handleSubmit = (e) => {
 
+        let yeah = false;
+        let value = {};
+
         e.preventDefault();
-        this
-            .props
-            .form
-            .validateFields((err, values) => {
-                if (!err) {
-                    //LIMPIAR PERSISTENCIA VOLVER TODO A ESTADO INICIAL!
-                    let all = this.props.companyReducers.AllTheAnswer;
-                    all.FreeQuestion = Object.values(values)[0];
-                    this
-                        .props
-                        .onOpenQuestionChanged(all);
-
-                    this.props.onResetCompanyChanged();
-                    this.props.onResetCollapseChanged();
-                    this.props.onResetRegisterChanged();
-                    this.setState({redirect: true});
-
-                }
+        this.props.form.validateFields((err, values) => {
+                !err && (yeah = true);
+                !err && (value = values);
             });
+
+        yeah && (this.noname(value));
+    }
+
+    async noname(value) {
+
+        let arr_relation = [{
+            InsertEnterprise_Selected: [],
+            InsertVariablesSelected: []
+        }];
+
+        let all = await this.props.companyReducers.AllTheAnswer;
+        all.FreeQuestion = Object.values(value)[0];
+
+        await this.props.onOpenQuestionChanged(all);
+
+        // _________________________OK
+        await InsertAnswers_to_question(all.FreeQuestion) 
+        .then(res => arr_relation.push({InsertAnswers_to_question:res.data.id}))
+        .catch(err => console.log(err));
+
+        for (let element of all.Companys) {
+        //  _________________________OK
+        await InsertEnterprise_Selected(element.Name)
+        .then(res => arr_relation[0].InsertEnterprise_Selected.push({id:res.data.id}))
+        .catch(err => console.log(err));
+
+        //  _________________________OK
+        await InsertVariablesSelected(element.Data)
+        .then(res => arr_relation[0].InsertVariablesSelected.push({id:res.data.id}))
+        .catch(err => console.log(err));
+        }
+
+        for(let [index, element] of arr_relation[0].InsertEnterprise_Selected.entries())  {
+            console.log(element.id);
+            console.log(arr_relation[0].InsertVariablesSelected[index].id);
+            console.log(arr_relation[1].InsertAnswers_to_question)
+            //relationship here!
+        };
+        
+        // this.props.onResetCompanyChanged();
+        // this.props.onResetCollapseChanged();
+        // this.props.onResetRegisterChanged();
+        // thos.setState({redirect: true});
     }
 
     backtoFactor() {
-        // this
-        //     .props
-        //     .onBooleanChanged(true);
         console.log(this.props.state)
     }
 
@@ -74,16 +106,15 @@ class GETQuestion extends React.Component {
         const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
         const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
         if (this.state.redirect) {
-            return <Redirect push={true} to="/Gracias/respondido"/>
+            return <Redirect push to="/Gracias/respondido"/>
         }
 
         return (
-            <Card
-                title="Corporate Index"
-                bordered={false}
-                style={cardstyle}>
+            <Card title="Corporate Index" bordered={false} style={cardstyle}>
                 <div>
-                    <p>La Empatía Corporativa se considera el drivers de negocio asociado al cumplimiento de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.</p>
+                    <p>La Empatía Corporativa se considera el drivers de negocio asociado al
+                        cumplimiento de los Objetivos de Desarrollo Sostenible decretados por la ONU en
+                        el año 2015.</p>
                     <p>¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?</p>
                 </div>
 
@@ -136,7 +167,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToPropsAction = dispatch => ({
     onOpenQuestionChanged: value => dispatch(AllTheAnswer(value)),
-    onBooleanChanged: value => dispatch(Booleano(value)),
     onResetCompanyChanged: value => dispatch(resetCompany(value)),
     onResetCollapseChanged: value => dispatch(resetCollapse(value)),
     onResetRegisterChanged: value => dispatch(resetRegister(value))

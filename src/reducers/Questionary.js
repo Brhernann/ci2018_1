@@ -1,4 +1,4 @@
-import { REDUX_Q } from '../config/constants';
+import { REDUX_Q } from '../constants';
 
 const initialState = {
     factor_selected: {},

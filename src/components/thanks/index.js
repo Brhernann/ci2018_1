@@ -12,7 +12,7 @@ import {
     Input,
     Icon
 } from 'antd';
-import {END_MSSAGE} from '../../config/constants';
+import {END_MSSAGE} from '../../constants';
 import {cardstyle} from '../globalcss';
 
 const Item = Form.Item;

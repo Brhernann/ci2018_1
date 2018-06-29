@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import jwt from 'jwt-simple';
 import { Spin } from 'antd';
-import { SECRET_TOKEN } from '../../../config/constants';
+import { SECRET_TOKEN } from '../../../constants';
 import { token_valid, token_invalid } from '../../';
 import ReadLink from '../../../API/ReadLink'
 
