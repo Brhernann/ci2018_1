@@ -2,13 +2,12 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import {
     Form,
-    Cascader,
     Card,
     Button,
+    Select,
     Icon
 } from 'antd';
 import propTypes from 'prop-types';
-import IGJSON from '../../../json/industryGroup.json';
 import {Redirect} from 'react-router';
 import {cardstyle} from '../../globalcss';
 import {connect} from 'react-redux';
@@ -17,6 +16,7 @@ import {QUESTIONARY_1} from '../../../constants';
 import ReactHtmlParser from 'react-html-parser';
 import {Company} from '../../../actions/Questionary';
 
+const Option = Select.Option;
 const Item = Form.Item;
 
 function hasErrors(fieldsError) {
@@ -46,40 +46,7 @@ class Questionary extends React.Component {
             .form
             .validateFields();
 
-        let cc = IGJSON.map(q => {
-            let cc_a = q.Cluster.map(a => {
-                let cc_b = a.Business.map(h => {
-                    return {
-                        value:h.name,
-                        label:h.name,          
-                    }
-                })
-                return cc_b;
-            })
-            return cc_a;
-        })
-
-        let please  = cc[0]
-
-        let bb = IGJSON.map(q => q.Cluster.map((p,i) => {
-          return {
-            value:p.name,
-            label:p.name,
-            children: please[i]
-          }
-        }))
-    
-       console.log(bb)
-
-        let aa = IGJSON.map((q,i) => {
-          return {
-            value:q.Sector,
-            label:q.Sector,
-            children:bb[i]
-          }
-        })
-
-        this.setState({options: aa})
+            console.log(this.props.Subsector)
 
     }
 
@@ -90,20 +57,16 @@ class Questionary extends React.Component {
             .form
             .validateFields((err, values) => {
                 if (!err) {
+                    console.log(values)
 
                     let arr = Object.values(JSON.parse(JSON.stringify(values)))
                     let companysWithUndefined = arr.map(q => {
                         return {
-                            name: q[0] + '/' + q[1] + '/' + q[2]
+                            name: q
                         }
                     });
 
-                    let companys = companysWithUndefined.filter(
-                        x => x.name !== 'undefined/undefined/undefined'
-                    );
-                    this
-                        .props
-                        .Company(companys);
+                    this.props.Company(companysWithUndefined);
                     this.setState({redirect: true});
                 }
             });
@@ -112,9 +75,6 @@ class Questionary extends React.Component {
     render() {
 
         const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
-        const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
-        const label_2_Error = isFieldTouched('label_2') && getFieldError('label_2');
-        const label_3_Error = isFieldTouched('label_3') && getFieldError('label_3');
 
         if (this.state.redirect) {
             return <Redirect push to="/Seleccion"/>
@@ -146,105 +106,47 @@ class Questionary extends React.Component {
                     </FirstChild>
                 </FirstContent>
 
-                {/* FORM */}
-
                 <Form layout='horizontal' onSubmit={this.handleSubmit}>
-                <FormContent>
-                <FirstChild>
-                        <Item
-                            label=''
-                            validateStatus={label_1_Error
-                                ? 'error'
-                                : ''}
-                            help={label_1_Error || ''}>
                             {
-                                getFieldDecorator('label_1', {
-                                    rules: [
-                                        {
-                                            type: 'array',
-                                            required: true,
-                                            message: 'Seleccione almenos una empresa por sector'
-                                        }
-                                    ]
-                                })(
+                                this.props.Subsector.map((q, i) => 
+                                <FormContent key={i}>
+                                        <FirstChild>
+                                            <Item label={q.Name} validateStatus={( isFieldTouched('label_' + (i + 1)) && getFieldError('label_' + (i + 1))) ? 'error' : ''}
+                                                  help={(isFieldTouched('label_' + ( i + 1)) && getFieldError('label_' + (i + 1))) || ''}>
 
-                                    <Cascader
-                                    options={this.state.options}
-                                    placeholder="Seleccione una empresa por sector"/>
-                                
+                                                {
+                                                    getFieldDecorator('label_' + ( i + 1), {
+                                                        rules: [{message: ' Porfavor seleccione una opción '}]
+                                                    })(
+                                                    <Select
+                                                        placeholder="Seleccione una empresa">
+                                                        {q.enterprise.map((a,s) =>
+                                                               <Option key={s} value={a.Alias}>{a.Alias}</Option>
+                                                        )}
+                                                      
+                                                    </Select>,
+                                                    )
+                                                }
+                                            </Item>
+                                        </FirstChild>
+                                </FormContent>
                                 )
                             }
-                        </Item>
-                        </FirstChild>
-                        <FirstChild>
-                        <Item
-                            label=''
-                            validateStatus={label_2_Error
-                                ? 'error'
-                                : ''}
-                            help={label_2_Error || ''}>
-                            {
-                                getFieldDecorator('label_2', {
-                                    rules: [
-                                        {
-                                            type: 'array',
-                                            required: false
-                                        }
-                                    ]
-                                })(
-                                    <Cascader
-                                        options={this.state.options}
-                                        placeholder="Seleccione una empresa por sector"/>
-                                )
-                            }
-                        </Item>
-                        </FirstChild>
-                        <FirstChild>
-                        <Item
-                            label=''
-                            validateStatus={label_3_Error
-                                ? 'error'
-                                : ''}
-                            help={label_3_Error || ''}>
-                            {
-                                getFieldDecorator('label_3', {
-                                    rules: [
-                                        {
-                                            type: 'array',
-                                            required: false
-                                        }
-                                    ]
-                                })(
-                                    <Cascader
-                                        options={this.state.options}
-                                        placeholder="Seleccione una empresa por sector"/>
-                                )
-                            }
-                        </Item>
-                        </FirstChild>
-                        <FirstChild>
-                        <Item
-                            style={{
-                                paddingTop: 50
-                            }}>
 
-                                <div>
-                                        <Button
-                                            type="primary"
-                                            style={{
-                                                marginRight: 5
-                                            }}
-                                            htmlType="submit"
-                                            disabled={hasErrors(getFieldsError())}>
-                                           Continuar
-                                        </Button>
-                                </div>
-
+                    <div className={{paddingTop: 50 }}>
+                        <Item>
+                            <Button
+                                type="primary"
+                                style={{
+                                    marginLeft: 5
+                                }}
+                                htmlType="submit"
+                                disabled={hasErrors(getFieldsError())}>
+                                Terminar
+                            </Button>
                         </Item>
-                        </FirstChild>
-                        </FormContent>
-                    </Form>
-
+                    </div>
+                </Form>
             </Card>
 
         );
@@ -257,8 +159,12 @@ Questionary.propTypes = {
 
 const thisQuestionary = Form.create()(Questionary);
 
+const mapStateToProps = state => {
+    return {Subsector: state.companyReducers.AllCompany}
+}
+
 const mapDispatchToPropsAction = dispatch => ({
     Company: value => dispatch(Company(value))
 });
 
-export default connect(null, mapDispatchToPropsAction)(thisQuestionary);
+export default connect(mapStateToProps, mapDispatchToPropsAction)(thisQuestionary);

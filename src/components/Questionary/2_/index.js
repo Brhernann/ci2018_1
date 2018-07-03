@@ -25,6 +25,8 @@ class Selection extends React.Component {
             .callback
             .bind(this);
 
+            console.log(this.props.company_selected)
+
     }
 
     enterLoading = () => {
@@ -76,7 +78,7 @@ class Selection extends React.Component {
                                                         style={{
                                                             color: '#5fdd9d'
                                                         }}type="check"/>
-                                                : q.name.split('/')[2]}
+                                                : q.name}
                                             icon="retweet"
                                             key={i}>
                                             {

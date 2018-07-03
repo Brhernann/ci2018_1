@@ -5,14 +5,18 @@ export const FETCHING_DATA = 'FETCHING_DATA';
 export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS';
 export const FETCHING_DATA_FAILURE = 'FETCHING_DATA_FAILURE';
 
-//export const URL = 'http://mainmia.us-west-2.elasticbeanstalk.com/webservices/';
- export const URL = 'http://localhost:8081/webservices/'
+export const URL = 'http://mainmia.us-west-2.elasticbeanstalk.com/webservices/';
+//export const URL = 'http://localhost:8081/webservices/'
 
 export const WS = {
     InsertEnterprise_evaluation: URL+'InsertEnterprise_evaluation',
     InsertLink: URL+'InsertLink',
     ReadSector: URL+'GetSector',
     ReadLink: URL+'GetLink',
+    GetSectorId_from_enterprise_evaluation: URL+'GetSectorId_from_enterprise_evaluation',
+    GetEnterprise_Stored: URL+'GetEnterprise_Stored',
+    GetSubsector_and_id: URL+'GetSubsector_and_id'
+
 }
 
 export const OHWS = {
@@ -112,6 +116,7 @@ export const REDUX = {
 
 export const REDUX_Q = {
     GET_EMAIL: 'GET_EMAIL',
+    ALL_COMPANY: 'ALL_COMPANY',
     GET_COMPANY: 'GET_COMPANY',
     GET_FACTOR: 'GET_FACTOR',
     GET_OPENQUESTION: 'GET_OPENQUESTION',

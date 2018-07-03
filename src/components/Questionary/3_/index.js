@@ -90,11 +90,13 @@ class GETQuestion extends React.Component {
             console.log(arr_relation[1].InsertAnswers_to_question)
             //relationship here!
         };
+
+        //falta email!
         
-        // this.props.onResetCompanyChanged();
-        // this.props.onResetCollapseChanged();
-        // this.props.onResetRegisterChanged();
-        // thos.setState({redirect: true});
+        this.props.onResetCompanyChanged();
+        this.props.onResetCollapseChanged();
+        this.props.onResetRegisterChanged();
+        this.setState({redirect: true});
     }
 
     backtoFactor() {

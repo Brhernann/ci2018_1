@@ -3,11 +3,12 @@ import { REDUX_Q } from '../constants';
 const initialState = {
     factor_selected: {},
     company_selected: {},
+    AllCompany: [],
     AllTheAnswer:{
         "User": "",
         "FreeQuestion": "",
         "Companys": []
-    }
+    } 
 }
 
 const companyReducers = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const companyReducers = (state = initialState, action) => {
             return {
                 ...state,
                 email_selected: action.Email
+            }
+        case REDUX_Q.ALL_COMPANY:
+            return {
+                ...state,
+                AllCompany: action.AllCompany
             }
         case REDUX_Q.GET_COMPANY:
             return {

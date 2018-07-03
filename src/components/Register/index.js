@@ -68,7 +68,7 @@ class Register extends Component {
         })
     }
 
-    createToken = (id) => {
+    createToken = (id, ) => {
 
         const payload = {
             sub: 'VALIDO',
@@ -99,9 +99,7 @@ class Register extends Component {
     handleSubmit = async (e) => {
 
         e.preventDefault();
-        await this
-            .props
-            .form
+        await this.props.form
             .validateFields((err, values) => {
                 if (!err) {
                     InsertEnterprise_E(values)

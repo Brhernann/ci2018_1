@@ -19,6 +19,7 @@ display:flex;
 flex-direction:column;
 width:100%;
 align-items:center;
+text-align: -webkit-auto;
 `;
 
 export const p = {

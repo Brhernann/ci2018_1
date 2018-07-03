@@ -9,6 +9,13 @@ export const Email = Email => (
     }
 );
 
+export const AllCompany = AllCompany => (
+    {
+        type: REDUX_Q.ALL_COMPANY, 
+        AllCompany
+    }
+);
+
 export const Company = Company => (
     {
         type: REDUX_Q.GET_COMPANY, 
