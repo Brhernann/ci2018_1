@@ -4,7 +4,7 @@ import { OHWS } from '../constants';
 
 export default async (data) => {
     return await axios.post(OHWS.InsertEnterprise_Selected, qs.stringify({
-        Name: data,
-        Enterprise_Stored_ID: 1
+        Name: data.name,
+        Enterprise_Stored_ID: data.id
     }))
 }

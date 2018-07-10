@@ -22,8 +22,8 @@ align-items:center;
 text-align: -webkit-auto;
 `;
 
-export const p = {
-    marginBottom: '25px',
-    textAlign: 'justify',
-    fontSize: '100%'
-}
+export const Paragraph = styled.p`
+    margin-bottom: 25px;
+    text-align: justify;
+
+`;

@@ -5,8 +5,10 @@ export const FETCHING_DATA = 'FETCHING_DATA';
 export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS';
 export const FETCHING_DATA_FAILURE = 'FETCHING_DATA_FAILURE';
 
+export const URLWEB = 'http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/';
 export const URL = 'http://mainmia.us-west-2.elasticbeanstalk.com/webservices/';
-//export const URL = 'http://localhost:8081/webservices/'
+//export const URLWEB = 'localhost:3000/#/bienvenido/';
+//export const URL = 'http://localhost:8081/webservices/';
 
 export const WS = {
     InsertEnterprise_evaluation: URL+'InsertEnterprise_evaluation',
@@ -15,7 +17,8 @@ export const WS = {
     ReadLink: URL+'GetLink',
     GetSectorId_from_enterprise_evaluation: URL+'GetSectorId_from_enterprise_evaluation',
     GetEnterprise_Stored: URL+'GetEnterprise_Stored',
-    GetSubsector_and_id: URL+'GetSubsector_and_id'
+    GetSubsector_and_id: URL+'GetSubsector_and_id',
+    getMailsubscribed: URL+'GetMailSurveyed_And_ID'
 
 }
 
@@ -82,7 +85,7 @@ export const END_MSSAGE = {
 }
 
 export const WELCOME_MESSAGE = {
-    FROM_REGISTER: 'Bienvenido (a) a la plataforma de nuestra área de investigación, estudios públicos de Corporate Index...',
+    FROM_REGISTER: 'Bienvenido(a) a la plataforma del área de investigación y estudios públicos de Corporate Index.',
     FROM_QUESTIONARY: 'Encuesta empresarial'
 }
 
@@ -94,10 +97,16 @@ export const QUESTIONARY_1 = {
         'aporta al desarrollo sostenible.',
     question: 'Considerando la definición anterior y según su punto de vista personal,' +
         '<br><br>' +
-        'Señale al menos una empresa que usted considera más "empática" en su quehacer empresarial' +
-        ' (desplegable de empresas con nombre predeterminado según catastro).'+
+        'Señale al menos una empresa que Usted considera empática en su quehacer empresarial' +
+        ' (los nombres de las empresas se desplegarán por sector).'+
         '<br><br>'+
         '<b>Nota: Usted no puede votar por su misma empresa.<b>'
+
+}
+
+export const QUESTIONARY_3 = {
+    resumen: 'La empatía corporativa es considerada como un Driver clave del negocio en relación al cumplimiento de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.',
+    question: '¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?'
 
 }
 
@@ -117,6 +126,7 @@ export const REDUX = {
 export const REDUX_Q = {
     GET_EMAIL: 'GET_EMAIL',
     ALL_COMPANY: 'ALL_COMPANY',
+    ALL_MAILS:'ALL_MAILS',
     GET_COMPANY: 'GET_COMPANY',
     GET_FACTOR: 'GET_FACTOR',
     GET_OPENQUESTION: 'GET_OPENQUESTION',

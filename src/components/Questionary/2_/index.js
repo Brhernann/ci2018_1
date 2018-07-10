@@ -24,9 +24,6 @@ class Selection extends React.Component {
         this.callback = this
             .callback
             .bind(this);
-
-            console.log(this.props.company_selected)
-
     }
 
     enterLoading = () => {
@@ -58,9 +55,15 @@ class Selection extends React.Component {
         let Companys = this.props.AllTheAnswer.Companys;
         let answered = Companys.map(q => q.Index)
 
+        if(Object.keys(this.props.company_selected).length === 0){
+            return <Redirect push to="/No" />
+        }
+
         if (this.state.redirect) {
             return <Redirect push to="/Pregunta" />
          }
+
+        console.log(this.props.company_selected)
 
         return (
             <Card title={'Lo invitamos a evaluar esta empresa '} style={cardstyle}>
@@ -110,7 +113,11 @@ class Selection extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {company_selected: state.companyReducers.company_selected, AllTheAnswer: state.companyReducers.AllTheAnswer, CollapseReducers: state.CollapseReducers}
+    return {
+        company_selected: state.companyReducers.company_selected, 
+        AllTheAnswer: state.companyReducers.AllTheAnswer, 
+        CollapseReducers: state.CollapseReducers
+    }
 }
 
 const mapDispatchToPropsAction = dispatch => ({

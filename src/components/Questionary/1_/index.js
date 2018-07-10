@@ -1,17 +1,11 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import {
-    Form,
-    Card,
-    Button,
-    Select,
-    Icon
-} from 'antd';
+import {Form, Card, Button, Select, Icon} from 'antd';
 import propTypes from 'prop-types';
 import {Redirect} from 'react-router';
 import {cardstyle} from '../../globalcss';
 import {connect} from 'react-redux';
-import {FirstContent, FirstChild, p, FormContent} from './css';
+import {FirstContent, FirstChild, Paragraph, FormContent} from './css';
 import {QUESTIONARY_1} from '../../../constants';
 import ReactHtmlParser from 'react-html-parser';
 import {Company} from '../../../actions/Questionary';
@@ -19,152 +13,120 @@ import {Company} from '../../../actions/Questionary';
 const Option = Select.Option;
 const Item = Form.Item;
 
-function hasErrors(fieldsError) {
-    return Object
-        .keys(fieldsError)
-        .some(field => fieldsError[field]);
-}
-
 class Questionary extends React.Component {
 
     constructor(props) {
         super(props);
-        this.handleSubmit = this
-            .handleSubmit
-            .bind(this);
 
         this.state = {
             redirect: false,
-            options: []
+            options: [],
+            label_count: ['label_1', 'label_2'],
+            btnactive: true,
+            Enterprise_selected: []
         }
 
     }
-
-    componentDidMount() {
-        this
-            .props
-            .form
-            .validateFields();
-
-            console.log(this.props.Subsector)
-
+    
+    handleClick(){
+        const { Enterprise_selected} = this.state;
+        let companys = Enterprise_selected.map(q => {  return { name: q.label, id: q.id_enterprise } });
+        this.props.Company(companys); this.setState({redirect: true});
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this
-            .props
-            .form
-            .validateFields((err, values) => {
-                if (!err) {
-                    console.log(values)
-
-                    let arr = Object.values(JSON.parse(JSON.stringify(values)))
-                    let companysWithUndefined = arr.map(q => {
-                        return {
-                            name: q
-                        }
-                    });
-
-                    this.props.Company(companysWithUndefined);
-                    this.setState({redirect: true});
-                }
-            });
+    handleChange(value) {
+        console.log(value)
+        if(value != undefined ){
+            const { Enterprise_selected} = this.state;
+            let key = parseInt(value.key.split('_')[1],10);
+            let id_enterprise = parseInt(value.key.split('_')[2],10);
+            let label = value.label;
+           
+            for(let [i, element] of Enterprise_selected.entries()){
+                 element.key == key && (Enterprise_selected.splice(i,1))   
+            };
+    
+            Enterprise_selected.push({key,label, id_enterprise});
+            Enterprise_selected.length >= this.props.Subsector.length
+            && (this.setState({btnactive:false}));
+        }
     }
 
     render() {
-
-        const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
-
+        
         if (this.state.redirect) {
             return <Redirect push to="/Seleccion"/>
         }
+
+        if(this.props.Subsector.length == 0){
+            return <Redirect push to="/No"/>
+        }
+
         return (
+        
+        <Card title={QUESTIONARY_1.title} bordered={false} style={cardstyle}>
+        
+        <FirstContent>
+            <FirstChild>
+                <Paragraph>
+                    <Icon type="info-circle-o" style={{fontSize: 16, color: '#339900'}}/> {QUESTIONARY_1.subtitle}
+                </Paragraph>
 
-            <Card title={QUESTIONARY_1.title} bordered={false} style={cardstyle}>
-                <FirstContent>
-                    <FirstChild>
-                        <p style={p}>
-                            <Icon
-                                type="info-circle-o"
-                                style={{
-                                    fontSize: 16,
-                                    color: '#339900'
-                                }}/> {QUESTIONARY_1.subtitle}
-                        </p>
-                        <p style={p}>
-                            {ReactHtmlParser(QUESTIONARY_1.resumen)}
-                        </p>
-                    </FirstChild>
-                </FirstContent>
+                <Paragraph>
+                    {ReactHtmlParser(QUESTIONARY_1.resumen)}
+                </Paragraph>
+            </FirstChild>
+        </FirstContent>
 
-                <FirstContent>
-                    <FirstChild>
-                        <p style={p}>
-                            {ReactHtmlParser(QUESTIONARY_1.question)}
-                        </p>
-                    </FirstChild>
-                </FirstContent>
+        <FirstContent>
+            <FirstChild>
+                <Paragraph>
+                    {ReactHtmlParser(QUESTIONARY_1.question)}
+                </Paragraph>
+            </FirstChild>
+        </FirstContent>
 
-                <Form layout='horizontal' onSubmit={this.handleSubmit}>
-                            {
-                                this.props.Subsector.map((q, i) => 
-                                <FormContent key={i}>
-                                        <FirstChild>
-                                            <Item label={q.Name} validateStatus={( isFieldTouched('label_' + (i + 1)) && getFieldError('label_' + (i + 1))) ? 'error' : ''}
-                                                  help={(isFieldTouched('label_' + ( i + 1)) && getFieldError('label_' + (i + 1))) || ''}>
+    {this.props.Subsector.map((q, i) => 
+        <FormContent key={i}>
+            <FirstChild>
+                <Item label={q.Name}>
+                    <Select
+                        placeholder="Seleccione una empresa"
+                        style={{ width: '100%' }}
+                        labelInValue
+                        onChange={this.handleChange.bind(this)}>
+                        {q.enterprise.map((a, s) => <Option key={s} value={s+'_'+i+'_'+a.ID}>{a.Alias}</Option>)}
+                    </Select>
+                </Item> 
+            </FirstChild>
+        </FormContent >
+    )} 
+            
+        <FirstContent> 
+            <Item>
+                <Button type="primary" style={{marginLeft: 5}} onClick={this.handleClick.bind(this)} disabled={this.state.btnactive}>
+                    Terminar
+                </Button>
+            </Item> 
+        </FirstContent>
 
-                                                {
-                                                    getFieldDecorator('label_' + ( i + 1), {
-                                                        rules: [{message: ' Porfavor seleccione una opción '}]
-                                                    })(
-                                                    <Select
-                                                        placeholder="Seleccione una empresa">
-                                                        {q.enterprise.map((a,s) =>
-                                                               <Option key={s} value={a.Alias}>{a.Alias}</Option>
-                                                        )}
-                                                      
-                                                    </Select>,
-                                                    )
-                                                }
-                                            </Item>
-                                        </FirstChild>
-                                </FormContent>
-                                )
-                            }
-
-                    <div className={{paddingTop: 50 }}>
-                        <Item>
-                            <Button
-                                type="primary"
-                                style={{
-                                    marginLeft: 5
-                                }}
-                                htmlType="submit"
-                                disabled={hasErrors(getFieldsError())}>
-                                Terminar
-                            </Button>
-                        </Item>
-                    </div>
-                </Form>
-            </Card>
-
-        );
+        </Card >);
     }
 }
 
 Questionary.propTypes = {
-    Company: propTypes.func.isRequired
+Company: propTypes.func.isRequired
 }
 
-const thisQuestionary = Form.create()(Questionary);
+const thisQuestionary = Form
+.create()(Questionary);
 
 const mapStateToProps = state => {
-    return {Subsector: state.companyReducers.AllCompany}
+return {Subsector: state.companyReducers.AllCompany}
 }
 
 const mapDispatchToPropsAction = dispatch => ({
-    Company: value => dispatch(Company(value))
+Company: value => dispatch(Company(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToPropsAction)(thisQuestionary);

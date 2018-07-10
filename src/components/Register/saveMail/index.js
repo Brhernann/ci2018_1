@@ -94,6 +94,10 @@ class GETQuestion extends React.Component {
         const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
         const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
 
+        if(this.props.registerReducers === undefined){
+            return <Redirect push to="/No" />
+        }
+
         if (this.state.redirect) {
             return <Redirect push="push" to="/gracias/registrado"/>;
         }

@@ -4,6 +4,7 @@ const initialState = {
     factor_selected: {},
     company_selected: {},
     AllCompany: [],
+    AllMails: [],
     AllTheAnswer:{
         "User": "",
         "FreeQuestion": "",
@@ -22,6 +23,11 @@ const companyReducers = (state = initialState, action) => {
             return {
                 ...state,
                 AllCompany: action.AllCompany
+            }
+        case REDUX_Q.ALL_MAILS:
+            return {
+                ...state,
+                AllMails: action.AllMails
             }
         case REDUX_Q.GET_COMPANY:
             return {

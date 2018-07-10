@@ -16,6 +16,13 @@ export const AllCompany = AllCompany => (
     }
 );
 
+export const AllMails = AllMails => (
+    {
+        type: REDUX_Q.ALL_MAILS, 
+        AllMails
+    }
+);
+
 export const Company = Company => (
     {
         type: REDUX_Q.GET_COMPANY, 

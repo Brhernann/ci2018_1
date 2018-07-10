@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import jwt from 'jwt-simple';
 import {Spin} from 'antd';
 import {connect} from 'react-redux';
-import { AllCompany } from '../../../actions/Questionary';
+import { AllCompany, AllMails } from '../../../actions/Questionary';
 import {SECRET_TOKEN} from '../../../constants';
 import {token_valid, token_invalid} from '../../';
 import ReadLink from '../../../API/ReadLink';
 import GetSectorId_from_enterprise_evaluation from '../../../API/GetSectorId_from_enterprise_evaluation';
 import GetSubsector_and_id from '../../../API/GetSubsector_and_id';
 import GetEnterprise_Stored from '../../../API/GetEnterprise_Stored';
+import getMailsubscribed from '../../../API/getMailsubscribed'
 
 class Validator extends Component {
     constructor(props) {
@@ -22,7 +23,6 @@ class Validator extends Component {
 
     componentDidMount() {
         this.ValidateToken();
-        console.log(this.state.RAND)
     }
 
     async getData(id) {
@@ -47,11 +47,18 @@ class Validator extends Component {
         let final = subsector.map((q,i) => {
             return {
                 ...q,
+                id_enterprise_evaluation: id,
                 enterprise: enterprise[i]
             }
         });
 
         this.props.AllCompany(final);
+        let id_getMailsubscribed = parseInt(this.props.companyReducers.AllCompany[0].id_enterprise_evaluation, 10);
+        
+        await getMailsubscribed(id_getMailsubscribed)
+        .then(res => this.props.AllMails(res.data.data))
+        .catch(err => console.log(err))
+        
         this.setState({ err: 0 });
         }
 
@@ -61,8 +68,9 @@ class Validator extends Component {
 
         ReadLink({Rand: RAND})
             .then(res => {
+                console.log(res.data.data)
                 try {
-                    if (res.data.data !== null) {
+                    if (res.data.data.length !== 0) {
 
                         let TOKEN = res.data.data[0].Token;
                         let auth = jwt.decode(TOKEN, SECRET_TOKEN)
@@ -116,8 +124,13 @@ class Validator extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {companyReducers: state.companyReducers}
+}
+
 const mapDispatchToPropsAction = dispatch => ({
-    AllCompany: value => dispatch(AllCompany(value))
+    AllCompany: value => dispatch(AllCompany(value)),
+    AllMails: value => dispatch(AllMails(value))
 });
 
-export default connect(null, mapDispatchToPropsAction)(Validator);
+export default connect(mapStateToProps, mapDispatchToPropsAction)(Validator);

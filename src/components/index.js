@@ -84,7 +84,7 @@ export const token_valid = () => {
                 <div>
                 </div>
                 <div>
-                <Link to='/cuestionario'>
+                <Link to='/ValidarEmail'>
                     <Button type="primary" style={{ marginTop: 30 }}>
                     Comenzar
                    </Button>

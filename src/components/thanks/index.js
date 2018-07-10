@@ -9,19 +9,14 @@ import {
     Alert,
     notification,
     Form,
-    Input,
-    Icon
+    Modal
 } from 'antd';
-import {END_MSSAGE} from '../../constants';
+
+import {END_MSSAGE, URLWEB} from '../../constants';
+import {Redirect} from 'react-router';
 import {cardstyle} from '../globalcss';
 
-const Item = Form.Item;
-
-function hasErrors(fieldsError) {
-    return Object
-        .keys(fieldsError) 
-        .some(field => fieldsError[field]);
-}
+const confirm = Modal.confirm;
 
 class Goodbay extends Component {
 
@@ -33,12 +28,24 @@ class Goodbay extends Component {
     }
 
     componentDidMount() {
-        this
-            .props
-            .form
-            .validateFields();
+        this.showConfirm()
     }
 
+    showConfirm() {
+        confirm({
+          title: '¡Gracias!',
+          content: '¿Deseas recibir los resultados finales de este estudio, antes de su publicación?',
+          okText: 'si',
+          cancelText: 'No',
+          onOk() {
+            return new Promise((resolve, reject) => {
+              setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+            }).catch(() => console.log('Oops errors!'));
+          },
+          onCancel() {},
+        });
+      }
+      
     handleSubmit = (e) => {
         e.preventDefault();
         this
@@ -53,18 +60,19 @@ class Goodbay extends Component {
     }
 
     render() {
-
+        
         let string = 'none';
         if (this.props.match !== undefined) {
             string = this.props.match.params.string
         }
-        const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
-
-        const label_1_Error = isFieldTouched('label_1') && getFieldError('label_1');
 
         let rand = this.props.registerReducers.Token.rand
-        const URL = 'http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/' +
-                rand;
+
+        if(rand === '' && string == 'registrado'){
+            return <Redirect push to="/No"/>
+        }
+
+        const MYURL = URLWEB+rand;
 
         return (
             <Card
@@ -93,52 +101,25 @@ class Goodbay extends Component {
                                 alignItems: 'center',
                                 flexDirection: 'column'
                             }}>
-                            {string === 'registrado' && <Alert message={URL} type="info" showIcon="showIcon"/>}
+                            {string === 'registrado' && <Alert message={MYURL} type="info" showIcon="showIcon"/>}
                             <p>&nbsp;</p>
 
                             {
                                 string === 'registrado' && <CopyToClipboard
-                                        text={URL}
+                                        text={MYURL}
                                         onCopy={() => notification.success({message: 'Copiado', description: ''})}>
                                         <Button type="primary" icon="copy" size="small"/>
                                     </CopyToClipboard>
                             }
 
                             {
-                                string === 'respondido' && <p>Si usted desea recibir los resultados finales de este estudio, antes de su publicación, indíquenos por favor, su correo electrónico</p>
+                                 string === 'respondido' && <p>Muchas gracias por participar. </p>
                             }
 
-                            {
-                                string === 'respondido' && <Form layout='inline' onSubmit={this.handleSubmit}>
-                                        <Item
-                                            label=''
-                                            validateStatus={label_1_Error
-                                                ? 'error'
-                                                : ''}
-                                            help={label_1_Error || ''}>
-                                            {
-                                                getFieldDecorator('label_1', {
-                                                    rules: [
-                                                        {
-                                                            required: true,
-                                                            message: 'Correo inválido.',
-                                                            type:'email'
-                                                        }
-                                                    ]
-                                                })(
-                                                    <Input
-                                                        prefix={<Icon type = "mail" style = {{ color: 'rgba(0,0,0,.25)' }}/>}
-                                                        placeholder="sam@corpindex.com"/>
-                                                )
-                                            }
-                                        </Item>
-                                        <Item>
-                                            <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
-                                                Guardar
-                                            </Button>
-                                        </Item>
-                                    </Form>
-                            }
+                            {/* {
+                                string === 'respondido' &&
+                                <Checkbox onChange={this.onChange.bind(this)}>Deseo recibir información.</Checkbox>
+                            } */}
 
                         </div>
 
