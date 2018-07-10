@@ -14,7 +14,7 @@ import moment from 'moment';
 import rand from 'random-key';
 import { FirstChild, FormContent } from './css'
 import { cardstyle } from '../globalcss'
-import { L_REGISTER, SECRET_TOKEN } from '../../config/constants';
+import { L_REGISTER, SECRET_TOKEN } from '../../constants';
 import REGION from '../../json/Chile.json';
 import {getRegister, getToken} from '../../actions/Register';
 import fetchSector from '../../actions/FetchSector';
@@ -68,7 +68,7 @@ class Register extends Component {
         })
     }
 
-    createToken = (id) => {
+    createToken = (id, ) => {
 
         const payload = {
             sub: 'VALIDO',
@@ -99,14 +99,13 @@ class Register extends Component {
     handleSubmit = async (e) => {
 
         e.preventDefault();
-        await this
-            .props
-            .form
+        await this.props.form
             .validateFields((err, values) => {
                 if (!err) {
                     InsertEnterprise_E(values)
                         .then(res => {
                             this.createToken(res.data.id);
+                            this.props.Company({id: res.data.id})
                         })
                         .catch(err => console.log(err))
                     }
@@ -137,7 +136,7 @@ class Register extends Component {
         const label_9_Error = isFieldTouched('label_9') && getFieldError('label_9');
 
         if (this.state.redirect) {
-            return <Redirect push to="/gracias/registrado"/>;
+            return <Redirect push to="/RegistroMail"/>;
         }
 
         return (

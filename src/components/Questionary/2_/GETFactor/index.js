@@ -67,6 +67,10 @@ class GETFactor extends Component {
             .companyReducers
             .company_selected[active]
             .name;
+        let id_enterprise = this
+            .props.companyReducers
+            .company_selected[active]
+            .id
 
         let factors = Object
             .values(values)
@@ -79,6 +83,7 @@ class GETFactor extends Component {
 
         let data = {
             "Name": name,
+            "ID": id_enterprise,
             "Index": active,
             "Data": factors
         }
@@ -242,6 +247,7 @@ class GETFactor extends Component {
                                                             <Radio value={5}>5</Radio>
                                                             <Radio value={6}>6</Radio>
                                                             <Radio value={7}>7</Radio>
+                                                            <Radio value={8}>No sabe/No contesta</Radio>
                                                         </RadioGroup>
                                                     )
                                                 }
@@ -293,6 +299,7 @@ class GETFactor extends Component {
                                                             <Radio value={5}>5</Radio>
                                                             <Radio value={6}>6</Radio>
                                                             <Radio value={7}>7</Radio>
+                                                            <Radio value={8}>No sabe/No contesta</Radio>
                                                         </RadioGroup>
                                                     )
                                                 }

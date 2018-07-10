@@ -1,6 +1,6 @@
 //puedo tener muchas acciones, failure, success, warning,!
 
-import { REDUX } from '../config/constants';
+import { REDUX } from '../constants';
 
 export const Booleano = Booleano => ({
         type: REDUX.COLLAPSE_BOOLEAN, 

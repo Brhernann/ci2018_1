@@ -1,4 +1,4 @@
-import { REDUX } from '../config/constants';
+import { REDUX } from '../constants';
 
 const initialState = {
     Booleano: false,
