@@ -71,9 +71,9 @@ class GETQuestion extends React.Component {
         Noempty.length !== 0 ? this.setState({TheMailError: bad, MailError: true}): this.setState({MailError: false})
 
         let success = email.filter((n) => n !== "");
-        success.length > 10 ? this.setState({maxemail: true}) : this.setState({maxemail: false});
+        success.length > 200 ? this.setState({maxemail: true}) : this.setState({maxemail: false});
 
-        if (Noempty.length === 0 && success.length <= 10) {
+        if (Noempty.length === 0 && success.length <= 200) {
             let ID = this.props.registerReducers;
 
             for (let mail of success) {
@@ -141,7 +141,7 @@ class GETQuestion extends React.Component {
                                 'Los siguientes correos son Invalidos: ' + this.state.TheMailError
                             )
                         }
-                        <br/> {this.state.maxemail && 'Puede ingresar como máximo, solo 10 correos electronicos'}
+                        <br/> {this.state.maxemail && 'Puede ingresar como máximo, solo 200 correos electronicos'}
                     </span>
                     <Item>
                         <div style={contentButtom}>
