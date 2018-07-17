@@ -64,7 +64,7 @@ class Goodbay extends Component {
 
         let rand = this.props.registerReducers.Token.rand
 
-        if(rand === '' && string == 'registrado'){
+        if(rand === '' && string === 'registrado'){
             return <Redirect push to="/No"/>
         }
 

@@ -36,14 +36,14 @@ class Questionary extends React.Component {
 
     handleChange(value) {
         console.log(value)
-        if(value != undefined ){
+        if(value !== undefined ){
             const { Enterprise_selected} = this.state;
             let key = parseInt(value.key.split('_')[1],10);
             let id_enterprise = parseInt(value.key.split('_')[2],10);
             let label = value.label;
            
             for(let [i, element] of Enterprise_selected.entries()){
-                 element.key == key && (Enterprise_selected.splice(i,1))   
+                 element.key === key && (Enterprise_selected.splice(i,1))   
             };
     
             Enterprise_selected.push({key,label, id_enterprise});
@@ -58,7 +58,7 @@ class Questionary extends React.Component {
             return <Redirect push to="/Seleccion"/>
         }
 
-        if(this.props.Subsector.length == 0){
+        if(this.props.Subsector.length === 0){
             return <Redirect push to="/No"/>
         }
 
