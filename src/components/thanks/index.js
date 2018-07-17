@@ -27,10 +27,6 @@ class Goodbay extends Component {
             .bind(this);
     }
 
-    componentDidMount() {
-        this.showConfirm()
-    }
-
     showConfirm() {
         confirm({
           title: '¡Gracias!',
@@ -70,6 +66,10 @@ class Goodbay extends Component {
 
         if(rand === '' && string == 'registrado'){
             return <Redirect push to="/No"/>
+        }
+
+        if(string === 'respondido'){
+            this.showConfirm()
         }
 
         const MYURL = URLWEB+rand;
