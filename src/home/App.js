@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Routes from '../routes';
 //import {ThemeConsumer} from '../context';
-import logo from '../images/locoA.jpg';
+import logo from '../images/logo.png';
 import './app.css';
 
 export default class App extends Component {

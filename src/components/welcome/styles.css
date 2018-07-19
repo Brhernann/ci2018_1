@@ -1,11 +1,11 @@
 .ant-carousel .slick-slide {
-    text-align: center;
-    height: 50vh;
-    overflow: hidden;
-    background-position: center center;
-    background-size: cover;
-  }
+  text-align: center;
+  height: 50vh;
+  overflow: hidden;
+  background-position: center center;
+  background-size: cover;
+}
 
-.colorempaty{
+.colorempaty {
   color: black;
 }
