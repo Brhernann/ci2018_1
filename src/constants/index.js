@@ -5,10 +5,10 @@ export const FETCHING_DATA = 'FETCHING_DATA';
 export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS';
 export const FETCHING_DATA_FAILURE = 'FETCHING_DATA_FAILURE';
 
-/* export const URLWEB = 'http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/';
-export const URL = 'http://mainmia.us-west-2.elasticbeanstalk.com/webservices/'; */
-export const URLWEB = 'localhost:3000/#/bienvenido/';
-export const URL = 'http://localhost:8081/webservices/';
+export const URLWEB = 'http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/';
+export const URL = 'http://mainmia.us-west-2.elasticbeanstalk.com/webservices/';
+/* export const URLWEB = 'localhost:3000/#/bienvenido/';
+export const URL = 'http://localhost:8081/webservices/'; */
 
 export const WS = {
     InsertEnterprise_evaluation: URL + 'InsertEnterprise_evaluation',
