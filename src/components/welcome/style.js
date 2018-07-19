@@ -43,56 +43,57 @@ import Artboard3 from './pics/Artboard3.png';
     margin-left: 5%;
 } */
 
-export const Div1 = styled.div `
+export const Div1 = styled.div`
 
   background-image: url(${Artboard});
-  ${media.phone ` 
+  ${media.phone` 
   background-image: url(${ArtboardPhone});
 `}
 `;
 
-export const Div2 = styled.div `
+export const Div2 = styled.div`
   background-image: url(${Artboard2});
-    ${media.phone ` 
+    ${media.phone` 
   background-image: url(${Artboard2Phone});
 `};
 `;
 
-export const Div3 = styled.div `
+export const Div3 = styled.div`
   background-image: url(${Artboard3});
 `;
 
-export const DivContent = styled.div `
+export const DivContent = styled.div`
 width:45%;
-${media.phone ` 
+${media.phone` 
 width:99%;
 `};
 `;
 
-export const DivContent2 = styled.div `
+export const DivContent2 = styled.div`
     width: 40%;
     float: right;
-    ${media.phone ` 
+    ${media.phone` 
     width:99%;
     `};
 `;
 
-export const Divh3 = styled.h3 `
+export const Divh3 = styled.h3`
 margin-top:1vw;
-color:darkkhaki;
+color:white;
 font-style:oblique;
 text-decoration: underline;
 `;
 
-export const Divh4 = styled.h4 `
+export const Divh4 = styled.h4`
 padding:1vw;
+padding-right: 6vw;
 color:white;
 font-weight:100;
 text-align:justify;
 font-size:85%;
 `;
 
-export const Divh42 = styled.h4 `
+export const Divh42 = styled.h4`
 padding:1vw;
 color:white;
 font-weight:100;
