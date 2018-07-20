@@ -47,7 +47,7 @@ export const Div1 = styled.div`
 
   background-image: url(${Artboard});
   ${media.phone` 
-  background-image: url(${ArtboardPhone});
+  background-image: url(${Artboard3});
 `}
 `;
 
@@ -82,6 +82,11 @@ margin-top:1vw;
 color:white;
 font-style:oblique;
 text-decoration: underline;
+${media.phone` 
+font-size:90%;
+margin-top:3vw;
+margin-bottom:15vw;
+`};
 `;
 
 export const Divh4 = styled.h4`
@@ -91,6 +96,9 @@ color:white;
 font-weight:100;
 text-align:justify;
 font-size:100%;
+${media.phone` 
+font-size:75%;
+`};
 `;
 
 export const Divh42 = styled.h4`
@@ -99,6 +107,10 @@ color:white;
 font-weight:100;
 text-align:justify;
 font-size:100%
+${media.phone` 
+font-size:85%;
+`};
+
 `;
 
 /* .slide {
