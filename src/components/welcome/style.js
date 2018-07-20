@@ -88,7 +88,7 @@ font-size:85%;
 
 export const Divh4 = styled.h4`
 padding:1vw;
-padding-right: 6vw;
+padding-right:6vw;
 color:white;
 font-weight:100;
 text-align:justify;
