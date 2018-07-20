@@ -14,9 +14,7 @@ export const buttom_Back_next = (back, next) => {
                     <Tooltip placement="bottomRight" title={'Volver'}>
                         <Button
                             type="primary"
-                            style={{
-                                marginRight: 5
-                            }}>
+                            style={{ marginRight: 5 }}>
                             <Icon type="left"/>
                         </Button>
                     </Tooltip>
