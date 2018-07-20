@@ -86,11 +86,11 @@ text-decoration: underline;
 
 export const Divh4 = styled.h4`
 padding:1vw;
-padding-right: 6vw;
+padding-right: 3vw;
 color:white;
 font-weight:100;
 text-align:justify;
-font-size:85%;
+font-size:100%;
 `;
 
 export const Divh42 = styled.h4`
@@ -98,7 +98,7 @@ padding:1vw;
 color:white;
 font-weight:100;
 text-align:justify;
-font-size:77%
+font-size:100%
 `;
 
 /* .slide {
