@@ -44,8 +44,8 @@ import Artboard3 from './pics/Artboard3.png';
 } */
 
 export const Div1 = styled.div`
-
   background-image: url(${Artboard});
+  background
   ${media.phone` 
   background-image: url(${ArtboardPhone});
 `}
@@ -79,9 +79,11 @@ export const DivContent2 = styled.div`
 
 export const Divh3 = styled.h3`
 margin-top:1vw;
+padding:1vw;
 color:white;
-font-style:oblique;
-text-decoration: underline;
+font-weight:100;
+text-align:justify;
+font-size:85%;
 `;
 
 export const Divh4 = styled.h4`
@@ -98,7 +100,7 @@ padding:1vw;
 color:white;
 font-weight:100;
 text-align:justify;
-font-size:77%
+font-size:85%
 `;
 
 /* .slide {

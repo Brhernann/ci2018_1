@@ -16,9 +16,8 @@ class Welcome extends React.Component {
                 title={WELCOME_MESSAGE.FROM_REGISTER}
                 bordered={false}
                 style={cardstyle}>
-                <Carousel autoplay>
+                <Carousel>
                     <Div1>
-
                         <DivContent>
                             <Divh3> {VISION.TITLE} </Divh3>
                             <Divh4> {ReactHtmlParser(VISION.RESUMEN)} </Divh4>
@@ -46,7 +45,7 @@ class Welcome extends React.Component {
                         Comenzar
                    </Button>
                 </Link>
-            </Card >
+            </Card>
         );
     }
 }
