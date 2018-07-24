@@ -26,25 +26,21 @@ import Artboard3 from './pics/Artboard3.png';
 /* .carousel-caption {
     padding-bottom: 100px;
 }
-
 .ant-carousel.slick-slide {
     text-align: center;
     height: 160px;
     line-height: 160px;
     overflow: hidden;
 }
-
 .ant-carousel.slick-slide h3 {
     color: #fff;
     position: absolute;
 }
-
 .ant-card-body {
     margin-left: 5%;
 } */
 
 export const Div1 = styled.div`
-
   background-image: url(${Artboard});
   ${media.phone` 
   background-image: url(${Artboard3});
@@ -106,11 +102,10 @@ padding:1vw;
 color:white;
 font-weight:100;
 text-align:justify;
-font-size:100%
+font-size:100%;
 ${media.phone` 
 font-size:85%;
 `};
-
 `;
 
 /* .slide {
