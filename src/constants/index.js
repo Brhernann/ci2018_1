@@ -47,14 +47,14 @@ export const VISION = {
 export const EMPATIA = {
     TITLE: 'Índice Verificado.',
     RESUMEN: '<p>El Índice Corporativo de Empatía tiene tres fases de evaluación de la empatía empresarial' +
-        'y consulta a siete grupos de interés, además permite la autoevaluación de las empresas participantes.' +
-        'Se encuentra en proceso de verificación bajo la norma internacional ISAE 3000 por una empresa internacional de auditoria.</p>'
+        ' y consulta a siete grupos de interés, además permite la autoevaluación de las empresas participantes.' +
+        ' Se encuentra en proceso de verificación bajo la norma internacional ISAE 3000 por una empresa internacional de auditoria.</p>'
 };
 
 export const MISION = {
     TITLE: 'Metodología.',
     RESUMEN: '<p>Nuestra metodología está validada en Inglaterra, contiene una parte similar al estudio que se aplica hace algunos años' +
-        ' en ese país y se encuentra adaptada a nuestra cultura local y ámbito empresarial. la propiedad intelectual del indice corporativa pertenece a Corporate Index' +
+        ' en ese país y se encuentra adaptada a nuestra cultura local y ámbito empresarial. La propiedad intelectual del indice corporativa pertenece a Corporate Index' +
         ' y ha sido desarrollada en Chile.' +
         '</p>'
 };
