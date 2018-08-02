@@ -6,9 +6,7 @@ import {Link} from 'react-router-dom';
 export const buttom_Back_next = (back, next) => {
 
     return (
-        <div style={{
-                paddingTop: 50
-            }}>
+        <div style={{paddingTop: 50}}>
             <Button.Group size='large'>
                 <Link to={back}>
                     <Tooltip placement="bottomRight" title={'Volver'}>
