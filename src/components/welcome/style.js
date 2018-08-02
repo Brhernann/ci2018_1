@@ -42,6 +42,7 @@ import Artboard3 from './pics/Artboard3.png';
 
 export const Div1 = styled.div`
   background-image: url(${Artboard});
+  height: -webkit-fill-available;
   ${media.phone` 
   background-image: url(${Artboard3});
 `}
@@ -49,6 +50,7 @@ export const Div1 = styled.div`
 
 export const Div2 = styled.div`
   background-image: url(${Artboard2});
+  height: -webkit-fill-available;
     ${media.phone` 
   background-image: url(${Artboard2Phone});
 `};
@@ -56,6 +58,7 @@ export const Div2 = styled.div`
 
 export const Div3 = styled.div`
   background-image: url(${Artboard3});
+  height: -webkit-fill-available;
 `;
 
 export const DivContent = styled.div`
