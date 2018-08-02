@@ -62,15 +62,16 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  background: url('http://svgshare.com/i/41_.svg') no-repeat center center / 16px;
+  background: url('https://svgshare.com/i/7ca.svg') no-repeat center center / 16px;
   width: 32px;
   height: 32px;
   text-indent: -9999px;
   cursor: pointer;
+  background-color: 
 }
 
 .previousButton:hover, .nextButton:hover {
-background: url('http://svgshare.com/i/41_.svg') no-repeat center center / 16px;
+background: url('https://svgshare.com/i/7ca.svg') no-repeat center center / 14px;
 }
 
 .previousButton {
@@ -112,10 +113,6 @@ right: -10px;
           transform: translate(-50%, -50%);
 }
 
-.slider-content .inner button{
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
-}
 
 .slider-content .inner h1 {
   font-weight: 900;
@@ -178,16 +175,24 @@ right: -10px;
   .slider-wrapper, .slide {
     height: calc(80vh - 75px);
   }    
+
 }
 
 @media (max-height: 600px) {
   .slider-content .inner h1 {
-    font-size: 32px;
+    font-size: 20px;
   }    
+  
 }
 
 @media (max-width: 640px) {
   .slider-content .inner h1 {
-    font-size: 32px;
+    font-size: 20px;
+    width: 100%;
   }
+  .slider-content .inner {
+    padding: 0 23px;
+    width: 100%;
+  }
+
 }

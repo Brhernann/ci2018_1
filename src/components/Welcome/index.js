@@ -19,26 +19,52 @@ const content = [
 	{
 		title: VISION.TITLE,
 		description: ReactHtmlParser(VISION.RESUMEN),
-        image: Artboard,
-        style: {left: '23%'}
+        image: {background: `url('${Artboard}') no-repeat center center`},
+        imageMobile: {background: `url('${Artboard2Phone}') no-repeat center center`},
+        style: {left: '23%'},
+        mobile: {left: '50%'}
 	},
 	{
 		title: MISION.TITLE,
 		description: ReactHtmlParser(MISION.RESUMEN),
-        image: Artboard2,
-        style: {left: '80%'}
+        image: {background: `url('${Artboard2}') no-repeat center center`},
+        imageMobile: {background: `url('${Artboard2Phone}') no-repeat center center`},
+        style: {left: '80%'},
+        mobile: {left: '50%'}
 	},
 	{
 		title: EMPATIA.TITLE,
 		description: ReactHtmlParser(EMPATIA.RESUMEN),
-        image: Artboard3,
-        style: {left: '50%'}
+        image:  {background: `url('${Artboard3}') no-repeat center center`},
+        imageMobile: {background: `url('${Artboard2Phone}') no-repeat center center`},
+        style: {left: '50%'},
+        mobile: {left: '50%'}
 	}
 ];
 
 class Welcome extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            mobile: false,
+        }
+
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+    
+    resize() {
+        this.setState({mobile: window.innerWidth <= 760});
+    }
+
     render() {
+
+        const { mobile } = this.state;
 
         return (
             <Card
@@ -46,13 +72,13 @@ class Welcome extends React.Component {
                 bordered={false}
                 style={cardstyle}>
 
-                        <Slider className="slider-wrapper">
+                        <Slider className="slider-wrapper" autoplay={3000}>
                         {content.map((item, index) => (
                         <div
                         key={index}
                         className="slider-content"
-                        style={{ background: `url('${item.image}') no-repeat center center` }}>
-                        <div className="inner" style={item.style}>
+                        style={ mobile ? item.imageMobile : item.image }>
+                        <div className="inner" style={mobile ? item.mobile : item.style}>
                         <h1>{item.title}</h1>
 						<div>{item.description}</div>
                         </div>
