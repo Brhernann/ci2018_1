@@ -17,7 +17,7 @@ class Welcome extends React.Component {
                 bordered={false}
                 style={cardstyle}>
                 <Carousel>
-                    <Div1>
+                    <Div1> 
                         <DivContent>
                             <Divh3> {VISION.TITLE} </Divh3>
                             <Divh4> {ReactHtmlParser(VISION.RESUMEN)} </Divh4>
@@ -25,7 +25,7 @@ class Welcome extends React.Component {
 
                     </Div1>
 
-                    <Div2>
+                    <Div2 >
                         <DivContent2>
                             <Divh3> {MISION.TITLE} </Divh3>
                             <Divh42> {ReactHtmlParser(MISION.RESUMEN)} </Divh42>

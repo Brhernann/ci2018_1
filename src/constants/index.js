@@ -47,14 +47,14 @@ export const VISION = {
 export const EMPATIA = {
     TITLE: 'Índice Verificado.',
     RESUMEN: '<p>El Índice Corporativo de Empatía tiene tres fases de evaluación de la empatía empresarial' +
-        'y consulta a siete grupos de interés, además permite la autoevaluación de las empresas participantes.' +
-        'Se encuentra en proceso de verificación bajo la norma internacional ISAE 3000 por una empresa internacional de auditoria.</p>'
+        ' y consulta a siete grupos de interés, además permite la autoevaluación de las empresas participantes.' +
+        ' Se encuentra en proceso de verificación bajo la norma internacional ISAE 3000 por una empresa internacional de auditoria.</p>'
 };
 
 export const MISION = {
     TITLE: 'Metodología.',
     RESUMEN: '<p>Nuestra metodología está validada en Inglaterra, contiene una parte similar al estudio que se aplica hace algunos años' +
-        ' en ese país y se encuentra adaptada a nuestra cultura local y ámbito empresarial. la propiedad intelectual del indice corporativa pertenece a Corporate Index' +
+        ' en ese país y se encuentra adaptada a nuestra cultura local y ámbito empresarial. La propiedad intelectual del indice corporativa pertenece a Corporate Index' +
         ' y ha sido desarrollada en Chile.' +
         '</p>'
 };
@@ -91,13 +91,13 @@ export const WELCOME_MESSAGE = {
 
 export const QUESTIONARY_1 = {
     title: 'LAS EMPRESAS CON MEJOR EMPATÍA CORPORATIVA',
-    subtitle: ' La empatía corporativa a nivel empresarial se define:',
-    resumen: 'como la capacidad de las organizaciones de hacerse cargo de las expectativas y necesidades de sus públicos y stakeholders en general,' +
+    subtitle: ' La empatía corporativa a nivel empresarial se define como:',
+    resumen: ' La capacidad de las organizaciones de hacerse cargo de las expectativas y necesidades de sus públicos y stakeholders en general,' +
              ' adecuando en consecuencia sus acciones y mensajes para entregar así una respuesta'+
              ' más alineada a estas necesidades.',
     question: 'Considerando la definición anterior y según su punto de vista personal, ' +
             'señale una empresa de cada uno de los siguientes sub sectores de la industria '+
-            'que Ud considere <b><u>Empática</u></b> en su que hacer empresarial. '+
+            'que Ud considere <b><u>Empática</u></b> en su quehacer empresarial. '+
             '<br><br>' +
             '(los nombres de las empresas se desplegarán por sub sector)' +
             '<br><br>' +
