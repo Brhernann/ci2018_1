@@ -75,6 +75,11 @@ export const L_REGISTER = {
     LABEL_7: 'Región',
     LABEL_8: 'Comuna',
     LABEL_9: ' Tipo de empresa',
+    LABEL_10: 'Inscribase como uno de nuestros expertos para participar'+
+              '<br>'+
+              'en la segunda fase de la investigacion y sea parte del selecto' + 
+              '<br>'+
+              'grupo que evaluara a las empresas en torno sus niveles',
 }
 
 export const END_MSSAGE = {

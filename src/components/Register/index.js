@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import jwt from 'jwt-simple';
 import moment from 'moment';
 import rand from 'random-key';
+import ReactHtmlParser from 'react-html-parser';
 import { FirstChild, FormContent } from './css'
 import { cardstyle } from '../globalcss'
 import { L_REGISTER, SECRET_TOKEN } from '../../constants';
@@ -20,6 +21,7 @@ import {getRegister, getToken} from '../../actions/Register';
 import fetchSector from '../../actions/FetchSector';
 import InsertEnterprise_E from '../../API/InsertEnterprise_evaluation';
 import InsertLink from '../../API/InsertLink';
+import './style.css';
 const Option = Select.Option;
 const Item = Form.Item;
 
@@ -134,6 +136,7 @@ class Register extends Component {
         const label_7_Error = isFieldTouched('label_7') && getFieldError('label_7');
         const label_8_Error = isFieldTouched('label_8') && getFieldError('label_8');
         const label_9_Error = isFieldTouched('label_9') && getFieldError('label_9');
+        const label_10_Error = isFieldTouched('label_10') && getFieldError('label_10');
 
         if (this.state.redirect) {
             return <Redirect push to="/RegistroMail"/>;
@@ -386,6 +389,29 @@ class Register extends Component {
                                             <Option value="medium">Empresa mediana</Option>
                                             <Option value="large">Emprega grande</Option>
                                         </Select>
+                                    )
+                                }
+                            </Item>
+                        </FirstChild>
+                        <FirstChild>
+                            <Item className='otros'
+                                label={ReactHtmlParser(L_REGISTER.LABEL_10)}
+                                validateStatus={label_10_Error
+                                    ? 'error'
+                                    : ''}
+                                help={label_10_Error || ''}>
+                                {
+                                    getFieldDecorator('label_10', {
+                                        rules: [
+                                            {
+                                                required: false,
+                                                message: 'Porfavor ingrese ' + L_REGISTER.LABEL_10
+                                            }
+                                        ]
+                                    })(
+                                        <Input
+                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Otros" />
                                     )
                                 }
                             </Item>
