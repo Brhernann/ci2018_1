@@ -105,9 +105,9 @@ class GETQuestion extends React.Component {
         return (
             <Card title="Corporate Index" bordered={false} style={cardstyle}>
                 <div>
-                    <p>Para una buena evaluacion y transparencia es necesario agregar los correos de
-                        los funcionarios que participarán en este proceso. (Ingresar correos separados
-                        por una coma "," )
+                    <p>“Estimado usuario, le solicitamos ingresar, los correos de los ejecutivos que contestarán esta breve encuesta. 
+                        (reportes directos de la Gerencia General y/o miembros del directorio) 
+                        Ingresar correos separados por una coma.
                     </p>
                 </div>
 

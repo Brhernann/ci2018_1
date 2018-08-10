@@ -385,9 +385,10 @@ class Register extends Component {
                                         ]
                                     })(
                                         <Select placeholder="Ejemplo">
-                                            <Option value="little">Empresa pequeña</Option>
-                                            <Option value="medium">Empresa mediana</Option>
-                                            <Option value="large">Emprega grande</Option>
+                                            <Option value="little">Empresa pequeña (11 y 30 Colaboradores)</Option>
+                                            <Option value="medium">Empresa mediana (Hasta 100 Colaboradores)</Option>
+                                            <Option value="large">Emprega grande (Desde 100 y más Colaboradores)
+</Option>
                                         </Select>
                                     )
                                 }

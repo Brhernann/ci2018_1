@@ -91,7 +91,7 @@ class Goodbay extends Component {
                     <br/>
                     <div>
                         {
-                            string === 'registrado' && <p>Copie y pegue en el portapapeles el siguiente link para responder la encuesta.</p>
+                            string === 'registrado' && <p>Copie y pegue el siguiente link en un correo de invitación el cual usted debe enviar a los correos que ya inscribió para que contesten la encuesta desde este link.</p>
                         }
 
                         <div
