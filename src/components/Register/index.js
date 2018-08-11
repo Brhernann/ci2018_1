@@ -5,7 +5,8 @@ import {
     Button,
     Select,
     Card,
-    Icon
+    Icon,
+    Checkbox
 } from 'antd';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
@@ -103,6 +104,7 @@ class Register extends Component {
         e.preventDefault();
         await this.props.form
             .validateFields((err, values) => {
+                console.log('aaaa',values)
                 if (!err) {
                     InsertEnterprise_E(values)
                         .then(res => {
@@ -121,9 +123,13 @@ class Register extends Component {
             .filter(q => q.region === value)
         this.setState({ Communes, CommunesBool: false })
     }
+    
 
     render() {
 
+        function onChange(e) {
+            console.log(`checked = ${e.target.checked}`);
+          }
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         const { CommunesBool, Communes } = this.state;
 
@@ -136,7 +142,6 @@ class Register extends Component {
         const label_7_Error = isFieldTouched('label_7') && getFieldError('label_7');
         const label_8_Error = isFieldTouched('label_8') && getFieldError('label_8');
         const label_9_Error = isFieldTouched('label_9') && getFieldError('label_9');
-        const label_10_Error = isFieldTouched('label_10') && getFieldError('label_10');
 
         if (this.state.redirect) {
             return <Redirect push to="/RegistroMail"/>;
@@ -387,37 +392,25 @@ class Register extends Component {
                                         <Select placeholder="Ejemplo">
                                             <Option value="little">Empresa pequeña (11 y 30 Colaboradores)</Option>
                                             <Option value="medium">Empresa mediana (Hasta 100 Colaboradores)</Option>
-                                            <Option value="large">Emprega grande (Desde 100 y más Colaboradores)
-</Option>
+                                            <Option value="large">Emprega grande (Desde 100 y más Colaboradores) </Option>
                                         </Select>
                                     )
                                 }
                             </Item>
                         </FirstChild>
                         <FirstChild>
-                            <Item className='otros'
-                                label={ReactHtmlParser(L_REGISTER.LABEL_10)}
-                                validateStatus={label_10_Error
-                                    ? 'error'
-                                    : ''}
-                                help={label_10_Error || ''}>
-                                {
-                                    getFieldDecorator('label_10', {
-                                        rules: [
-                                            {
-                                                required: false,
-                                                message: 'Porfavor ingrese ' + L_REGISTER.LABEL_10
-                                            }
-                                        ]
-                                    })(
-                                        <Input
-                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                            placeholder="Otros" />
-                                    )
-                                }
-                            </Item>
+                            <p>
+                             Inscribase como uno de nuestros expertos para participar
+                            en la segunda fase de la investigacion y sea parte del selecto
+                            grupo que evaluara a las empresas en torno sus niveles
+                            </p>    
+                             {getFieldDecorator('label_10', {
+                             valuePropName: 'label_10',
+                            initialValue: false,
+                             })(
+                                        <Checkbox>Inscribeme </Checkbox>
+                                    )}
                         </FirstChild>
-
                         <FirstChild>
                             <Item>
                                 <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>

@@ -3,6 +3,7 @@ import qs from 'qs';
 import {WS} from '../constants';
 
 export default async (data) => {
+    let experto = data.label_10 ? 1 : 0;
     return await axios.post(WS.InsertEnterprise_evaluation, qs.stringify({
         Contact_Name: data.label_1,
         Position: data.label_2,
@@ -12,6 +13,7 @@ export default async (data) => {
         City: data.label_7,
         Commune: data.label_8,
         Size_ID: 1,
-        Sector_ID: data.label_5
+        Sector_ID: data.label_5,
+        Expert:experto
     }))
 }
