@@ -400,15 +400,15 @@ class Register extends Component {
                         </FirstChild>
                         <FirstChild>
                             <p>
-                             Inscribase como uno de nuestros expertos para participar
-                            en la segunda fase de la investigacion y sea parte del selecto
-                            grupo que evaluara a las empresas en torno sus niveles
+                            Inscríbase como uno de nuestros expertos para participar en la segunda fase de la 
+                            investigación y sea parte del selecto grupo que evaluará a las empresas en torno 
+                            a sus niveles de empatía
                             </p>    
                              {getFieldDecorator('label_10', {
                              valuePropName: 'label_10',
                             initialValue: false,
                              })(
-                                        <Checkbox>Inscribeme </Checkbox>
+                                        <Checkbox>Inscríbeme </Checkbox>
                                     )}
                         </FirstChild>
                         <FirstChild>
