@@ -77,7 +77,7 @@ class Register extends Component {
             sub: 'VALIDO',
             iat: moment().unix(),
             exp: moment()
-                .add(3, 'months')
+                .add(3, 'M')
                 .unix()
         }
         let objtoken = {
