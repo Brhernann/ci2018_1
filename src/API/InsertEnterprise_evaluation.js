@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import {WS} from '../constants';
+import { token } from '../jwt';
 
 export default async (data) => {
     let experto = data.label_10 ? 1 : 0;
@@ -15,5 +16,9 @@ export default async (data) => {
         Size_ID: 1,
         Sector_ID: data.label_5,
         Expert:experto
-    }))
+    }),{
+        headers: {
+            Authorization: "JERA " + token()
+        }
+    });
 }

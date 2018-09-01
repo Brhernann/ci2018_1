@@ -13,7 +13,6 @@ import { connect } from 'react-redux';
 import jwt from 'jwt-simple';
 import moment from 'moment';
 import rand from 'random-key';
-import ReactHtmlParser from 'react-html-parser';
 import { FirstChild, FormContent } from './css'
 import { cardstyle } from '../globalcss'
 import { L_REGISTER, SECRET_TOKEN } from '../../constants';

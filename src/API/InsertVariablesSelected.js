@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import {OHWS} from '../constants';
+import { token } from '../jwt';
 
 export default async (data) => {
     return await axios.post(OHWS.InsertVariablesSelected, qs.stringify({
@@ -38,5 +39,9 @@ export default async (data) => {
         Answer_15: data[14].Answer,
         Answer_16: data[15].Answer,
         Answer_17: data[16].Answer
-    }))
+    }),{
+        headers: {
+            Authorization: "JERA " + token()
+        }
+    });
 }

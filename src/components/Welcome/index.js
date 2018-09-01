@@ -85,32 +85,6 @@ class Welcome extends React.Component {
                         </div>))}
                         </Slider>
 
-                {/* <Carousel>
-                    <Div1> 
-                        <DivContent>
-                            <Divh3> {VISION.TITLE} </Divh3>
-                            <Divh4> {ReactHtmlParser(VISION.RESUMEN)} </Divh4>
-                        </DivContent>
-
-                    </Div1>
-
-                    <Div2 >
-                        <DivContent2>
-                            <Divh3> {MISION.TITLE} </Divh3>
-                            <Divh42> {ReactHtmlParser(MISION.RESUMEN)} </Divh42>
-                        </DivContent2>
-                    </Div2>
-
-                    <Div3>
-                        <DivContent>
-                            <Divh3> {EMPATIA.TITLE} </Divh3>
-                            <Divh4> {ReactHtmlParser(EMPATIA.RESUMEN)} </Divh4>
-                        </DivContent>
-                    </Div3>
-
-                </Carousel> */}
-
-
                 <Link to='/registro'>
                     <Button type="primary" style={{ marginTop: 30 }}>
                         Comenzar
