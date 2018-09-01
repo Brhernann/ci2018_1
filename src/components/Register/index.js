@@ -70,7 +70,7 @@ class Register extends Component {
         })
     }
 
-    createToken = (id, ) => {
+    createToken = id => {
 
         const payload = {
             sub: 'VALIDO',
@@ -92,7 +92,6 @@ class Register extends Component {
 
         InsertLink(objtoken)
             .then(res => {
-                console.log(res);
                 this.setState({redirect: true});
             })
             .catch(err => console.log(err))
@@ -103,7 +102,6 @@ class Register extends Component {
         e.preventDefault();
         await this.props.form
             .validateFields((err, values) => {
-                console.log('aaaa',values)
                 if (!err) {
                     InsertEnterprise_E(values)
                         .then(res => {

@@ -71,8 +71,6 @@ class GETQuestion extends React.Component {
         let all = await this.props.companyReducers.AllTheAnswer;
         all.FreeQuestion = Object.values(value)[0];
 
-        console.log('AAAAAALL',all)
-
         await this.props.onOpenQuestionChanged(all);
 
         // _________________________OK

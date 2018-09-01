@@ -63,8 +63,6 @@ class Selection extends React.Component {
             return <Redirect push to="/Pregunta" />
          }
 
-        console.log(this.props.company_selected)
-
         return (
             <Card title={'Lo invitamos a evaluar esta empresa '} style={cardstyle}>
                 <div className={content}>

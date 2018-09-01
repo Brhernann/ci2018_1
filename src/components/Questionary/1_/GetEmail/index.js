@@ -17,7 +17,6 @@ class GETMail extends React.Component {
             btnactive: true,
             mymail:'',
         }
-        console.log(this.props.companyReducers.AllMails)
     }
 
     handleChange(value){
