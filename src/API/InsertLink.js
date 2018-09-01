@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import {WS} from '../constants';
-import { token } from '../jwt';
+import { token as tokenGenerated } from '../jwt';
 
 export default async (data) => {
     return await axios.post(WS.InsertLink, qs.stringify({
@@ -12,7 +12,7 @@ export default async (data) => {
 
     }),{
         headers: {
-            Authorization: "JERA " + token()
+            Authorization: "JERA " + tokenGenerated()
         }
     });
 }
