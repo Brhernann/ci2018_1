@@ -125,10 +125,6 @@ class Register extends Component {
     
 
     render() {
-
-        function onChange(e) {
-            console.log(`checked = ${e.target.checked}`);
-          }
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         const { CommunesBool, Communes } = this.state;
 

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import media from '../media';
 import Artboard from './pics/Artboard.png';
-import ArtboardPhone from './pics/ArtboardPhone.png';
 import Artboard2 from './pics/Artboard2.png';
 import Artboard2Phone from './pics/Artboard2Phone.png';
 import Artboard3 from './pics/Artboard3.png';

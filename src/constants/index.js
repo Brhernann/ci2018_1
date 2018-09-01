@@ -43,8 +43,10 @@ export const VISION = {
         '<p>El Índice de Empatía Corporativa es nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial.' +
         '<br>' +
         'Es una herramienta de gestión sin costo para las empresas o instituciones que necesiten medir los niveles de empatía de su compañía ' +
-        'con todos sus stakeholders o públicos estratégicos.' + '</p>'
+        'con todos sus stakeholders o públicos estratégicos.' +
+        '</p>'
 };
+
 export const EMPATIA = {
     TITLE: 'Índice Verificado.',
     RESUMEN: '<p>El Índice Corporativo de Empatía tiene tres fases de evaluación de la empatía empresarial' +

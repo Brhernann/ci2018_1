@@ -4,11 +4,9 @@ import { Card, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { cardstyle } from '../globalcss';
 import { VISION, MISION, WELCOME_MESSAGE, EMPATIA } from '../../constants';
-import { Div1, Div2, Div3, DivContent, DivContent2, Divh3, Divh4, Divh42 } from './style'
 import './styles.css';
 import ReactHtmlParser from 'react-html-parser';
 import Artboard from './pics/Artboard.png';
-import ArtboardPhone from './pics/ArtboardPhone.png';
 import Artboard2 from './pics/Artboard2.png';
 import Artboard2Phone from './pics/Artboard2Phone.png';
 import Artboard3 from './pics/Artboard3.png';
