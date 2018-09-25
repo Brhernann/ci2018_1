@@ -5,7 +5,7 @@ export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS';
 export const FETCHING_DATA_FAILURE = 'FETCHING_DATA_FAILURE';
 
 
- export const URLWEB = 'corporateindex.cl/EmpatiaCorporativa/#/bienvenido/';
+ export const URLWEB = 'www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/';
  export const URL = 'http://serverprod.us-west-2.elasticbeanstalk.com//webservices/'; 
 
 /* export const URLWEB = 'http://localhost:3000/#/bienvenido/';
