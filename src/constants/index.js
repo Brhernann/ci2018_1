@@ -6,7 +6,7 @@ export const FETCHING_DATA_FAILURE = 'FETCHING_DATA_FAILURE';
 
 
  export const URLWEB = 'http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/';
- export const URL = 'serverprod.us-west-2.elasticbeanstalk.com/webservices/'; 
+ export const URL = 'http://serverprod.us-west-2.elasticbeanstalk.com/webservices/'; 
 
 /* export const URLWEB = 'http://localhost:3000/#/bienvenido/';
 export const URL = 'http://localhost:8081/webservices/'; */
