@@ -70,15 +70,10 @@ class Register extends Component {
         })
     }
 
-    createToken = (id, ) => {
+    createToken = id => {
 
-        const payload = {
-            sub: 'VALIDO',
-            iat: moment().unix(),
-            exp: moment()
-                .add(3, 'M')
-                .unix()
-        }
+        const payload = { sub: 'VALIDO', iat: moment().unix(), exp: moment().add(3, 'M').unix() }
+
         let objtoken = {
             token: jwt.encode(payload, SECRET_TOKEN),
             rand: rand.generateBase30(5),
@@ -86,24 +81,20 @@ class Register extends Component {
             ID: id
         }
 
-        this
-            .props
-            .Token(objtoken);
+        this.props.Token(objtoken);
 
         InsertLink(objtoken)
             .then(res => {
-                console.log(res);
                 this.setState({redirect: true});
             })
             .catch(err => console.log(err))
-        }
+    }
 
     handleSubmit = async (e) => {
 
         e.preventDefault();
         await this.props.form
             .validateFields((err, values) => {
-                console.log('aaaa',values)
                 if (!err) {
                     InsertEnterprise_E(values)
                         .then(res => {

@@ -79,7 +79,6 @@ class GETQuestion extends React.Component {
             for (let mail of success) {
                 InsertMail_surveyed({Mail: mail, ID: ID})
                     .then(res => {
-                        console.log(res)
                         this.props.getEmails(success);
                         this.props.resetRegister({id:'nones'})
                         this.setState({redirect: true});

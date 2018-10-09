@@ -49,7 +49,6 @@ class Goodbay extends Component {
             .form
             .validateFields((err, values) => {
                 if (!err) {
-                    console.log(values)
                     notification.success({message: 'Correo Guardado', description: ''})
                 }
             });

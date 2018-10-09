@@ -35,7 +35,6 @@ class Questionary extends React.Component {
     }
 
     handleChange(value) {
-        console.log(value)
         if(value !== undefined ){
             const { Enterprise_selected} = this.state;
             let key = parseInt(value.key.split('_')[1],10);

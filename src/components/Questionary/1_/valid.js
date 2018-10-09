@@ -68,7 +68,6 @@ class Validator extends Component {
 
         ReadLink({Rand: RAND})
             .then(res => {
-                console.log(res.data.data)
                 try {
                     if (res.data.data.length !== 0) {
 
