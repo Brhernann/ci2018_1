@@ -19,7 +19,7 @@ import { L_REGISTER, SECRET_TOKEN } from '../../constants';
 import REGION from '../../json/Chile.json';
 import {getRegister, getToken} from '../../actions/Register';
 import fetchSector from '../../actions/FetchSector';
-import InsertEnterprise_E from '../../API/InsertEnterprise_evaluation';
+import InsertNaturalP from '../../API/InsertNatural_person';
 import InsertLink from '../../API/InsertLink';
 import './style.css';
 const Option = Select.Option;
@@ -96,7 +96,7 @@ class Persona extends Component {
         await this.props.form
             .validateFields((err, values) => {
                 if (!err) {
-                    InsertEnterprise_E(values)
+                    InsertNaturalP(values)
                         .then(res => {
                             this.createToken(res.data.id);
                             this.props.Company({id: res.data.id})
