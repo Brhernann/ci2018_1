@@ -28,7 +28,7 @@ export const OHWS = {
   InsertEnterprise_Selected: URL + "InsertEnterprise_Selected",
   InsertVariablesSelected: URL + "InsertVariablesSelected",
   InsertRelationship: URL + "InsertRelationship",
-  InsertRelationship_Person: URL + "InsertRelationship_Person",
+  InsertRelationShip_Person: URL + "InsertRelationShip_Person",
   InsertNatural_person: URL + "InsertNatural_person"
 };
 

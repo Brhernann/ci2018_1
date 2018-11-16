@@ -4,7 +4,7 @@ import { OHWS } from '../constants';
 import { token } from '../jwt';
 
 export default async (data) => {
-    return await axios.post(OHWS.InsertRelationship_Person, qs.stringify({
+    return await axios.post(OHWS.InsertRelationShip_Person, qs.stringify({
         Enterprise_Selected_ID: data.Enterprise_Selected_ID,
         Variables_Selected_ID: data.Variables_Selected_ID,
         Answer_To_Question_ID: data.Answer_To_Question_ID
