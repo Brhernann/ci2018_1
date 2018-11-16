@@ -97,7 +97,6 @@ class GETQuestion extends React.Component {
       element
     ] of arr_relation[0].InsertEnterprise_Selected.entries()) {
       if (person.status === "isPerson") {
-        console.log("SOY PERSONA CULIAO");
         InsertRelationShip_Person({
           Enterprise_Selected_ID: element.id,
           Variables_Selected_ID:
