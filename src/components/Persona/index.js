@@ -135,7 +135,7 @@ class Persona extends Component {
 
         return (
             <Card
-                title="Bienvenido, te invitamos a registrar los datos de empresa."
+                title="Bienvenido, te invitamos a registrar tus datos para responder la encuesta."
                 bordered={false}
                 style={cardstyle}>
                 <Form
@@ -194,55 +194,6 @@ class Persona extends Component {
 
                         <FirstChild>
                             <Item
-                                label={L_REGISTER.LABEL_3}
-                                validateStatus={label_3_Error
-                                    ? 'error'
-                                    : ''}
-                                help={label_3_Error || ''}>
-                                {
-                                    getFieldDecorator('label_3', {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                message: 'Porfavor ingrese ' + L_REGISTER.LABEL_3,
-                                                type: 'email'
-                                            }
-                                        ]
-                                    })(
-                                        <Input
-                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                            placeholder="Ejemplo" />
-                                    )
-                                }
-                            </Item>
-                        </FirstChild>
-
-                        <FirstChild>
-                            <Item
-                                label={L_REGISTER.LABEL_4}
-                                validateStatus={label_4_Error
-                                    ? 'error'
-                                    : ''}
-                                help={label_4_Error || ''}>
-                                {
-                                    getFieldDecorator('label_4', {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                message: 'Porfavor ingrese ' + L_REGISTER.LABEL_4
-                                            }
-                                        ]
-                                    })(
-                                        <Input
-                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                            placeholder="Ejemplo" />
-                                    )
-                                }
-                            </Item>
-                        </FirstChild>
-
-                        <FirstChild>
-                            <Item
                                 label={L_REGISTER.LABEL_5}
                                 validateStatus={label_5_Error
                                     ? 'error'
@@ -272,131 +223,7 @@ class Persona extends Component {
                                 }
                             </Item>
                         </FirstChild>
-
-                        <FirstChild>
-                            <Item
-                                label={L_REGISTER.LABEL_6}
-                                validateStatus={label_6_Error
-                                    ? 'error'
-                                    : ''}
-                                help={label_6_Error || ''}>
-                                {
-                                    getFieldDecorator('label_6', {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                message: 'Porfavor ingrese ' + L_REGISTER.LABEL_6
-                                            }
-                                        ]
-                                    })(
-                                        <Input
-                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                            placeholder="Ejemplo" />
-                                    )
-                                }
-                            </Item>
-                        </FirstChild>
-
-                        <FirstChild>
-                            <Item
-                                label={L_REGISTER.LABEL_7}
-                                validateStatus={label_7_Error
-                                    ? 'error'
-                                    : ''}
-                                help={label_7_Error || ''}>
-                                {
-                                    getFieldDecorator('label_7', {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                message: 'Porfavor ingrese ' + L_REGISTER.LABEL_7
-                                            }
-                                        ]
-                                    })(
-
-                                        <Select
-                                            placeholder="Ejemplo"
-                                            onChange={this
-                                                .GetCommune
-                                                .bind(this)}>
-                                            {
-                                                REGION
-                                                    .regiones
-                                                    .map((q, i) => <Option key={i} value={q.region}>{q.region}</Option>)
-                                            }
-                                        </Select>
-                                    )
-                                }
-                            </Item>
-                        </FirstChild>
-
-                        <FirstChild>
-                            <Item
-                                label={L_REGISTER.LABEL_8}
-                                validateStatus={label_8_Error
-                                    ? 'error'
-                                    : ''}
-                                help={label_8_Error || ''}>
-                                {
-                                    getFieldDecorator('label_8', {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                message: 'Porfavor ingrese ' + L_REGISTER.LABEL_8
-                                            }
-                                        ]
-                                    })(
-
-                                        <Select placeholder="Ejemplo" disabled={CommunesBool}>
-                                            {
-                                                Communes[0]
-                                                    .comunas
-                                                    .map((q, i) => <Option key={i} value={q}>{q}</Option>)
-                                            }
-                                        </Select>
-                                    )
-                                }
-                            </Item>
-                        </FirstChild>
-
-                        <FirstChild>
-                            <Item
-                                label={L_REGISTER.LABEL_9}
-                                validateStatus={label_9_Error
-                                    ? 'error'
-                                    : ''}
-                                help={label_9_Error || ''}>
-                                {
-                                    getFieldDecorator('label_9', {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                message: 'Porfavor ingrese ' + L_REGISTER.LABEL_9
-                                            }
-                                        ]
-                                    })(
-                                        <Select placeholder="Ejemplo">
-                                            <Option value="little">Empresa pequeña (11 y 30 Colaboradores)</Option>
-                                            <Option value="medium">Empresa mediana (Hasta 100 Colaboradores)</Option>
-                                            <Option value="large">Emprega grande (Desde 100 y más Colaboradores) </Option>
-                                        </Select>
-                                    )
-                                }
-                            </Item>
-                        </FirstChild>
-                        <FirstChild>
-                            <p>
-                            Inscríbase como uno de nuestros expertos para participar en la segunda fase de la 
-                            investigación y sea parte del selecto grupo que evaluará a las empresas en torno 
-                            a sus niveles de empatía
-                            </p>    
-                             {getFieldDecorator('label_10', {
-                             valuePropName: 'label_10',
-                            initialValue: false,
-                             })(
-                                        <Checkbox>Inscríbeme </Checkbox>
-                                    )}
-                        </FirstChild>
+                        
                         <FirstChild>
                             <Item>
                                 <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
