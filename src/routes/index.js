@@ -8,6 +8,7 @@ import Register from '../components/Register/index';
 import RegisterMail from '../components/Register/saveMail/index';
 import GetMail from '../components/Questionary/1_/GetEmail'
 import Inicio from '../components/Inicio';
+import Persona from '../components/Persona';
 
 import Questionary_1 from '../components/Questionary/1_';
 import key_validator from '../components/Questionary/1_/valid'
@@ -27,6 +28,7 @@ export default () => (
 			<Route path="/Registro" exact component={Register} />
 			<Route path="/RegistroMail" exact component={RegisterMail} />
 			<Route path="/ValidarEmail" exact component={GetMail} />
+			<Route path="/Persona" exact component={Persona} />
 			<Route component={NotFound} />
 			{/* <Route path="" render={ NotFound }/> */}
 		</Switch>
