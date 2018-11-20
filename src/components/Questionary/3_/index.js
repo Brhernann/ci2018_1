@@ -211,7 +211,7 @@ const mapDispatchToPropsAction = dispatch => ({
   onResetRegisterChanged: value => dispatch(resetRegister(value))
 });
 
-export default connect(
+export default connect( 
   mapStateToProps,
   mapDispatchToPropsAction
 )(WrappedNormalLoginForm);
