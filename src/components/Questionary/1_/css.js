@@ -1,19 +1,29 @@
-export const firstContent = {
-    display: 'flex', 
-    justifyContent: 'center',
-    firstChild: {
-        width:'59%'
-    }
-}
+import styled from 'styled-components';
+import media from '../../media';
 
-export const p = {
-    marginBottom:'25px', 
-    textAlign:'initial',
-    fontSize: '90%'
-}
+export const FirstContent = styled.div `
+    display: flex;
+    justify-content:center;
+`
 
-export const formContent = {
-    display:'flex',
-    flexDirection:'column', 
-    width:'100%'
-}
+export const FirstChild = styled.div `
+width:55%;
+${media.phone` 
+width:100%;
+font-size:10px;
+`}
+`;
+
+export const FormContent = styled.div`
+display:flex;
+flex-direction:column;
+width:100%;
+align-items:center;
+text-align: -webkit-auto;
+`;
+
+export const Paragraph = styled.p`
+    margin-bottom: 25px;
+    text-align: justify;
+
+`;

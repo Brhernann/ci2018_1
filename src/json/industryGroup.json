@@ -1,0 +1,109 @@
+[{
+        "Sector": "Industria Manufacturera",
+        "Cluster": [
+            {
+                "name": "Alimentación",
+                "Business": [
+                    {
+                        "name": "Prosecor"
+                    },
+                    {
+                        "name": "Sidepla"
+                    },
+                    {
+                        "name": "Pahuilmo"
+                    },
+                    {
+                        "name": "Requingua"
+                    },
+                    {
+                        "name": "Santisfrut"
+                    },
+                    {
+                        "name": "Soquimich Comercial"
+                    },
+                    {
+                        "name": "Valbifrut"
+                    },
+                    {
+                        "name": "Brasil Foods"
+                    },
+                    {
+                        "name": "Golden Omega"
+                    },
+                    {
+                        "name": "Grasco"
+                    }
+                ]
+            }, {
+                "name": "Lácteos",
+                "Business": [
+                    {
+                        "name": "Colún "
+                    }, {
+                        "name": "Comercial de Campo"
+                    }, {
+                        "name": "Danone Chile"
+                    }, {
+                        "name": "Distribuidora Italia"
+                    }, {
+                        "name": "Eckart Alimentos"
+                    }, {
+                        "name": "Lácteos Dos Castaños Industrial y Comercial"
+                    }, {
+                        "name": "Lecherría Loncomilla"
+                    }, {
+                        "name": "Planta Lechera Puerto Octay"
+                    }, {
+                        "name": "Prolesur"
+                    }, {
+                        "name": "Quillayes"
+                    }
+
+                ]
+            }, {
+                "name": "Bebidas",
+                "Business": [
+                    {
+                        "name": "Vital Jugos"
+                    }, {
+                        "name": "bayas del Sur"
+                    }, {
+                        "name": "Diana Naturals"
+                    }, {
+                        "name": "Empresas Lourdes"
+                    }, {
+                        "name": "Foodgroup"
+                    }, {
+                        "name": "Invertec Natural Juice"
+                    }, {
+                        "name": "Patagonia Fresh"
+                    }, {
+                        "name": "Sofruco Alimentos"
+                    }, {
+                        "name": "Traverso"
+                    }, {
+                        "name": "Watts"
+                    }
+                ]
+            }, {
+                "name": "Vinos y Licores ",
+                "Business": [
+                    {
+                        "name": "Bacardi-Martini Chile"
+                    }, {
+                        "name": "Comercial Escocia"
+                    }, {
+                        "name": "Comercial Blanco y cia"
+                    }, {
+                        "name": "Distribuidora El Cielo"
+                    }, {
+                        "name": "Licores Mitjans"
+                    }, {
+                        "name": "Pernod Ricard Chile"
+                    }
+                ]
+            }
+        ]
+    }
+]
