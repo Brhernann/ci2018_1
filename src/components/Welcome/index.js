@@ -90,13 +90,13 @@ class Welcome extends React.Component {
 
         <Link to="/persona">
           <Button type="primary" style={{ marginTop: 30 }}>
-            Persona
+          Encuesta Personal
           </Button>
         </Link>
         <Divider type="vertical" />
         <Link to="/registro">
           <Button type="primary" style={{ marginTop: 30 }}>
-            Empresa
+          Encuesta Empresa
           </Button>
         </Link>
       </Card>

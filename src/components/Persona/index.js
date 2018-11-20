@@ -109,6 +109,31 @@ class Persona extends Component {
 
             <FirstChild>
               <Item
+                label={L_REGISTER.LABEL_11}
+                validateStatus={label_11_Error ? "error" : ""}
+                help={label_11_Error || ""}
+              >
+                {getFieldDecorator("label_11", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_11
+                    }
+                  ]
+                })(
+                  <Select placeholder="Ejemplo">
+                    {POSITION.map((q, i) => (
+                      <Option key={i} value={q}>
+                        {q}
+                      </Option>
+                    ))}
+                  </Select>
+                )}
+              </Item>
+            </FirstChild>
+
+             <FirstChild>
+              <Item
                 label={L_REGISTER.LABEL_5}
                 validateStatus={label_5_Error ? "error" : ""}
                 help={label_5_Error || ""}
@@ -129,31 +154,6 @@ class Persona extends Component {
                             {q.Name}
                           </Option>
                         ))}
-                  </Select>
-                )}
-              </Item>
-            </FirstChild>
-
-            <FirstChild>
-              <Item
-                label={L_REGISTER.LABEL_11}
-                validateStatus={label_11_Error ? "error" : ""}
-                help={label_11_Error || ""}
-              >
-                {getFieldDecorator("label_11", {
-                  rules: [
-                    {
-                      required: true,
-                      message: "Porfavor ingrese " + L_REGISTER.LABEL_11
-                    }
-                  ]
-                })(
-                  <Select placeholder="Ejemplo">
-                    {POSITION.map((q, i) => (
-                      <Option key={i} value={q}>
-                        {q}
-                      </Option>
-                    ))}
                   </Select>
                 )}
               </Item>

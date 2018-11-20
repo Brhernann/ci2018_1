@@ -83,7 +83,8 @@ export const L_REGISTER = {
   LABEL_7: "Región",
   LABEL_8: "Comuna",
   LABEL_9: " Tipo de empresa",
-  LABEL_10: ""
+  LABEL_10: "",
+  LABEL_11: "Cargo que desempeña actualmente o cargo más alto que obtuvo anteriormente en una compañía. "
 };
 
 export const END_MSSAGE = {
