@@ -1,18 +1,16 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Select, Card, Icon, Checkbox } from "antd";
+import { Form, Input, Button, Select, Card, Icon } from "antd";
 import { Redirect } from "react-router";
 import { connect } from "react-redux";
-import jwt from "jwt-simple";
-import moment from "moment";
-import rand from "random-key";
+
 import { FirstChild, FormContent } from "./css";
 import { cardstyle } from "../globalcss";
-import { L_REGISTER, SECRET_TOKEN, URLWEB } from "../../constants";
-import REGION from "../../json/Chile.json";
+import { L_REGISTER } from "../../constants";
+
 import { getRegisterPerson, getToken } from "../../actions/Register";
 import fetchSector from "../../actions/FetchSector";
 import InsertNaturalP from "../../API/InsertNatural_person";
-import InsertLink from "../../API/InsertLink";
+import POSITION from "../../json/position.json";
 import "./style.css";
 const Option = Select.Option;
 const Item = Form.Item;
@@ -69,8 +67,9 @@ class Persona extends Component {
     } = this.props.form;
 
     const label_1_Error = isFieldTouched("label_1") && getFieldError("label_1");
-    const label_2_Error = isFieldTouched("label_2") && getFieldError("label_2");
     const label_5_Error = isFieldTouched("label_5") && getFieldError("label_5");
+    const label_11_Error =
+      isFieldTouched("label_11") && getFieldError("label_11");
 
     if (this.state.redirect) {
       return <Redirect push to={"bienvenido/nuevo_usuario"} />;
@@ -110,30 +109,6 @@ class Persona extends Component {
 
             <FirstChild>
               <Item
-                label={L_REGISTER.LABEL_2}
-                validateStatus={label_2_Error ? "error" : ""}
-                help={label_2_Error || ""}
-              >
-                {getFieldDecorator("label_2", {
-                  rules: [
-                    {
-                      required: true,
-                      message: "Porfavor ingrese " + L_REGISTER.LABEL_2
-                    }
-                  ]
-                })(
-                  <Input
-                    prefix={
-                      <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                    }
-                    placeholder="Ejemplo"
-                  />
-                )}
-              </Item>
-            </FirstChild>
-
-            <FirstChild>
-              <Item
                 label={L_REGISTER.LABEL_5}
                 validateStatus={label_5_Error ? "error" : ""}
                 help={label_5_Error || ""}
@@ -154,6 +129,31 @@ class Persona extends Component {
                             {q.Name}
                           </Option>
                         ))}
+                  </Select>
+                )}
+              </Item>
+            </FirstChild>
+
+            <FirstChild>
+              <Item
+                label={L_REGISTER.LABEL_11}
+                validateStatus={label_11_Error ? "error" : ""}
+                help={label_11_Error || ""}
+              >
+                {getFieldDecorator("label_11", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_11
+                    }
+                  ]
+                })(
+                  <Select placeholder="Ejemplo">
+                    {POSITION.map((q, i) => (
+                      <Option key={i} value={q}>
+                        {q}
+                      </Option>
+                    ))}
                   </Select>
                 )}
               </Item>
