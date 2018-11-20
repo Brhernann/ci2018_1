@@ -4,11 +4,13 @@ export const FETCHING_DATA = "FETCHING_DATA";
 export const FETCHING_DATA_SUCCESS = "FETCHING_DATA_SUCCESS";
 export const FETCHING_DATA_FAILURE = "FETCHING_DATA_FAILURE";
 
-/* export const URLWEB = 'http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/';
- export const URL = 'http://serverprod.us-west-2.elasticbeanstalk.com/webservices/';  */
+export const URLWEB =
+  "http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/";
+export const URL =
+  "http://serverprod.us-west-2.elasticbeanstalk.com/webservices/";
 
-export const URLWEB = "http://localhost:3000/#/bienvenido/";
-export const URL = "http://localhost:8081/webservices/";
+// export const URLWEB = "http://localhost:3000/#/bienvenido/";
+// export const URL = "http://localhost:8081/webservices/";
 
 export const WS = {
   InsertEnterprise_evaluation: URL + "InsertEnterprise_evaluation",
@@ -83,7 +85,9 @@ export const L_REGISTER = {
   LABEL_7: "Región",
   LABEL_8: "Comuna",
   LABEL_9: " Tipo de empresa",
-  LABEL_10: ""
+  LABEL_10: "",
+  LABEL_11:
+    "Cargo que desempeña actualmente o el cargo más alto que obtuvo en una campañía"
 };
 
 export const END_MSSAGE = {
