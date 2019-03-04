@@ -1,0 +1,15 @@
+[{
+    "User": "example@example.com",
+    "FreeQuestion": "",
+    "Companys": [
+        {
+            "Name": "Aguas/Smapa",
+            "Index":"1",
+            "Data": [
+                    {"Factor": "Comportamiento Ético", "Answer":1},
+                    {"Factor": "Empatía Corporativa", "Answer":1},
+                    {"Factor": "Percepción de Marca", "Answer":1}
+                ] 
+        }
+    ]
+}]

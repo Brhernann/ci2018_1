@@ -1,96 +1,109 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import {Card, Radio, Tooltip,Icon} from 'antd';
+import {Card, Collapse, Icon, Button} from 'antd';
 import {cardstyle} from '../../globalcss';
-import { connect } from 'react-redux';
-import Factor from '../../../config/constants/factors.json';
-import {content, contentItem} from './css';
-import {buttom_Back_next} from '../../';
-import { Company } from '../../../actions/Questionary';
+import {content, contentItem} from './css'
+import {connect} from 'react-redux';
+import { Redirect } from 'react-router';
+import {Company} from '../../../actions/Questionary';
+import {Booleano, CollapseActive, QuestionaryActive} from '../../../actions/collapseControl'
+import GETFactor from './GETFactor';
+import Thanks from '../../thanks';
 
-const RadioGroup = Radio.Group;
-
+const Panel = Collapse.Panel;
 class Selection extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
+
         this.state = {
-            secondArr : [],
-            firstArr : []
+            companys: [],
+            activeKey: ['0'],
+            redirect: false
         }
+        this.callback = this
+            .callback
+            .bind(this);
     }
 
-    componentDidMount() {
-        this.splitInHalf();
-        console.log(this.props);
+    enterLoading = () => {
+        this.setState({redirect: true});
     }
 
-    splitInHalf() {
-        let firstArr = [];
-        let secondArr = [];
-        const arr10 = Factor.data.map(q => q.SubFactor.filter(item => item.index < 10));
-        arr10.map(q => firstArr.push(...q));
-        
-        const arr17 = Factor.data.map(q => q.SubFactor.filter(item => item.index > 9));
-        arr17.map(q => secondArr.push(...q));
+    callback(key) {
 
-        this.setState({firstArr, secondArr});
+        if (key.length > 1) {
+            key.shift()
+            this
+                .props
+                .onCollapseChanged(key)
+        } else if (key.length === 0) {
+            this
+                .props
+                .onCollapseChanged(key)
+        } else {
+            this
+                .props
+                .onCollapseChanged(key)
+        }
     }
 
     render() {
 
-        const { firstArr, secondArr } = this.state;
+        let Booleano = this.props.CollapseReducers.Booleano;
+        let CollapseActive = this.props.CollapseReducers.CollapseActive;
+        let Companys = this.props.AllTheAnswer.Companys;
+        let answered = Companys.map(q => q.Index)
+
+        if(Object.keys(this.props.company_selected).length === 0){
+            return <Redirect push to="/No" />
+        }
+
+        if (this.state.redirect) {
+            return <Redirect push to="/Pregunta" />
+         }
 
         return (
-            <Card title={Factor.title} bordered={false} style={cardstyle}>
-                
-            <div style={{display:'flex', justifyContent:'space-around'}}>
-                <div style={content}>
-                {firstArr.map((q,i) => 
-                    <div key={i} style={contentItem}>
-                        <div>
-                            <Tooltip title={q.Description}>
-                             <h3> - <Icon type="info-circle-o" style={{ fontSize: 16, color: '#339900' }}/> {q.name}</h3>
-                            </Tooltip>
-                        </div>
-                        <div>
-                            <RadioGroup name="radiogroup" defaultValue={4}>
-                                <Radio value={1}>1</Radio>
-                                <Radio value={2}>2</Radio>
-                                <Radio value={3}>3</Radio>
-                                <Radio value={4}>4</Radio>
-                                <Radio value={5}>5</Radio>
-                                <Radio value={6}>6</Radio>
-                                <Radio value={7}>7</Radio>
-                            </RadioGroup>
-                        </div>
+            <Card title={'Lo invitamos a evaluar esta empresa '} style={cardstyle}>
+                <div className={content}>
+                    <div className={contentItem}>
+                        <Collapse activeKey={CollapseActive} onChange={this.callback}>
+                            {
+                                this
+                                    .props
+                                    .company_selected
+                                    .map(
+                                        (q, i) => <Panel
+                                            header={Booleano && answered.includes(i)
+                                                ?  <Icon
+                                                        style={{
+                                                            color: '#5fdd9d'
+                                                        }}type="check"/>
+                                                : q.name}
+                                            icon="retweet"
+                                            key={i}>
+                                            {
+                                                Booleano && answered.includes(i)
+                                                    ? <Thanks/>
+                                                    : <GETFactor/>
+                                            }
+                                        </Panel>
+                                    )
+                            }
+                        </Collapse>
                     </div>
-                )}
-                </div>
-                <div style={content}>
-                {secondArr.map((q,i) => 
-                    <div key={i} style={contentItem}>
-                        <div>
-                            <Tooltip title={q.Description}>
-                                <h3> - <Icon type="info-circle-o" style={{ fontSize: 16, color: '#339900' }}/> {q.name}</h3>
-                            </Tooltip>
-                        </div>
-                        <div>
-                            <RadioGroup name="radiogroup" defaultValue={4}>
-                                <Radio value={1}>1</Radio>
-                                <Radio value={2}>2</Radio>
-                                <Radio value={3}>3</Radio>
-                                <Radio value={4}>4</Radio>
-                                <Radio value={5}>5</Radio>
-                                <Radio value={6}>6</Radio>
-                                <Radio value={7}>7</Radio>
-                            </RadioGroup>
-                        </div>
+                    <div className={contentItem}>
+                        <Button
+                            type="primary"
+                            style={{
+                                marginTop: '5%'
+                            }}
+                            disabled={Companys.length !== this.props.company_selected.length}
+                            onClick={this.enterLoading} >
+                            Continuar
+                        </Button>
                     </div>
-                )}
                 </div>
-            </div>
-            {buttom_Back_next('cuestionario', 'pregunta')}
             </Card>
 
         );
@@ -98,11 +111,19 @@ class Selection extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return  state.companyReducers 
-  }
+    return {
+        company_selected: state.companyReducers.company_selected, 
+        AllTheAnswer: state.companyReducers.AllTheAnswer, 
+        CollapseReducers: state.CollapseReducers
+    }
+}
 
-const mapDispatchToPropsAction = dispatch => ({ 
-    Company: value => dispatch(Company(value))
-  });
-  
+const mapDispatchToPropsAction = dispatch => ({
+    onCompanyChanged: value => dispatch(Company(value)),
+    onBooleanChanged: value => dispatch(Booleano(value)),
+    onCollapseChanged: value => dispatch(CollapseActive(value)),
+    onQuestionChanged: value => dispatch(QuestionaryActive(value))
+
+});
+
 export default connect(mapStateToProps, mapDispatchToPropsAction)(Selection);

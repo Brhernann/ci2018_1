@@ -6,17 +6,13 @@ import {Link} from 'react-router-dom';
 export const buttom_Back_next = (back, next) => {
 
     return (
-        <div style={{
-                paddingTop: 50
-            }}>
+        <div style={{paddingTop: 50}}>
             <Button.Group size='large'>
                 <Link to={back}>
                     <Tooltip placement="bottomRight" title={'Volver'}>
                         <Button
                             type="primary"
-                            style={{
-                                marginRight: 5
-                            }}>
+                            style={{ marginRight: 5 }}>
                             <Icon type="left"/>
                         </Button>
                     </Tooltip>
@@ -39,21 +35,52 @@ export const buttom_Back_next = (back, next) => {
     )
 }
 
+export const buttom_with_function = (back, next) => {
+    return (
+        <div style={{
+                paddingTop: 50
+            }}>
+            <Button.Group size='large'>
+                <Tooltip placement="bottomRight" title={'Volver'}>
+                    <Button
+                        type="primary"
+                        style={{ marginRight: 5 }}
+                        onClick={back}>
+                        <Icon type="left"/>
+                    </Button>
+                </Tooltip>
+
+                <Tooltip placement="bottomLeft" title={'Siguiente'}>
+                    <Button
+                        type="primary"
+                        style={{ marginLeft: 5 }}
+                        onClick={next}>
+                        <Icon type="right"/>
+                    </Button>
+                </Tooltip>
+
+            </Button.Group>
+        </div>
+    )
+}
+
 export const token_valid = () => {
 
     return (
-        <Card title="Bienvenido usuario" bordered={false} style={cardstyle}>
+        <Card title="Bienvenido a Corporate Index" bordered={false} style={cardstyle}>
             <div>
                 <div>
                     <Alert
-                        message="Link valido"
-                        description="Bienvenido, gracias por participar con nosotros, continua respondiendo el siguiente cuestionario."
+                        message="Link válido"
+                        description="Gracias por participar con nosotros, continúa respondiendo el siguiente cuestionario."
                         type="success"
                         showIcon="showIcon"/>
                 </div>
                 <br/>
                 <div>
-                <Link to='/cuestionario'>
+                </div>
+                <div>
+                <Link to='/ValidarEmail'>
                     <Button type="primary" style={{ marginTop: 30 }}>
                     Comenzar
                    </Button>

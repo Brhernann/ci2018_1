@@ -1,0 +1,15 @@
+.Inicio {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('../../images/Inicio.png');
+    background-size: cover;
+    height: 600px;
+    width: 1500px;
+}
+
+.Botton {
+    margin-top: 500px;
+}

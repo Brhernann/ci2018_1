@@ -1,0 +1,198 @@
+/* .ant-carousel .slick-slide {
+  text-align: center;
+  overflow: hidden;
+  text-align: center;
+  height: 50vh;
+  overflow: hidden;
+} */
+
+.colorempaty {
+  color: black;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  overflow: hidden;
+  text-align: center;
+  height: 50vh;
+  overflow: hidden;
+  height: 400px;
+}
+
+.slick-initialized slick-slider slider {
+  height: 100%;
+}
+
+/* .slide {
+  margin: auto;
+  height: 100%;
+  overflow: hidden;
+  font-size: 1em;
+  line-height: 1em;
+  display: table-cell;
+  vertical-align: middle;
+  background: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  font-family: origin-super-condensed, sans-serif;
+} */
+
+/* .carousel-caption {
+  padding-bottom: 100px;
+} */
+
+.ant-carousel.slick-slide h3 {
+  color: #fff;
+  position: absolute;
+}
+
+.ant-card-body {
+  margin-left: 5%;
+}
+
+.ant-carousel .slick-dots li button {
+  background: rgb(252, 4, 4);
+}
+
+
+/* here new caourse */
+
+.previousButton, .nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: url('https://svgshare.com/i/7ca.svg') no-repeat center center / 16px;
+  width: 32px;
+  height: 32px;
+  text-indent: -9999px;
+  cursor: pointer;
+  /* background-color:  */
+}
+
+.previousButton:hover, .nextButton:hover {
+background: url('https://svgshare.com/i/7ca.svg') no-repeat center center / 14px;
+}
+
+.previousButton {
+left: 0;
+-webkit-transform: rotate(180deg) translateY(calc(50% + 0px));
+        transform: rotate(180deg) translateY(calc(50% + 0px));
+}
+
+.previousButton:hover {
+left: -10px;
+}
+
+.nextButton {
+right: 0;
+}
+
+.nextButton:hover {
+right: -10px;
+}
+
+.slider-wrapper {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.slider-content {
+  text-align: center;
+}
+
+.slider-content .inner {
+  padding: 0 70px;
+  box-sizing: border-box;
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 23%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+
+.slider-content .inner h1 {
+  font-weight: 900;
+  margin: 0 auto;
+  max-width: 840px;
+  color: #FFFFFF;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.slider-content .inner p {
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 20px auto 30px;
+  max-width: 640px;
+}
+
+.slider-content section {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.slider-content section span {
+  color: #FFFFFF;
+}
+
+.slider-content section span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  display: inline-block;
+  text-align: left;
+  line-height: 1.4;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.slider-content section img {
+  width: 40px;
+  height: 40px;
+  border: solid 2px rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+.slider-content section span strong {
+  color: #FFFFFF;
+  font-size: 14px;
+  display: block;
+}
+
+@media (max-height: 500px) {
+  .slider-wrapper, .slide {
+    height: calc(100vh - 75px);
+  }    
+}
+
+@media (max-width: 640px) {
+  .slider-wrapper, .slide {
+    height: calc(80vh - 75px);
+  }    
+
+}
+
+@media (max-height: 600px) {
+  .slider-content .inner h1 {
+    font-size: 20px;
+  }    
+  
+}
+
+@media (max-width: 640px) {
+  .slider-content .inner h1 {
+    font-size: 20px;
+    width: 100%;
+  }
+  .slider-content .inner {
+    padding: 0 23px;
+    width: 100%;
+  }
+
+}

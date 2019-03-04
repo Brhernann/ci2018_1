@@ -1,8 +1,12 @@
-import { REDUX_R } from '../config/constants';
+import { REDUX_R } from '../constants';
 
 const initialState = {
     Register: {},
-    Token: ''
+    Emails: [],
+    Token: {
+        token:'',
+        rand:''
+    }
 }
 
 const registerReducers = (state = initialState, action) => {
@@ -17,6 +21,13 @@ const registerReducers = (state = initialState, action) => {
                 ...state,
                 Token: action.getToken
             }
+        case REDUX_R.GET_MAILS:
+            return {
+                ...state,
+                Emails: action.getEmails        
+            }
+        case 'RESET_ACTION':
+            return initialState;
         default:
             return state;
     }
