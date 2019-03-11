@@ -7,7 +7,7 @@ export const FETCHING_DATA_FAILURE = "FETCHING_DATA_FAILURE";
 export const URLWEB =
   "http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/";
 export const URL =
-  "http://serverprod.us-west-2.elasticbeanstalk.com/webservices/";
+  "https://jerasport.cl/webservices/";
 
 // export const URLWEB = "http://localhost:3000/#/bienvenido/";
 // export const URL = "http://localhost:8081/webservices/";
@@ -17,8 +17,7 @@ export const WS = {
   InsertLink: URL + "InsertLink",
   ReadSector: URL + "GetSector",
   ReadLink: URL + "GetLink",
-  GetSectorId_from_enterprise_evaluation:
-    URL + "GetSectorId_from_enterprise_evaluation",
+  GetSectorId_from_enterprise_evaluation: URL + "GetSectorId_from_enterprise_evaluation",
   GetEnterprise_Stored: URL + "GetEnterprise_Stored",
   GetSubsector_and_id: URL + "GetSubsector_and_id",
   getMailsubscribed: URL + "GetMailSurveyed_And_ID"
@@ -42,8 +41,7 @@ export const INTRODUCTION = "";
 
 export const VISION = {
   TITLE: "ÍNDICE CORPORATIVO DE EMPATÍA.",
-  RESUMEN:
-    '<p><b>"Empresas más empáticas con propósito, inclusivas y sostenibles"</b>.</p>' +
+  RESUMEN: '<p><b>"Empresas más empáticas con propósito, inclusivas y sostenibles"</b>.</p>' +
     "<p>El Índice de Empatía Corporativa es nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial." +
     "<br>" +
     "Es una herramienta de gestión sin costo para las empresas o instituciones que necesiten medir los niveles de empatía de su compañía " +
@@ -53,16 +51,14 @@ export const VISION = {
 
 export const EMPATIA = {
   TITLE: "Índice Verificado.",
-  RESUMEN:
-    "<p>El Índice Corporativo de Empatía tiene tres fases de evaluación de la empatía empresarial" +
+  RESUMEN: "<p>El Índice Corporativo de Empatía tiene tres fases de evaluación de la empatía empresarial" +
     " y consulta a siete grupos de interés, además permite la autoevaluación de las empresas participantes." +
     " Se encuentra en proceso de verificación bajo la norma internacional ISAE 3000 por una empresa internacional de auditoria.</p>"
 };
 
 export const MISION = {
   TITLE: "Metodología.",
-  RESUMEN:
-    "<p>Nuestra metodología está validada en Inglaterra, contiene una parte similar al estudio que se aplica hace algunos años" +
+  RESUMEN: "<p>Nuestra metodología está validada en Inglaterra, contiene una parte similar al estudio que se aplica hace algunos años" +
     " en ese país y se encuentra adaptada a nuestra cultura local y ámbito empresarial. La propiedad intelectual del indice corporativa pertenece a Corporate Index" +
     " y ha sido desarrollada en Chile." +
     "</p>"
@@ -70,8 +66,7 @@ export const MISION = {
 
 export const LINK_CREATED = {
   TITLE: "Gracias por su participación.",
-  RESUMEN:
-    "Aquí puede descargar un LINK PÚBLICO, el que puede adjuntar y pegar en su correo de invitación a contestar la encuesta."
+  RESUMEN: "Aquí puede descargar un LINK PÚBLICO, el que puede adjuntar y pegar en su correo de invitación a contestar la encuesta."
 };
 
 // FORM TEXT register
@@ -93,25 +88,21 @@ export const END_MSSAGE = {
   FROM_REGISTER: "Finalizaste exitosamente el registro.",
   FROM_QUESTIONARY: "Ha finalizado exitosamente el cuestionario.",
   FROM_ENDFACTOR: "Tu respuesta ha sido guardada.",
-  END_EMAIL_MESSAGE:
-    "Si usted desea recibir los resultados finales antes de la publicación en el medio, ingrese su correo acá."
+  END_EMAIL_MESSAGE: "Si usted desea recibir los resultados finales antes de la publicación en el medio, ingrese su correo acá."
 };
 
 export const WELCOME_MESSAGE = {
-  FROM_REGISTER:
-    "Bienvenido(a) a la plataforma del área de investigación y estudios públicos de Corporate Index.",
+  FROM_REGISTER: "Bienvenido(a) a la plataforma del área de investigación y estudios públicos de Corporate Index.",
   FROM_QUESTIONARY: "Encuesta empresarial"
 };
 
 export const QUESTIONARY_1 = {
   title: "LAS EMPRESAS CON MEJOR EMPATÍA CORPORATIVA",
   subtitle: " La empatía corporativa a nivel empresarial se define como:",
-  resumen:
-    " La capacidad de las organizaciones de hacerse cargo de las expectativas y necesidades de sus públicos y stakeholders en general," +
+  resumen: " La capacidad de las organizaciones de hacerse cargo de las expectativas y necesidades de sus públicos y stakeholders en general," +
     " adecuando en consecuencia sus acciones y mensajes para entregar así una respuesta" +
     " más alineada a estas necesidades.",
-  question:
-    "Considerando la definición anterior y según su punto de vista personal, " +
+  question: "Considerando la definición anterior y según su punto de vista personal, " +
     "señale una empresa de cada uno de los siguientes sub sectores de la industria " +
     "que Ud considere <b><u>Empática</u></b> en su quehacer empresarial. " +
     "<br><br>" +
@@ -121,16 +112,13 @@ export const QUESTIONARY_1 = {
 };
 
 export const QUESTIONARY_3 = {
-  resumen:
-    "La empatía corporativa es considerada como un Driver clave del negocio en relación al cumplimiento de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.",
-  question:
-    "¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?"
+  resumen: "La empatía corporativa es considerada como un Driver clave del negocio en relación al cumplimiento de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.",
+  question: "¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?"
 };
 
 export const INCOMPLETE_QUESTIONAY = {
   title: "¡Tienes un formulario incompleto!",
-  content:
-    "Puedes guardar el siguiente cuestionario y continuar, pero se perderá el progreso del anterior.",
+  content: "Puedes guardar el siguiente cuestionario y continuar, pero se perderá el progreso del anterior.",
   okButtom: "Continuar",
   cancelButtom: "Terminar anterior"
 };
