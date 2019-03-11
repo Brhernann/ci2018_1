@@ -5,12 +5,19 @@ export const FETCHING_DATA_SUCCESS = "FETCHING_DATA_SUCCESS";
 export const FETCHING_DATA_FAILURE = "FETCHING_DATA_FAILURE";
 
 export const URLWEB =
+<<<<<<< HEAD
   "http://www.corporateindex.cl/EmpatiaCorporativa/#/bienvenido/";
 export const URL =
   "https://jerasport.cl/webservices/";
+=======
+  "https://corporateindex.cl/EmpatiaCorporativa/#/bienvenido/";
+
+// export const URL =
+//   "http://serverprod.us-west-2.elasticbeanstalk.com/webservices/";
+>>>>>>> 633c9e92c6e5c5c8254bd03d5d12b1f8f9c042b5
 
 // export const URLWEB = "http://localhost:3000/#/bienvenido/";
-// export const URL = "http://localhost:8081/webservices/";
+export const URL = "https://localhost:8081/webservices/";
 
 export const WS = {
   InsertEnterprise_evaluation: URL + "InsertEnterprise_evaluation",
