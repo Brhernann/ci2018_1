@@ -4,14 +4,14 @@ export const FETCHING_DATA = "FETCHING_DATA";
 export const FETCHING_DATA_SUCCESS = "FETCHING_DATA_SUCCESS";
 export const FETCHING_DATA_FAILURE = "FETCHING_DATA_FAILURE";
 
-export const URLWEB =
+/* export const URLWEB =
   "https://corporateindex.cl/EmpatiaCorporativa/#/bienvenido/";
 
 export const URL =
-  "https://jerasport.cl/webservices/";
+  "https://jerasport.cl/webservices/"; */
 
-// export const URLWEB = "http://localhost:3000/#/bienvenido/";
-//export const URL = "https://localhost:8081/webservices/";
+export const URLWEB = "http://localhost:3000/#/bienvenido/";
+export const URL = "http://localhost:8081/webservices/";
 
 export const WS = {
   InsertEnterprise_evaluation: URL + "InsertEnterprise_evaluation",
@@ -82,7 +82,8 @@ export const L_REGISTER = {
   LABEL_8: "Comuna",
   LABEL_9: " Tipo de empresa",
   LABEL_10: "",
-  LABEL_11: "Cargo que desempeña actualmente o cargo más alto que obtuvo anteriormente en una compañía. "
+  LABEL_11: "Cargo que desempeña actualmente o cargo más alto que obtuvo anteriormente en una compañía. ",
+  LABEL_12: "Nombre"
 };
 
 export const END_MSSAGE = {
@@ -100,9 +101,9 @@ export const WELCOME_MESSAGE = {
 export const QUESTIONARY_1 = {
   title: "LAS EMPRESAS CON MEJOR EMPATÍA CORPORATIVA",
   subtitle: " La empatía corporativa a nivel empresarial se define como:",
-  resumen: " La capacidad de las organizaciones de hacerse cargo de las expectativas y necesidades de sus públicos y stakeholders en general," +
-    " adecuando en consecuencia sus acciones y mensajes para entregar así una respuesta" +
-    " más alineada a estas necesidades.",
+  resumen: " El grado de compromiso, respecto a hacerse cargo de las expectativas que se generan en los públicos" +
+    " de interés - adecuando en consecuencia - sus acciones y mensajes para entregar una respuesta" +
+    " más alineada con el impacto emocional y económico que produce una entidad.",
   question: "Considerando la definición anterior y según su punto de vista personal, " +
     "señale una empresa de cada uno de los siguientes sub sectores de la industria " +
     "que Ud considere <b><u>Empática</u></b> en su quehacer empresarial. " +

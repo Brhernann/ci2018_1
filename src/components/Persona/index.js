@@ -66,7 +66,7 @@ class Persona extends Component {
       isFieldTouched
     } = this.props.form;
 
-    const label_1_Error = isFieldTouched("label_1") && getFieldError("label_1");
+    const label_12_Error = isFieldTouched("label_12") && getFieldError("label_12");
     const label_5_Error = isFieldTouched("label_5") && getFieldError("label_5");
     const label_11_Error =
       isFieldTouched("label_11") && getFieldError("label_11");
@@ -85,15 +85,15 @@ class Persona extends Component {
           <FormContent>
             <FirstChild>
               <Item
-                label={L_REGISTER.LABEL_1}
-                validateStatus={label_1_Error ? "error" : ""}
-                help={label_1_Error || ""}
+                label={L_REGISTER.LABEL_12}
+                validateStatus={label_12_Error ? "error" : ""}
+                help={label_12_Error || ""}
               >
-                {getFieldDecorator("label_1", {
+                {getFieldDecorator("label_12", {
                   rules: [
                     {
                       required: true,
-                      message: "Porfavor ingrese " + L_REGISTER.LABEL_1
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_12
                     }
                   ]
                 })(
@@ -132,7 +132,7 @@ class Persona extends Component {
               </Item>
             </FirstChild>
 
-             <FirstChild>
+            <FirstChild>
               <Item
                 label={L_REGISTER.LABEL_5}
                 validateStatus={label_5_Error ? "error" : ""}
@@ -150,10 +150,10 @@ class Persona extends Component {
                     {this.state.isFetching
                       ? console.log("cargando")
                       : this.state.sectors.map((q, i) => (
-                          <Option key={i} value={q.ID}>
-                            {q.Name}
-                          </Option>
-                        ))}
+                        <Option key={i} value={q.ID}>
+                          {q.Name}
+                        </Option>
+                      ))}
                   </Select>
                 )}
               </Item>
