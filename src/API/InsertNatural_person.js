@@ -8,7 +8,7 @@ export default async data => {
     OHWS.InsertNatural_person,
     qs.stringify({
       Sector_ID: data.label_5,
-      Name: data.label_1,
+      Name: data.label_12,
       Position: data.label_11
     }),
     {
