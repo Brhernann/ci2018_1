@@ -110,7 +110,7 @@ export const QUESTIONARY_1 = {
     "<br><br>" +
     "(los nombres de las empresas se desplegarán por sub sector)" +
     "<br><br>" +
-    "<b>Nota: Usted no puede votar por su misma empresa.<b>"
+    "<b>Nota: Usted no puede votar por su misma empresa u otras empresas del mismo Holding.<b>"
 };
 
 export const QUESTIONARY_3 = {
