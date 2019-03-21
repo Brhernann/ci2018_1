@@ -45,3 +45,10 @@ SI EL FACTOR_SELECTED TIENE DATA Y ESTOY EN EL PANEL IDICADO = MUESTRO DATA
 IF(FACTOR_SELECTED !== NULL && PANEL INDICADO = INDICADO){
     CHUPALO MUESTRA DATA
 }
+
+
+CAMBIOS 20 MARZO:
+
+SE ELIMINO VARIBLE NUMERO 3 Y SE CORRIO UN NUMERO EN TODO
+
+//{ "name": "Empatía Corporativa", "Description": "Impacto emocional y económico que produce una entidad en la sociedad en las nuevas generaciones, en los trabajadores, clientes, audiencias y accionistas. Es la valorización más afectiva de la empresa a nivel de percepción y constituye su capacidad estructural de construir relaciones de calidad con sus clientes, otras empresas y sus proveedores.", "index":3 , "value":""}, 
