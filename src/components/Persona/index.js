@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Select, Card, Icon } from "antd";
+import { Form, Input, Button, Select, Card, Icon, message } from "antd";
 import { Redirect } from "react-router";
 import { connect } from "react-redux";
 
@@ -45,32 +45,31 @@ class Persona extends Component {
       this.setState(state, resolve);
     });
   }
+
   handleSubmit = async e => {
     e.preventDefault();
     await this.props.form.validateFields((err, values) => {
       if (!err) {
-        InsertNaturalP(values)
-          .then(() => {
-            this.props.Company({ person: values, status: "isPerson" });
-            this.setState({ redirect: true });
+        GetMailNaturalP(values.label_13)
+          .then(res => {
+            if (res.data.success) {
+              message.error("Este correo ya participó en una evaluación");
+            } else {
+              InsertNaturalP(values)
+                .then(() => {
+                  this.props.Company({ person: values, status: "isPerson" });
+                  this.setState({ redirect: true });
+                })
+                .catch(err => console.log(err));
+            }
           })
-          .catch(err => console.log(err));
+          .catch(err => console.log("67890", err));
       }
     });
   };
 
-  getMail = e => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        GetMailNaturalP(values)
-          .then(() => {
-            this.props.Company({ person: values, status: "isPerson" });
-            this.setState({ redirect: true });
-          })
-          .catch(err => console.log(err));
-      }
-    });
+  handleConfirmEmail(value) {
+    console.log(value);
   }
 
   render() {
@@ -81,7 +80,8 @@ class Persona extends Component {
       isFieldTouched
     } = this.props.form;
 
-    const label_12_Error = isFieldTouched("label_12") && getFieldError("label_12");
+    const label_12_Error =
+      isFieldTouched("label_12") && getFieldError("label_12");
     const label_5_Error = isFieldTouched("label_5") && getFieldError("label_5");
     const label_11_Error =
       isFieldTouched("label_11") && getFieldError("label_11");
@@ -89,7 +89,8 @@ class Persona extends Component {
     if (this.state.redirect) {
       return <Redirect push to={"bienvenido/nuevo_usuario"} />;
     }
-    const label_13_Error = isFieldTouched("label_13") && getFieldError("label_13");
+    const label_13_Error =
+      isFieldTouched("label_13") && getFieldError("label_13");
     return (
       <Card
         title="Bienvenido, te invitamos a registrar tus datos para responder la encuesta."
@@ -130,6 +131,10 @@ class Persona extends Component {
               >
                 {getFieldDecorator("label_13", {
                   rules: [
+                    {
+                      type: "email",
+                      message: "Porfavor Ingrese un correo valido"
+                    },
                     {
                       required: true,
                       message: "Porfavor ingrese " + L_REGISTER.LABEL_13
@@ -189,10 +194,10 @@ class Persona extends Component {
                     {this.state.isFetching
                       ? console.log("cargando")
                       : this.state.sectors.map((q, i) => (
-                        <Option key={i} value={q.ID}>
-                          {q.Name}
-                        </Option>
-                      ))}
+                          <Option key={i} value={q.ID}>
+                            {q.Name}
+                          </Option>
+                        ))}
                   </Select>
                 )}
               </Item>
