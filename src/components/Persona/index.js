@@ -10,6 +10,7 @@ import { L_REGISTER } from "../../constants";
 import { getRegisterPerson, getToken } from "../../actions/Register";
 import fetchSector from "../../actions/FetchSector";
 import InsertNaturalP from "../../API/InsertNatural_person";
+import GetMailNaturalP from "../../API/getMailPerson";
 import POSITION from "../../json/position.json";
 import "./style.css";
 const Option = Select.Option;
@@ -58,6 +59,20 @@ class Persona extends Component {
     });
   };
 
+  getMail = e => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        GetMailNaturalP(values)
+          .then(() => {
+            this.props.Company({ person: values, status: "isPerson" });
+            this.setState({ redirect: true });
+          })
+          .catch(err => console.log(err));
+      }
+    });
+  }
+
   render() {
     const {
       getFieldDecorator,
@@ -74,7 +89,7 @@ class Persona extends Component {
     if (this.state.redirect) {
       return <Redirect push to={"bienvenido/nuevo_usuario"} />;
     }
-
+    const label_13_Error = isFieldTouched("label_13") && getFieldError("label_13");
     return (
       <Card
         title="Bienvenido, te invitamos a registrar tus datos para responder la encuesta."
@@ -94,6 +109,30 @@ class Persona extends Component {
                     {
                       required: true,
                       message: "Porfavor ingrese " + L_REGISTER.LABEL_12
+                    }
+                  ]
+                })(
+                  <Input
+                    prefix={
+                      <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                    }
+                    placeholder="Ejemplo"
+                  />
+                )}
+              </Item>
+            </FirstChild>
+
+            <FirstChild>
+              <Item
+                label={L_REGISTER.LABEL_13}
+                validateStatus={label_13_Error ? "error" : ""}
+                help={label_13_Error || ""}
+              >
+                {getFieldDecorator("label_13", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_13
                     }
                   ]
                 })(

@@ -9,7 +9,8 @@ export default async data => {
     qs.stringify({
       Sector_ID: data.label_5,
       Name: data.label_12,
-      Position: data.label_11
+      Position: data.label_11,
+      Mail: data.label_13
     }),
     {
       headers: {
