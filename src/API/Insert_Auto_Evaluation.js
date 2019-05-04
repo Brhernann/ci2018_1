@@ -5,9 +5,9 @@ import { token } from "../jwt";
 
 export default async data => {
   return await axios.post(
-    OHWS.InsertNatural_person,
+    OHWS.Insert_Auto_Evaluation,
     qs.stringify({
-      Sub_Sector_ID: data.label_14,
+      Sector_ID: data.label_14,
       Position: data.label_11,
       Enterprise_Name: data.label_13
     }),

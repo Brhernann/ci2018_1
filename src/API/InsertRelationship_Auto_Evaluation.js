@@ -6,7 +6,7 @@ import { token } from "../jwt";
 export default async data => {
   console.log(data);
   return await axios.post(
-    OHWS.InsertRelationShip_Person,
+    OHWS.InsertRelationship_Auto_Evaluation,
     qs.stringify({
       Auto_Evaluation_ID: data.Auto_Evaluation_ID,
       Variables_Selected_ID: data.Variables_Selected_ID,
