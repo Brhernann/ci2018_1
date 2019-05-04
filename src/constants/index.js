@@ -33,7 +33,10 @@ export const OHWS = {
   InsertVariablesSelected: URL + "InsertVariablesSelected",
   InsertRelationship: URL + "InsertRelationship",
   InsertRelationShip_Person: URL + "Insert_RelationShipPerson",
-  InsertNatural_person: URL + "InsertNatural_person"
+  InsertNatural_person: URL + "InsertNatural_person",
+  Insert_Auto_Evaluation: URL + "InsertAutoEvaluation",
+  InsertRelationship_Auto_Evaluation: URL + "InsertRelationshipAutoEvaluation"
+
 };
 
 export const EMPATIA_DEFINITON =
@@ -91,7 +94,8 @@ export const L_REGISTER = {
   LABEL_11:
     "Cargo que desempeña actualmente o cargo más alto que obtuvo anteriormente en una compañía. ",
   LABEL_12: "Nombre",
-  LABEL_13: "Correo"
+  LABEL_13: "Correo",
+  LABEL_14: "Sub Sector de actividad",
 };
 
 export const END_MSSAGE = {
