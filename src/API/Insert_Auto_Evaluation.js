@@ -7,7 +7,7 @@ export default async data => {
   return await axios.post(
     OHWS.InsertNatural_person,
     qs.stringify({
-      Sub_Sector_ID: data.label_15,
+      Sub_Sector_ID: data.label_14,
       Position: data.label_11,
       Enterprise_Name: data.label_13
     }),
