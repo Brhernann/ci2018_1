@@ -10,8 +10,8 @@ export const FETCHING_DATA_FAILURE = "FETCHING_DATA_FAILURE";
 export const URL =
   "https://jerasport.cl/webservices/"; */
 
-export const URLWEB = "http://localhost:3000/#/bienvenido/";
-export const URL = "http://localhost:3001/webservices/";
+export const URLWEB = "http://localhost:3001/#/bienvenido/";
+export const URL = "http://localhost:3000/webservices/";
 
 export const WS = {
   InsertEnterprise_evaluation: URL + "InsertEnterprise_evaluation",
@@ -164,5 +164,6 @@ export const REDUX_R = {
   GET_REGISTER: "GET_REGISTER",
   GET_TOKEN: "GET_TOKEN",
   GET_MAILS: "GET_MAILS",
-  GET_REGISTER_PERSON: "GET_REGISTER_PERSON"
+  GET_REGISTER_PERSON: "GET_REGISTER_PERSON",
+  GET_REGISTER_AUTO_EVALUATION: "GET_REGISTER_AUTO_EVALUATION"
 };

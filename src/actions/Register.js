@@ -24,3 +24,8 @@ export const resetRegister = resetRegister => ({
   type: "RESET_ACTION",
   resetRegister
 });
+
+export const getRegisterAutoEvaluation = getRegisterAutoEvaluation => ({
+  type: REDUX_R.GET_REGISTER_AUTO_EVALUATION,
+  getRegisterAutoEvaluation
+});
