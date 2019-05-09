@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Select, Button, Card, Input, Form, Icon, message} from "antd";
+import { Select, Button, Card, Input, Form, Icon, message } from "antd";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import { cardstyle } from "../../../globalcss";
@@ -11,11 +11,8 @@ import Insert_Auto_Evaluation from "../../../../API/Insert_Auto_Evaluation";
 import { L_REGISTER } from "../../../../constants";
 import { FirstChild, FormContent } from "../css";
 
-
-
 const Option = Select.Option;
 const Item = Form.Item;
-
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -30,7 +27,7 @@ class GETMail extends React.Component {
       mymail: "",
       enterpriseName: "",
       position: "",
-      mySector : "",
+      mySector: "",
       isFetching: true,
       sectors: []
     };
@@ -62,19 +59,19 @@ class GETMail extends React.Component {
   }
 
   handleSubmit = async e => {
-      await this.props.form.validateFields((err, values) => {
-        if (!err) {
-          Insert_Auto_Evaluation(values)
-            .then(res => {
-              this.createToken(res.data.id);
-              this.props.Auto_Company({ id: res.data.id });
-            })
-            .catch(err => console.log('El error po oe',err),console.log('this.props', this.props.Company)
-            );
-        }
-      });
-  }
-
+    await this.props.form.validateFields((err, values) => {
+      if (!err) {
+        Insert_Auto_Evaluation(values)
+          .then(res => {
+            this.props.Auto_Company({ name: values.label_4 });
+          })
+          .catch(
+            err => console.log("El error po oe", err),
+            console.log("this.props", this.props.Company)
+          );
+      }
+    });
+  };
 
   handleClick() {
     let all = this.props.companyReducers.AllTheAnswer;
@@ -83,7 +80,6 @@ class GETMail extends React.Component {
     this.setState({ redirect: true });
     this.handleSubmit();
   }
-
 
   onChange = e => {
     console.log(e);
@@ -97,7 +93,8 @@ class GETMail extends React.Component {
       isFieldTouched
     } = this.props.form;
     const label_5_Error = isFieldTouched("label_5") && getFieldError("label_5");
-    const label_11_Error = isFieldTouched("label_11") && getFieldError("label_11");
+    const label_11_Error =
+      isFieldTouched("label_11") && getFieldError("label_11");
     const label_4_Error = isFieldTouched("label_4") && getFieldError("label_4");
 
     if (this.props.companyReducers.AllCompany.length === 0) {
@@ -107,7 +104,7 @@ class GETMail extends React.Component {
     if (this.state.redirect) {
       return <Redirect push to="/cuestionario" />;
     }
-    console.log('props',this.props.form)
+    console.log("props", this.props.form);
     return (
       <Card title="Corporate Index" bordered={false} style={cardstyle}>
         <div>
@@ -152,11 +149,11 @@ class GETMail extends React.Component {
                   ]
                 })(
                   <Input
-                  prefix={
-                    <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                  }
-                  placeholder="Ejemplo"
-                />
+                    prefix={
+                      <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                    }
+                    placeholder="Ejemplo"
+                  />
                 )}
               </Item>
             </FirstChild>
@@ -214,8 +211,13 @@ class GETMail extends React.Component {
 
             <FirstChild>
               <Item>
-              <Button type="primary" style={{marginTop: 10}} onClick={this.handleClick.bind(this)} disabled={this.state.btnactive}>
-                    Continuar
+                <Button
+                  type="primary"
+                  style={{ marginTop: 10 }}
+                  onClick={this.handleClick.bind(this)}
+                  disabled={this.state.btnactive}
+                >
+                  Continuar
                 </Button>
               </Item>
             </FirstChild>
@@ -228,13 +230,12 @@ class GETMail extends React.Component {
 
 const WrappedNormalLoginForm = Form.create()(GETMail);
 
-
 const mapStateToProps = state => {
   return {
     companyReducers: state.companyReducers,
-    GetSector: state.FetchSector 
-  }
-}
+    GetSector: state.FetchSector
+  };
+};
 
 const mapDispatchToPropsAction = dispatch => ({
   Auto_Company: value => dispatch(getRegisterAutoEvaluation(value)),

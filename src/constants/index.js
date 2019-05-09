@@ -36,7 +36,6 @@ export const OHWS = {
   InsertNatural_person: URL + "InsertNatural_person",
   Insert_Auto_Evaluation: URL + "InsertAutoEvaluation",
   InsertRelationship_Auto_Evaluation: URL + "InsertRelationshipAutoEvaluation"
-
 };
 
 export const EMPATIA_DEFINITON =
@@ -94,7 +93,7 @@ export const L_REGISTER = {
   LABEL_11:
     "Cargo que desempeña actualmente o cargo más alto que obtuvo anteriormente en una compañía. ",
   LABEL_12: "Nombre",
-  LABEL_13: "Correo",
+  LABEL_13: "Correo"
 };
 
 export const END_MSSAGE = {
@@ -133,8 +132,8 @@ export const QUESTIONARY_3 = {
     "La empatía corporativa es considerada como un Driver clave del negocio en relación al cumplimiento de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.",
   question:
     "¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?",
-    resumen2:
-    "Indíquenos alguna empresa que opera en Chile, que usted considere lider en materia de empatía.",
+  resumen2:
+    "Indíquenos alguna empresa que opera en Chile, que usted considere lider en materia de empatía."
 };
 
 export const INCOMPLETE_QUESTIONAY = {
@@ -158,7 +157,8 @@ export const REDUX_Q = {
   GET_COMPANY: "GET_COMPANY",
   GET_FACTOR: "GET_FACTOR",
   GET_OPENQUESTION: "GET_OPENQUESTION",
-  GET_ALL_THE_ANSWER: "GET_ALL_THE_ANSWER"
+  GET_ALL_THE_ANSWER: "GET_ALL_THE_ANSWER",
+  AUTO_COMPANY: "AUTO_COMPANY"
 };
 
 export const REDUX_R = {

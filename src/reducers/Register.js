@@ -3,6 +3,7 @@ import { REDUX_R } from "../constants";
 const initialState = {
   Register: {},
   Register_Person: {},
+  getRegisterAutoEvaluation: {},
   Emails: [],
   Token: {
     token: "",
@@ -31,6 +32,11 @@ const registerReducers = (state = initialState, action) => {
       return {
         ...state,
         Emails: action.getEmails
+      };
+    case REDUX_R.GET_REGISTER_AUTO_EVALUATION:
+      return {
+        ...state,
+        getRegisterAutoEvaluation: action.getRegisterAutoEvaluation
       };
     case "RESET_ACTION":
       return initialState;
