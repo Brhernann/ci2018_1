@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Select, Button, Card, Input, Form} from "antd";
+import { Select, Button, Card, Input, Form, Icon, message} from "antd";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import { cardstyle } from "../../../globalcss";
@@ -8,11 +8,18 @@ import { AllTheAnswer } from ".././../../../actions/Questionary";
 import fetchSector from "../../../../actions/FetchSector";
 import { getRegisterAutoEvaluation } from "../../../../actions/Register";
 import Insert_Auto_Evaluation from "../../../../API/Insert_Auto_Evaluation";
+import { L_REGISTER } from "../../../../constants";
+import { FirstChild, FormContent } from "../css";
+
 
 
 const Option = Select.Option;
 const Item = Form.Item;
 
+
+function hasErrors(fieldsError) {
+  return Object.keys(fieldsError).some(field => fieldsError[field]);
+}
 
 class GETMail extends React.Component {
   constructor(props) {
@@ -37,6 +44,7 @@ class GETMail extends React.Component {
   }
 
   componentDidMount() {
+    this.props.form.validateFields();
     this.props.FetchSector();
   }
 
@@ -82,6 +90,16 @@ class GETMail extends React.Component {
   };
 
   render() {
+    const {
+      getFieldDecorator,
+      getFieldsError,
+      getFieldError,
+      isFieldTouched
+    } = this.props.form;
+    const label_5_Error = isFieldTouched("label_5") && getFieldError("label_5");
+    const label_11_Error = isFieldTouched("label_11") && getFieldError("label_11");
+    const label_4_Error = isFieldTouched("label_4") && getFieldError("label_4");
+
     if (this.props.companyReducers.AllCompany.length === 0) {
       return <Redirect push to="/No" />;
     }
@@ -91,7 +109,6 @@ class GETMail extends React.Component {
     }
     console.log('props',this.props.form)
     return (
-      <Form layout="horizontal" onSubmit={this.handleSubmit.bind(this)}>
       <Card title="Corporate Index" bordered={false} style={cardstyle}>
         <div>
           <p> seleccione su correo electronico.</p>
@@ -118,72 +135,97 @@ class GETMail extends React.Component {
           </Select>
         </div>
         <br />
-        <div>
-          <p> Introdusca el nombre de la empresa al cual pertence.</p>
-        </div>
-        <div>
-          <Input
-            style={{ width: "60%" }}
-            placeholder="Empresa"
-            allowClear
-            onChange={this.onChange}
-          />
-        </div>
-        <br />
-        <div>
-          <p> Introdusca el cargo que ocupa.</p>
-        </div>
-        <div>
-          <Input
-            style={{ width: "60%" }}
-            placeholder="Cargo dentro de la empresa"
-            allowClear
-            onChange={this.onChange}
-          />
-        </div>
-        <br />
-        <div>
-          <p>Seleccione el sector de actividad al cual pertenece su empresa.</p>
-        </div>
-        <div>
-          <Select
-            showSearch
-            style={{ width: "60%" }}
-            labelInValue
-            placeholder="Sector de actividad "
-            optionFilterProp="children"
-            onChange={this.handleChange2.bind(this)}
-            filterOption={(input, option) =>
-              option.props.children
-                .toLowerCase()
-                .indexOf(input.toLowerCase()) >= 0
-            }
-          >
-            {this.state.isFetching
+        <Form layout="horizontal" onSubmit={this.handleSubmit.bind(this)}>
+          <FormContent>
+            <FirstChild>
+              <Item
+                label={L_REGISTER.LABEL_11}
+                validateStatus={label_11_Error ? "error" : ""}
+                help={label_11_Error || ""}
+              >
+                {getFieldDecorator("label_11", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_11
+                    }
+                  ]
+                })(
+                  <Input
+                  prefix={
+                    <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                  }
+                  placeholder="Ejemplo"
+                />
+                )}
+              </Item>
+            </FirstChild>
+
+            <FirstChild>
+              <Item
+                label={L_REGISTER.LABEL_5}
+                validateStatus={label_5_Error ? "error" : ""}
+                help={label_5_Error || ""}
+              >
+                {getFieldDecorator("label_5", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_5
+                    }
+                  ]
+                })(
+                  <Select placeholder="Ejemplo">
+                    {this.state.isFetching
                       ? console.log("cargando")
                       : this.state.sectors.map((q, i) => (
                           <Option key={i} value={q.ID}>
                             {q.Name}
                           </Option>
                         ))}
-          </Select>
-        </div>
+                  </Select>
+                )}
+              </Item>
+            </FirstChild>
 
-        <div>
-          <Item>
-              <Button
-                type="primary"
-                style={{ marginTop: 10 }}
-                htmlType="submit"
-                onClick={this.handleClick.bind(this)}
-                disabled={this.state.btnactive}
+            <FirstChild>
+              <Item
+                label={L_REGISTER.LABEL_4}
+                validateStatus={label_4_Error ? "error" : ""}
+                help={label_4_Error || ""}
               >
-                Continuar
-              </Button>
-          </Item>
-        </div>
+                {getFieldDecorator("label_4", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_4
+                    }
+                  ]
+                })(
+                  <Input
+                    prefix={
+                      <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                    }
+                    placeholder="Ejemplo"
+                  />
+                )}
+              </Item>
+            </FirstChild>
+
+            <FirstChild>
+              <Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  disabled={hasErrors(getFieldsError())}
+                >
+                  Finalizar
+                </Button>
+              </Item>
+            </FirstChild>
+          </FormContent>
+        </Form>
       </Card>
-      </Form>
     );
   }
 }
