@@ -134,7 +134,7 @@ export const QUESTIONARY_3 = {
   question:
     "¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?",
     resumen2:
-    "indíquenos alguna empresa que opera en Chile, que usted considere lider en materia de empatía.",
+    "Indíquenos alguna empresa que opera en Chile, que usted considere lider en materia de empatía.",
 };
 
 export const INCOMPLETE_QUESTIONAY = {

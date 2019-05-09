@@ -169,8 +169,8 @@ class GETQuestion extends React.Component {
               ]
             })(<TextArea rows={4} />)}
           </Item>
-          
-          <p>{QUESTIONARY_3.resumen}</p>
+
+          <p>{QUESTIONARY_3.resumen2}</p>
           <Item
             validateStatus={label_1_Error ? "error" : ""}
             help={label_1_Error || ""}
