@@ -7,10 +7,12 @@ import { FirstChild, FormContent } from "./css";
 import { cardstyle } from "../globalcss";
 import { L_REGISTER } from "../../constants";
 
-import { getRegisterPerson, getToken } from "../../actions/Register";
+import { getRegisterPerson, getToken ,getRegisterAutoEvaluation} from "../../actions/Register";
 import fetchSector from "../../actions/FetchSector";
 import InsertNaturalP from "../../API/InsertNatural_person";
+import InsertAuto_Evaluation from "../../API/Insert_Auto_Evaluation";
 import GetMailNaturalP from "../../API/getMailPerson";
+
 import POSITION from "../../json/position.json";
 import "./style.css";
 const Option = Select.Option;
@@ -61,6 +63,13 @@ class Persona extends Component {
                   this.setState({ redirect: true });
                 })
                 .catch(err => console.log(err));
+
+                InsertAuto_Evaluation(values)
+              .then(() => {
+                this.props.Auto_Company({ person: values, status: "isPerson" });
+                this.setState({ redirect: true });
+              })
+              .catch(err => console.log(err));
             }
           })
           .catch(err => console.log("67890", err));
@@ -80,17 +89,16 @@ class Persona extends Component {
       isFieldTouched
     } = this.props.form;
 
-    const label_12_Error =
-      isFieldTouched("label_12") && getFieldError("label_12");
+    const label_12_Error = isFieldTouched("label_12") && getFieldError("label_12");
     const label_5_Error = isFieldTouched("label_5") && getFieldError("label_5");
-    const label_11_Error =
-      isFieldTouched("label_11") && getFieldError("label_11");
+    const label_11_Error = isFieldTouched("label_11") && getFieldError("label_11");
 
     if (this.state.redirect) {
       return <Redirect push to={"bienvenido/nuevo_usuario"} />;
     }
-    const label_13_Error =
-      isFieldTouched("label_13") && getFieldError("label_13");
+    const label_13_Error = isFieldTouched("label_13") && getFieldError("label_13");
+
+    const label_4_Error = isFieldTouched("label_4") && getFieldError("label_4");
     return (
       <Card
         title="Bienvenido, te invitamos a registrar tus datos para responder la encuesta."
@@ -204,6 +212,30 @@ class Persona extends Component {
             </FirstChild>
 
             <FirstChild>
+              <Item
+                label={L_REGISTER.LABEL_4}
+                validateStatus={label_4_Error ? "error" : ""}
+                help={label_4_Error || ""}
+              >
+                {getFieldDecorator("label_4", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_4
+                    }
+                  ]
+                })(
+                  <Input
+                    prefix={
+                      <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                    }
+                    placeholder="Ejemplo"
+                  />
+                )}
+              </Item>
+            </FirstChild>
+
+            <FirstChild>
               <Item>
                 <Button
                   type="primary"
@@ -228,6 +260,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToPropsAction = dispatch => ({
   Company: value => dispatch(getRegisterPerson(value)),
+  Auto_Company: value => dispatch(getRegisterAutoEvaluation(value)),
   Token: value => dispatch(getToken(value)),
   FetchSector: value => dispatch(fetchSector(value))
 });

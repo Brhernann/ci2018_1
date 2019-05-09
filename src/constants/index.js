@@ -95,7 +95,6 @@ export const L_REGISTER = {
     "Cargo que desempeña actualmente o cargo más alto que obtuvo anteriormente en una compañía. ",
   LABEL_12: "Nombre",
   LABEL_13: "Correo",
-  LABEL_14: "Sub Sector de actividad",
 };
 
 export const END_MSSAGE = {

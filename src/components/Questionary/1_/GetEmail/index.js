@@ -59,7 +59,7 @@ class GETMail extends React.Component {
           Insert_Auto_Evaluation(values)
             .then(res => {
               this.createToken(res.data.id);
-              this.props.Company({ id: res.data.id });
+              this.props.Auto_Company({ id: res.data.id });
             })
             .catch(err => console.log('El error po oe',err),console.log('this.props', this.props.Company)
             );
@@ -199,7 +199,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToPropsAction = dispatch => ({
-  Company: value => dispatch(getRegisterAutoEvaluation(value)),
+  Auto_Company: value => dispatch(getRegisterAutoEvaluation(value)),
   setEmail: value => dispatch(AllTheAnswer(value)),
   FetchSector: value => dispatch(fetchSector(value))
 });

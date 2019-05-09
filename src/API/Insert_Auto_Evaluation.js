@@ -7,9 +7,9 @@ export default async data => {
   return await axios.post(
     OHWS.Insert_Auto_Evaluation,
     qs.stringify({
-      Sector_ID: data.label_14,
+      Sector_ID: data.label_5,
       Position: data.label_11,
-      Enterprise_Name: data.label_13
+      Enterprise_Name: data.label_4
     }),
     {
       headers: {
