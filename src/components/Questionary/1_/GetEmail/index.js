@@ -214,12 +214,8 @@ class GETMail extends React.Component {
 
             <FirstChild>
               <Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  disabled={hasErrors(getFieldsError())}
-                >
-                  Finalizar
+              <Button type="primary" style={{marginTop: 10}} onClick={this.handleClick.bind(this)} disabled={this.state.btnactive}>
+                    Continuar
                 </Button>
               </Item>
             </FirstChild>

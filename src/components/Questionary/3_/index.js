@@ -169,6 +169,21 @@ class GETQuestion extends React.Component {
               ]
             })(<TextArea rows={4} />)}
           </Item>
+          
+          <p>{QUESTIONARY_3.resumen}</p>
+          <Item
+            validateStatus={label_1_Error ? "error" : ""}
+            help={label_1_Error || ""}
+          >
+            {getFieldDecorator("label_1", {
+              rules: [
+                {
+                  required: true,
+                  message: "Porfavor ingrese una respuesta"
+                }
+              ]
+            })(<TextArea rows={4} />)}
+          </Item>
 
           <Item>
             <div style={contentButtom}>

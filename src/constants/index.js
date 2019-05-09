@@ -132,7 +132,9 @@ export const QUESTIONARY_3 = {
   resumen:
     "La empatía corporativa es considerada como un Driver clave del negocio en relación al cumplimiento de los Objetivos de Desarrollo Sostenible decretados por la ONU en el año 2015.",
   question:
-    "¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?"
+    "¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?",
+    resumen2:
+    "indíquenos alguna empresa que opera en Chile, que usted considere lider en materia de empatía.",
 };
 
 export const INCOMPLETE_QUESTIONAY = {
