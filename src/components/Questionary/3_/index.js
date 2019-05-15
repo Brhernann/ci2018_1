@@ -14,6 +14,7 @@ import InsertEnterprise_Selected from "../../../API/InsertEnterprise_Selected";
 import InsertVariablesSelected from "../../../API/InsertVariablesSelected";
 import InsertRelationShip_Person from "../../../API/InsertRelationship_Person";
 import InsertRelationship from "../../../API/InsertRelationship";
+import InsertRelationship_Auto_Evaluation from "../../../API/InsertRelationship_Auto_Evaluation";
 
 const { TextArea } = Input;
 const Item = Form.Item;

@@ -26,6 +26,8 @@ class Selection extends React.Component {
       redirect: false
     };
     this.callback = this.callback.bind(this);
+    this.callbackAE = this.callbackAE.bind(this);
+
   }
 
   componentDidMount() {
@@ -47,14 +49,22 @@ class Selection extends React.Component {
     }
   }
 
+  callbackAE(key) {
+    console.log('la llave',key)
+  }
+
   render() {
     let Booleano = this.props.CollapseReducers.Booleano;
     let CollapseActive = this.props.CollapseReducers.CollapseActive;
+    // companies 
     let Companys = this.props.AllTheAnswer.Companys;
-    let autoCompanys = this.props.getRegisterAutoEvaluation.name;
-    let answered = Companys.map(q => q.Index);
-    let autoAnswered = autoCompanys;
 
+    //nuevo
+    let autoCompanys = this.props.getRegisterAutoEvaluation.name;
+
+    console.log("Companys:", this.props.company_selected)
+    console.log("autoCompanys: ", autoCompanys)
+    let answered = Companys.map(q => q.Index); 
     if (Object.keys(this.props.company_selected).length === 0) {
       return <Redirect push to="/No" />;
     }
@@ -100,8 +110,9 @@ class Selection extends React.Component {
           <br></br>
           <br></br>
           <h3>Lo invitamos para auto evaluar su empresa</h3>
-            <Collapse >
+            <Collapse defaultActiveKey="99" onChange={this.callbackAE} >
                 <Panel
+                  key="2"
                   header={
                     Booleano ? (
                       <Icon
@@ -111,7 +122,7 @@ class Selection extends React.Component {
                         type="check"
                       />
                     ) : (
-                      autoAnswered
+                      autoCompanys
                     )
                   }
                   icon="retweet"

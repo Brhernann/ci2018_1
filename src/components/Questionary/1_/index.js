@@ -9,6 +9,8 @@ import { FirstContent, FirstChild, Paragraph, FormContent } from './css';
 import { QUESTIONARY_1 } from '../../../constants';
 import ReactHtmlParser from 'react-html-parser';
 import { Company } from '../../../actions/Questionary';
+import GetSubsector_and_id from "../../../API/GetSubsector_and_id";
+
 
 const Option = Select.Option;
 const Item = Form.Item;

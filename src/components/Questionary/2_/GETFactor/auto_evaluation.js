@@ -347,9 +347,9 @@ const mapStateToProps = state => {
 const mapDispatchToPropsAction = dispatch => ({
     onFactorChanged: value => dispatch(Factor(value)),
     onBooleanChanged: value => dispatch(Booleano(value)),
-    onQuestionChanged: value => dispatch(QuestionaryActive(value)),
-    onCollapseChanged: value => dispatch(CollapseActive(value)),
-    onAllTheAnswerChanged: value => dispatch(AllTheAnswer(value))
+    onQuestionChanged: value => dispatch(QuestionaryActive(value)), //el cuestionario activo
+    onCollapseChanged: value => dispatch(CollapseActive(value)), // las notas de la evaluacion
+    onAllTheAnswerChanged: value => dispatch(AllTheAnswer(value)) // Este trae las empresas seleccionadas
 });
 
 export default connect(mapStateToProps, mapDispatchToPropsAction)(
