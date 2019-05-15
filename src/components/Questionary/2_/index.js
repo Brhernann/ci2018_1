@@ -12,6 +12,7 @@ import {
   QuestionaryActive
 } from "../../../actions/collapseControl";
 import GETFactor from "./GETFactor";
+import GETFactorAE from "./GETFactor/auto_evaluation";
 import Thanks from "../../thanks";
 
 const Panel = Collapse.Panel;
@@ -99,7 +100,7 @@ class Selection extends React.Component {
           <br></br>
           <br></br>
           <h3>Lo invitamos para auto evaluar su empresa</h3>
-            <Collapse>
+            <Collapse >
                 <Panel
                   header={
                     Booleano ? (
@@ -119,7 +120,7 @@ class Selection extends React.Component {
                   {Booleano ? (
                     <Thanks />
                   ) : (
-                    <GETFactor />
+                    <GETFactorAE />
                   )}
                 </Panel>
             </Collapse>
