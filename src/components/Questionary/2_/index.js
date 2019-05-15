@@ -28,7 +28,7 @@ class Selection extends React.Component {
   }
 
   componentDidMount() {
-    console.log("PROOOOOOOPS:", this.props);
+    console.log("PROOOOOOOPS:", this.props.getRegisterAutoEvaluation);
   }
 
   enterLoading = () => {
@@ -50,7 +50,9 @@ class Selection extends React.Component {
     let Booleano = this.props.CollapseReducers.Booleano;
     let CollapseActive = this.props.CollapseReducers.CollapseActive;
     let Companys = this.props.AllTheAnswer.Companys;
+    let autoCompanys = this.props.getRegisterAutoEvaluation.name;
     let answered = Companys.map(q => q.Index);
+    let autoAnswered = autoCompanys;
 
     if (Object.keys(this.props.company_selected).length === 0) {
       return <Redirect push to="/No" />;
@@ -91,6 +93,38 @@ class Selection extends React.Component {
               ))}
             </Collapse>
           </div>
+
+          <div className={contentItem}>
+          <br></br>
+          <br></br>
+          <br></br>
+          <h3>Lo invitamos para auto evaluar su empresa</h3>
+            <Collapse>
+                <Panel
+                  header={
+                    Booleano ? (
+                      <Icon
+                        style={{
+                          color: "#5fdd9d"
+                        }}
+                        type="check"
+                      />
+                    ) : (
+                      autoAnswered
+                    )
+                  }
+                  icon="retweet"
+                  // key={i}
+                >
+                  {Booleano ? (
+                    <Thanks />
+                  ) : (
+                    <GETFactor />
+                  )}
+                </Panel>
+            </Collapse>
+          </div>
+
           <div className={contentItem}>
             <Button
               type="primary"
