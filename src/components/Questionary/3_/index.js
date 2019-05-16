@@ -61,72 +61,83 @@ class GETQuestion extends React.Component {
     let arr_relation = [
       {
         InsertEnterprise_Selected: [],
-        InsertVariablesSelected: []
+        InsertVariablesSelected: [],
+        InsertAnswers_to_question: []
       }
     ];
 
     let all = await this.props.companyReducers.AllTheAnswer;
-    all.FreeQuestion = Object.values(value)[0];
-
+    //Guardar dos en vez de 1
+    all.FreeQuestion = [Object.values(value)[0], Object.values(value)[1]];
     await this.props.onOpenQuestionChanged(all);
 
     // _________________________OK
-    await InsertAnswers_to_question(all.FreeQuestion)
-      .then(res =>
-        arr_relation.push({ InsertAnswers_to_question: res.data.id })
-      )
-      .catch(err => console.log(err));
-
-    for (let element of all.Companys) {
-      //  _________________________OK
-      await InsertEnterprise_Selected({ name: element.Name, id: element.ID })
-        .then(res =>
-          arr_relation[0].InsertEnterprise_Selected.push({ id: res.data.id })
-        )
+    let InsertAnswers = [];
+    all.FreeQuestion.forEach((element, index) => {
+      InsertAnswers_to_question(element, index + 1)
+        .then(res => InsertAnswers.push({ id: res.data.id }))
         .catch(err => console.log(err));
+    });
 
-      //  _________________________OK
-      await InsertVariablesSelected(element.Data)
-        .then(res =>
-          arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
-        )
-        .catch(err => console.log(err));
-    }
+    arr_relation[0].InsertAnswers_to_question = InsertAnswers;
 
-    for (let [
-      index,
-      element
-    ] of arr_relation[0].InsertEnterprise_Selected.entries()) {
-      if (person.status === "isPerson") {
-        InsertRelationShip_Person({
-          Enterprise_Selected_ID: element.id,
-          Variables_Selected_ID:
-            arr_relation[0].InsertVariablesSelected[index].id,
-          Answer_To_Question_ID: arr_relation[1].InsertAnswers_to_question
-        })
-          .then(res =>
-            arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
-          )
-          .catch(err => console.log(err));
-      } else {
-        await InsertRelationship({
-          Mail_Surveyed_ID: this.props.companyReducers.AllTheAnswer.User,
-          Enterprise_Selected_ID: element.id,
-          Variables_Selected_ID:
-            arr_relation[0].InsertVariablesSelected[index].id,
-          Answer_To_Question_ID: arr_relation[1].InsertAnswers_to_question
-        })
-          .then(res =>
-            arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
-          )
-          .catch(err => console.log(err));
-      }
-    }
+    console.log(all.Companys);
 
-    this.props.onResetCompanyChanged();
-    this.props.onResetCollapseChanged();
-    this.props.onResetRegisterChanged();
-    this.setState({ redirect: true });
+    let myCompany = all.Companys.filter(e => e.ID === "0000");
+    let allcompanies = all.Companys.filter(e => e.ID != "0000");
+
+    // for (let element of all.Companys) {
+    //   //  _________________________OK
+    //   await InsertEnterprise_Selected({ name: element.Name, id: element.ID })
+    //     .then(res =>
+    //       arr_relation[0].InsertEnterprise_Selected.push({ id: res.data.id })
+    //     )
+    //     .catch(err => console.log(err));
+
+    //   //  _________________________OK
+    //   await InsertVariablesSelected(element.Data)
+    //     .then(res =>
+    //       arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
+    //     )
+    //     .catch(err => console.log(err));
+    // }
+
+    //   console.log(arr_relation);
+
+    // for (let [
+    //   index,
+    //   element
+    // ] of arr_relation[0].InsertEnterprise_Selected.entries()) {
+    //   if (person.status === "isPerson") {
+    //     InsertRelationShip_Person({
+    //       Enterprise_Selected_ID: element.id,
+    //       Variables_Selected_ID:
+    //         arr_relation[0].InsertVariablesSelected[index].id,
+    //       Answer_To_Question_ID: arr_relation[1].InsertAnswers_to_question
+    //     })
+    //       .then(res =>
+    //         arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
+    //       )
+    //       .catch(err => console.log(err));
+    //   } else {
+    //     await InsertRelationship({
+    //       Mail_Surveyed_ID: this.props.companyReducers.AllTheAnswer.User,
+    //       Enterprise_Selected_ID: element.id,
+    //       Variables_Selected_ID:
+    //         arr_relation[0].InsertVariablesSelected[index].id,
+    //       Answer_To_Question_ID: arr_relation[1].InsertAnswers_to_question
+    //     })
+    //       .then(res =>
+    //         arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
+    //       )
+    //       .catch(err => console.log(err));
+    //   }
+    // }
+
+    // this.props.onResetCompanyChanged();
+    // this.props.onResetCollapseChanged();
+    // this.props.onResetRegisterChanged();
+    // this.setState({ redirect: true });
   }
 
   backtoFactor() {
@@ -141,6 +152,7 @@ class GETQuestion extends React.Component {
       isFieldTouched
     } = this.props.form;
     const label_1_Error = isFieldTouched("label_1") && getFieldError("label_1");
+    const label_2_Error = isFieldTouched("label_2") && getFieldError("label_2");
 
     if (this.state.redirect) {
       return <Redirect push to="/Gracias/respondido" />;
@@ -173,10 +185,10 @@ class GETQuestion extends React.Component {
 
           <p>{QUESTIONARY_3.resumen2}</p>
           <Item
-            validateStatus={label_1_Error ? "error" : ""}
-            help={label_1_Error || ""}
+            validateStatus={label_2_Error ? "error" : ""}
+            help={label_2_Error || ""}
           >
-            {getFieldDecorator("label_1", {
+            {getFieldDecorator("label_2", {
               rules: [
                 {
                   required: true,
@@ -227,7 +239,7 @@ const mapDispatchToPropsAction = dispatch => ({
   onResetRegisterChanged: value => dispatch(resetRegister(value))
 });
 
-export default connect( 
+export default connect(
   mapStateToProps,
   mapDispatchToPropsAction
 )(WrappedNormalLoginForm);

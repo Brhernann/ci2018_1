@@ -64,7 +64,6 @@ class GETMail extends React.Component {
       if (!err) {
         Insert_Auto_Evaluation(values)
           .then(res => {
-            console.log(values, res);
             this.props.Auto_Company({
               name: values.label_4,
               id: "0000"

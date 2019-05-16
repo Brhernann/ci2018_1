@@ -7,7 +7,7 @@ const initialState = {
   AllMails: [],
   AllTheAnswer: {
     User: "",
-    FreeQuestion: "",
+    FreeQuestion: [],
     Companys: []
   }
 };
