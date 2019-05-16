@@ -10,7 +10,6 @@ import { getRegisterAutoEvaluation } from "../../../../actions/Register";
 import Insert_Auto_Evaluation from "../../../../API/Insert_Auto_Evaluation";
 import { L_REGISTER } from "../../../../constants";
 import { FirstChild, FormContent } from "../css";
-import GetSubsector_and_id from "../../../../API/GetSubsector_and_id";
 
 const Option = Select.Option;
 const Item = Form.Item;
@@ -31,7 +30,8 @@ class GETMail extends React.Component {
       mySector: "",
       isFetching: true,
       sectors: [],
-      subsector: []
+      subsector: [],
+      idFake: "0000"
     };
   }
 
@@ -58,9 +58,6 @@ class GETMail extends React.Component {
   }
   handleChange2(value) {
     this.setState({ btnactive: false, mySector: value.key });
-    /* GetSubsector_and_id(this.state.mySector)
-      .then(res => (this.state.subsector = res.data.data))
-      .catch(err => console.log(err));  */
   }
   handleSubmit = async e => {
     await this.props.form.validateFields((err, values) => {
@@ -68,10 +65,13 @@ class GETMail extends React.Component {
         Insert_Auto_Evaluation(values)
           .then(res => {
             console.log(values, res);
-            this.props.Auto_Company({ name: values.label_4 });
+            this.props.Auto_Company({
+              name: values.label_4,
+              id: "0000"
+            });
           })
           .catch(
-            err => console.log("El error po oe", err),
+            err => console.log("ERR: ", err),
             console.log("this.props", this.props.Company)
           );
       }
@@ -98,6 +98,8 @@ class GETMail extends React.Component {
       getFieldError,
       isFieldTouched
     } = this.props.form;
+    const { idFake } = this.state;
+
     const label_5_Error = isFieldTouched("label_5") && getFieldError("label_5");
     const label_11_Error =
       isFieldTouched("label_11") && getFieldError("label_11");
@@ -217,27 +219,6 @@ class GETMail extends React.Component {
                 )}
               </Item>
             </FirstChild>
-
-            {this.state.subsector.map((q, i) => (
-              <FormContent key={i}>
-                <FirstChild>
-                  <Item label={q.Name}>
-                    <Select
-                      placeholder="Seleccione una empresa"
-                      style={{ width: "100%" }}
-                      labelInValue
-                      onChange={this.handleChange.bind(this)}
-                    >
-                      {q.enterprise.map((a, s) => (
-                        <Option key={s} value={s + "_" + i + "_" + a.ID}>
-                          {a.Alias}
-                        </Option>
-                      ))}
-                    </Select>
-                  </Item>
-                </FirstChild>
-              </FormContent>
-            ))}
 
             <FirstChild>
               <Item>

@@ -12,7 +12,6 @@ import {
   QuestionaryActive
 } from "../../../actions/collapseControl";
 import GETFactor from "./GETFactor";
-import GETFactorAE from "./GETFactor/auto_evaluation";
 import Thanks from "../../thanks";
 
 const Panel = Collapse.Panel;
@@ -27,11 +26,6 @@ class Selection extends React.Component {
     };
     this.callback = this.callback.bind(this);
     this.callbackAE = this.callbackAE.bind(this);
-
-  }
-
-  componentDidMount() {
-    console.log("PROOOOOOOPS:", this.props.getRegisterAutoEvaluation);
   }
 
   enterLoading = () => {
@@ -50,21 +44,21 @@ class Selection extends React.Component {
   }
 
   callbackAE(key) {
-    console.log('la llave',key)
+    console.log("la llave", key);
   }
 
   render() {
     let Booleano = this.props.CollapseReducers.Booleano;
     let CollapseActive = this.props.CollapseReducers.CollapseActive;
-    // companies 
+    // companies
     let Companys = this.props.AllTheAnswer.Companys;
 
     //nuevo
-    let autoCompanys = this.props.getRegisterAutoEvaluation.name;
+    let autoCompanys = this.props.getRegisterAutoEvaluation;
 
-    console.log("Companys:", this.props.company_selected)
-    console.log("autoCompanys: ", autoCompanys)
-    let answered = Companys.map(q => q.Index); 
+    console.log("Companys:", this.props.company_selected);
+    console.log("autoCompanys: ", autoCompanys);
+    let answered = Companys.map(q => q.Index);
     if (Object.keys(this.props.company_selected).length === 0) {
       return <Redirect push to="/No" />;
     }
@@ -102,38 +96,6 @@ class Selection extends React.Component {
                   )}
                 </Panel>
               ))}
-            </Collapse>
-          </div>
-
-          <div className={contentItem}>
-          <br></br>
-          <br></br>
-          <br></br>
-          <h3>Lo invitamos para auto evaluar su empresa</h3>
-            <Collapse defaultActiveKey="99" onChange={this.callbackAE} >
-                <Panel
-                  key="2"
-                  header={
-                    Booleano ? (
-                      <Icon
-                        style={{
-                          color: "#5fdd9d"
-                        }}
-                        type="check"
-                      />
-                    ) : (
-                      autoCompanys
-                    )
-                  }
-                  icon="retweet"
-                  // key={i}
-                >
-                  {Booleano ? (
-                    <Thanks />
-                  ) : (
-                    <GETFactorAE />
-                  )}
-                </Panel>
             </Collapse>
           </div>
 
