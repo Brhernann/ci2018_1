@@ -12,7 +12,6 @@ import { L_REGISTER } from "../../../../constants";
 import { FirstChild, FormContent } from "../css";
 import GetSubsector_and_id from "../../../../API/GetSubsector_and_id";
 
-
 const Option = Select.Option;
 const Item = Form.Item;
 
@@ -32,8 +31,7 @@ class GETMail extends React.Component {
       mySector: "",
       isFetching: true,
       sectors: [],
-      subsector : [],
-
+      subsector: []
     };
   }
 
@@ -62,15 +60,15 @@ class GETMail extends React.Component {
     this.setState({ btnactive: false, mySector: value.key });
     /* GetSubsector_and_id(this.state.mySector)
       .then(res => (this.state.subsector = res.data.data))
-      .catch(err => console.log(err));  */ 
+      .catch(err => console.log(err));  */
   }
   handleSubmit = async e => {
     await this.props.form.validateFields((err, values) => {
       if (!err) {
         Insert_Auto_Evaluation(values)
           .then(res => {
-            console.log(values, res)
-            this.props.Auto_Company({ name: values.label_4  });
+            console.log(values, res);
+            this.props.Auto_Company({ name: values.label_4 });
           })
           .catch(
             err => console.log("El error po oe", err),
@@ -93,7 +91,7 @@ class GETMail extends React.Component {
   };
 
   render() {
-    console.log('the sector', this.state.mySector)
+    console.log("the sector", this.state.mySector);
     const {
       getFieldDecorator,
       getFieldsError,
@@ -166,7 +164,7 @@ class GETMail extends React.Component {
               </Item>
             </FirstChild>
 
-            <FirstChild >
+            <FirstChild>
               <Item
                 label={L_REGISTER.LABEL_5}
                 validateStatus={label_5_Error ? "error" : ""}
@@ -180,7 +178,10 @@ class GETMail extends React.Component {
                     }
                   ]
                 })(
-                  <Select placeholder="Ejemplo" onChange={this.handleChange2.bind(this)}>
+                  <Select
+                    placeholder="Ejemplo"
+                    onChange={this.handleChange2.bind(this)}
+                  >
                     {this.state.isFetching
                       ? console.log("cargando")
                       : this.state.sectors.map((q, i) => (
@@ -193,7 +194,7 @@ class GETMail extends React.Component {
               </Item>
             </FirstChild>
 
-{/*             <FirstChild>
+            <FirstChild>
               <Item
                 label={L_REGISTER.LABEL_4}
                 validateStatus={label_4_Error ? "error" : ""}
@@ -215,23 +216,28 @@ class GETMail extends React.Component {
                   />
                 )}
               </Item>
-            </FirstChild> */}
+            </FirstChild>
 
-            {this.state.subsector.map((q, i) =>
-                    <FormContent key={i}>
-                        <FirstChild>
-                            <Item label={q.Name}>
-                                <Select
-                                    placeholder="Seleccione una empresa"
-                                    style={{ width: '100%' }}
-                                    labelInValue
-                                    onChange={this.handleChange.bind(this)}>
-                                    {q.enterprise.map((a, s) => <Option key={s} value={s + '_' + i + '_' + a.ID}>{a.Alias}</Option>)}
-                                </Select>
-                            </Item>
-                        </FirstChild>
-                    </FormContent >
-                )}
+            {this.state.subsector.map((q, i) => (
+              <FormContent key={i}>
+                <FirstChild>
+                  <Item label={q.Name}>
+                    <Select
+                      placeholder="Seleccione una empresa"
+                      style={{ width: "100%" }}
+                      labelInValue
+                      onChange={this.handleChange.bind(this)}
+                    >
+                      {q.enterprise.map((a, s) => (
+                        <Option key={s} value={s + "_" + i + "_" + a.ID}>
+                          {a.Alias}
+                        </Option>
+                      ))}
+                    </Select>
+                  </Item>
+                </FirstChild>
+              </FormContent>
+            ))}
 
             <FirstChild>
               <Item>
