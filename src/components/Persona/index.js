@@ -7,10 +7,10 @@ import { FirstChild, FormContent } from "./css";
 import { cardstyle } from "../globalcss";
 import { L_REGISTER } from "../../constants";
 
-import { getRegisterPerson, getToken ,getRegisterAutoEvaluation} from "../../actions/Register";
+import { getRegisterPerson, getToken ,getRegisterAutoEvaluation,getRegisterAutoEvaluationID} from "../../actions/Register";
 import fetchSector from "../../actions/FetchSector";
 import InsertNaturalP from "../../API/InsertNatural_person";
-import InsertAuto_Evaluation from "../../API/Insert_Auto_Evaluation";
+import Insert_Auto_Evaluation from "../../API/Insert_Auto_Evaluation";
 import GetMailNaturalP from "../../API/getMailPerson";
 
 import POSITION from "../../json/position.json";
@@ -64,12 +64,18 @@ class Persona extends Component {
                 })
                 .catch(err => console.log(err));
 
-                InsertAuto_Evaluation(values)
-              .then(() => {
-                this.props.Auto_Company({ person: values, status: "isPerson" });
-                this.setState({ redirect: true });
-              })
-              .catch(err => console.log(err));
+              Insert_Auto_Evaluation(values).then(res => {
+              this.props.Auto_Company({
+                name: values.label_4,
+                id: "0000"
+              });
+              console.log('res del insert de auto evaluation', res.data.id)
+              this.props.Auto_CompanyID({id:res.data.id});
+          })
+          .catch(
+            err => console.log("ERR: ", err),
+            console.log("this.props", this.props.Company)
+          );
             }
           })
           .catch(err => console.log("67890", err));
@@ -261,6 +267,7 @@ const mapStateToProps = state => {
 const mapDispatchToPropsAction = dispatch => ({
   Company: value => dispatch(getRegisterPerson(value)),
   Auto_Company: value => dispatch(getRegisterAutoEvaluation(value)),
+  Auto_CompanyID: value => dispatch(getRegisterAutoEvaluationID(value)),
   Token: value => dispatch(getToken(value)),
   FetchSector: value => dispatch(fetchSector(value))
 });

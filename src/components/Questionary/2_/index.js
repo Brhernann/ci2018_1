@@ -68,7 +68,8 @@ class Selection extends React.Component {
     }
 
     return (
-      <Card title={"Lo invitamos a evaluar esta empresa "} style={cardstyle}>
+      <Card title={"Lo invitamos a evaluar esta empresa."
+      + " La ultima empresa de la lista sera la empresa a auto evaluar."} style={cardstyle}>
         <div className={content}>
           <div className={contentItem}>
             <Collapse activeKey={CollapseActive} onChange={this.callback}>
@@ -88,6 +89,7 @@ class Selection extends React.Component {
                   }
                   icon="retweet"
                   key={i}
+                  // header={"Ahora, lo invitamos a evaluar su empresa en los diferentes atributos."}
                 >
                   {Booleano && answered.includes(i) ? (
                     <Thanks />
@@ -122,7 +124,8 @@ const mapStateToProps = state => {
     company_selected: state.companyReducers.company_selected,
     AllTheAnswer: state.companyReducers.AllTheAnswer,
     CollapseReducers: state.CollapseReducers,
-    getRegisterAutoEvaluation: state.registerReducers.getRegisterAutoEvaluation
+    getRegisterAutoEvaluation: state.registerReducers.getRegisterAutoEvaluation,
+    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID
   };
 };
 

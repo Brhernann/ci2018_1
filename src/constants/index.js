@@ -124,7 +124,7 @@ export const QUESTIONARY_1 = {
     "<br><br>" +
     "(los nombres de las empresas se desplegarán por sub sector)" +
     "<br><br>" +
-    "<b>Nota: Usted no puede votar por su misma empresa u otras empresas del mismo Holding.<b>"
+    "<b>Nota: Usted no puede votar aquí por su misma empresa u otras empresas del mismo Holding, más adelante se le pedirá la evaluación de su empresa.<b>"
 };
 
 export const QUESTIONARY_3 = {
@@ -166,5 +166,6 @@ export const REDUX_R = {
   GET_TOKEN: "GET_TOKEN",
   GET_MAILS: "GET_MAILS",
   GET_REGISTER_PERSON: "GET_REGISTER_PERSON",
-  GET_REGISTER_AUTO_EVALUATION: "GET_REGISTER_AUTO_EVALUATION"
+  GET_REGISTER_AUTO_EVALUATION: "GET_REGISTER_AUTO_EVALUATION",
+  GET_REGISTER_AUTO_EVALUATIONID: "GET_REGISTER_AUTO_EVALUATIONID"
 };

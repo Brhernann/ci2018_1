@@ -4,6 +4,7 @@ const initialState = {
   Register: {},
   Register_Person: {},
   getRegisterAutoEvaluation: {},
+  getRegisterAutoEvaluationID: {},
   Emails: [],
   Token: {
     token: "",
@@ -37,6 +38,11 @@ const registerReducers = (state = initialState, action) => {
       return {
         ...state,
         getRegisterAutoEvaluation: action.getRegisterAutoEvaluation
+      };
+      case REDUX_R.GET_REGISTER_AUTO_EVALUATIONID:
+      return {
+        ...state,
+        getRegisterAutoEvaluationID: action.getRegisterAutoEvaluationID
       };
     case "RESET_ACTION":
       return initialState;

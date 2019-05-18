@@ -6,7 +6,7 @@ import { Redirect } from "react-router";
 import { cardstyle } from "../../../globalcss";
 import { AllTheAnswer } from ".././../../../actions/Questionary";
 import fetchSector from "../../../../actions/FetchSector";
-import { getRegisterAutoEvaluation } from "../../../../actions/Register";
+import { getRegisterAutoEvaluation,getRegisterAutoEvaluationID} from "../../../../actions/Register";
 import Insert_Auto_Evaluation from "../../../../API/Insert_Auto_Evaluation";
 import { L_REGISTER } from "../../../../constants";
 import { FirstChild, FormContent } from "../css";
@@ -31,7 +31,8 @@ class GETMail extends React.Component {
       isFetching: true,
       sectors: [],
       subsector: [],
-      idFake: "0000"
+      idFake: "0000",
+      AutoEvaluationInsertID:""
     };
   }
 
@@ -68,6 +69,8 @@ class GETMail extends React.Component {
               name: values.label_4,
               id: "0000"
             });
+            console.log('res del insert de auto evaluation', res.data.id)
+            this.props.Auto_CompanyID({id:res.data.id});
           })
           .catch(
             err => console.log("ERR: ", err),
@@ -90,7 +93,6 @@ class GETMail extends React.Component {
   };
 
   render() {
-    console.log("the sector", this.state.mySector);
     const {
       getFieldDecorator,
       getFieldsError,
@@ -249,6 +251,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToPropsAction = dispatch => ({
   Auto_Company: value => dispatch(getRegisterAutoEvaluation(value)),
+  Auto_CompanyID: value => dispatch(getRegisterAutoEvaluationID(value)),
   setEmail: value => dispatch(AllTheAnswer(value)),
   FetchSector: value => dispatch(fetchSector(value))
 });

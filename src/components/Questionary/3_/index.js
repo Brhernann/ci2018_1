@@ -56,21 +56,25 @@ class GETQuestion extends React.Component {
   };
 
   async noname(value) {
-    const { person } = this.state;
+     const { person } = this.state;
 
     let arr_relation = [
       {
         InsertEnterprise_Selected: [],
         InsertVariablesSelected: [],
-        InsertAnswers_to_question: []
+        InsertAnswers_to_question: [],
+        InsertVariablesSelected_auto_evaluation: []
       }
     ];
 
     let all = await this.props.companyReducers.AllTheAnswer;
+    
+
+
     //Guardar dos en vez de 1
+
     all.FreeQuestion = [Object.values(value)[0], Object.values(value)[1]];
     await this.props.onOpenQuestionChanged(all);
-
     // _________________________OK
     let InsertAnswers = [];
     all.FreeQuestion.forEach((element, index) => {
@@ -81,67 +85,85 @@ class GETQuestion extends React.Component {
 
     arr_relation[0].InsertAnswers_to_question = InsertAnswers;
 
-    console.log(all.Companys);
 
     let myCompany = all.Companys.filter(e => e.ID === "0000");
     let allcompanies = all.Companys.filter(e => e.ID != "0000");
 
-    // for (let element of all.Companys) {
-    //   //  _________________________OK
-    //   await InsertEnterprise_Selected({ name: element.Name, id: element.ID })
-    //     .then(res =>
-    //       arr_relation[0].InsertEnterprise_Selected.push({ id: res.data.id })
-    //     )
-    //     .catch(err => console.log(err));
+    for (let element of allcompanies) {
+      //  _________________________OK
+      await InsertEnterprise_Selected({ name: element.Name, id: element.ID })
+        .then(res =>
+          arr_relation[0].InsertEnterprise_Selected.push({ id: res.data.id })
+       )
+         .catch(err => console.log(err));
 
-    //   //  _________________________OK
-    //   await InsertVariablesSelected(element.Data)
-    //     .then(res =>
-    //       arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
-    //     )
-    //     .catch(err => console.log(err));
-    // }
+       //  _________________________OK
+       await InsertVariablesSelected(element.Data)
+         .then(res =>
+          arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
+        )
+        .catch(err => console.log(err));
+    }
+    // Insert del flujo de auto evaluacion
+    console.log('la compañia del flujo de persona',myCompany[0])
+      //  _________________________OK
+      await InsertVariablesSelected(myCompany[0].Data)
+      .then(res =>
+       arr_relation[0].InsertVariablesSelected_auto_evaluation.push({ id: res.data.id })
+     )
+     .catch(err => console.log(err));
 
-    //   console.log(arr_relation);
+    let allTheAnswerToQuestion = arr_relation[0].InsertAnswers_to_question
+    
+    await InsertRelationship_Auto_Evaluation({
+      Auto_Evaluation_ID: this.props.getRegisterAutoEvaluationID.id,
+      Variables_Selected_ID: arr_relation[0].InsertVariablesSelected_auto_evaluation[0].id,
+      Answer_To_Question_ID: allTheAnswerToQuestion[0].id,
+      Answer_To_Question_ID_2: allTheAnswerToQuestion[1].id
+    })
+    .then(res =>
+      arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
+    )
+    .catch(err => console.log(err));
 
-    // for (let [
-    //   index,
-    //   element
-    // ] of arr_relation[0].InsertEnterprise_Selected.entries()) {
-    //   if (person.status === "isPerson") {
-    //     InsertRelationShip_Person({
-    //       Enterprise_Selected_ID: element.id,
-    //       Variables_Selected_ID:
-    //         arr_relation[0].InsertVariablesSelected[index].id,
-    //       Answer_To_Question_ID: arr_relation[1].InsertAnswers_to_question
-    //     })
-    //       .then(res =>
-    //         arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
-    //       )
-    //       .catch(err => console.log(err));
-    //   } else {
-    //     await InsertRelationship({
-    //       Mail_Surveyed_ID: this.props.companyReducers.AllTheAnswer.User,
-    //       Enterprise_Selected_ID: element.id,
-    //       Variables_Selected_ID:
-    //         arr_relation[0].InsertVariablesSelected[index].id,
-    //       Answer_To_Question_ID: arr_relation[1].InsertAnswers_to_question
-    //     })
-    //       .then(res =>
-    //         arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
-    //       )
-    //       .catch(err => console.log(err));
-    //   }
-    // }
+    for (let [
+      index,
+      element
+    ] of arr_relation[0].InsertEnterprise_Selected.entries()) {
+      if (person.status === "isPerson") {
+        InsertRelationShip_Person({
+          Enterprise_Selected_ID: element.id,
+          Variables_Selected_ID:
+            arr_relation[0].InsertVariablesSelected[index].id,
+            Answer_To_Question_ID: allTheAnswerToQuestion[0].id,
+            Answer_To_Question_ID_2: allTheAnswerToQuestion[1].id})
+          .then(res =>
+            arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
+          )
+          .catch(err => console.log(err));
+      } else {
+        await InsertRelationship({
+          Mail_Surveyed_ID: this.props.companyReducers.AllTheAnswer.User,
+          Enterprise_Selected_ID: element.id,
+          Variables_Selected_ID:
+          arr_relation[0].InsertVariablesSelected[index].id,
+          Answer_To_Question_ID: allTheAnswerToQuestion[0].id,
+          Answer_To_Question_ID_2: allTheAnswerToQuestion[1].id        })
+          .then(res =>
+            arr_relation[0].InsertVariablesSelected.push({ id: res.data.id })
+          )
+          .catch(err => console.log(err));
+      }
+    }
 
-    // this.props.onResetCompanyChanged();
-    // this.props.onResetCollapseChanged();
-    // this.props.onResetRegisterChanged();
-    // this.setState({ redirect: true });
+    this.props.onResetCompanyChanged();
+    this.props.onResetCollapseChanged();
+    this.props.onResetRegisterChanged();
+    this.setState({ redirect: true });
   }
 
   backtoFactor() {
-    console.log(this.props.state);
+    // console.log(this.props.state);
   }
 
   render() {
@@ -228,7 +250,9 @@ const mapStateToProps = state => {
     CollapseReducers: state.CollapseReducers,
     companyReducers: state.companyReducers,
     state,
-    personReducers: state.registerReducers.Register_Person
+    personReducers: state.registerReducers.Register_Person,
+    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID
+
   };
 };
 

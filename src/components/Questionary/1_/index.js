@@ -140,7 +140,9 @@ const thisQuestionary = Form.create()(Questionary);
 const mapStateToProps = state => {
   return {
     Subsector: state.companyReducers.AllCompany,
-    getRegisterAutoEvaluation: state.registerReducers.getRegisterAutoEvaluation
+    getRegisterAutoEvaluation: state.registerReducers.getRegisterAutoEvaluation,
+    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID
+
   };
 };
 
