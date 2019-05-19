@@ -120,7 +120,7 @@ export const QUESTIONARY_1 = {
   question:
     "Considerando la definición anterior y según su punto de vista personal, " +
     "señale una empresa de cada uno de los siguientes sub sectores de la industria " +
-    "que Ud considere <b><u>Empática</u></b> en su quehacer empresarial. " +
+    "que Ud considere <b><u>Empática</u></b> en su que hacer empresarial. " +
     "<br><br>" +
     "(los nombres de las empresas se desplegarán por sub sector)" +
     "<br><br>" +

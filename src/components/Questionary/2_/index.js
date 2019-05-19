@@ -66,10 +66,9 @@ class Selection extends React.Component {
     if (this.state.redirect) {
       return <Redirect push to="/Pregunta" />;
     }
-
     return (
-      <Card title={"Lo invitamos a evaluar esta empresa."
-      + " La ultima empresa de la lista sera la empresa a auto evaluar."} style={cardstyle}>
+      <Card title={"Lo invitamos a evaluar las empresas que seleccionó del sector de competencia y al final," 
+      + " le solicitamos que evalúe su propia empresa."} style={cardstyle}>
         <div className={content}>
           <div className={contentItem}>
             <Collapse activeKey={CollapseActive} onChange={this.callback}>
