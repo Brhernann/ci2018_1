@@ -105,7 +105,6 @@ class GETQuestion extends React.Component {
         .catch(err => console.log(err));
     }
     // Insert del flujo de auto evaluacion
-    console.log('la compañia del flujo de persona',myCompany[0])
       //  _________________________OK
       await InsertVariablesSelected(myCompany[0].Data)
       .then(res =>
@@ -132,6 +131,7 @@ class GETQuestion extends React.Component {
     ] of arr_relation[0].InsertEnterprise_Selected.entries()) {
       if (person.status === "isPerson") {
         InsertRelationShip_Person({
+          Natural_Person_ID: this.props.getRegisterNaturalPersonID.id,
           Enterprise_Selected_ID: element.id,
           Variables_Selected_ID:
             arr_relation[0].InsertVariablesSelected[index].id,
@@ -251,7 +251,8 @@ const mapStateToProps = state => {
     companyReducers: state.companyReducers,
     state,
     personReducers: state.registerReducers.Register_Person,
-    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID
+    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID,
+    getRegisterNaturalPersonID: state.registerReducers.getRegisterNaturalPersonID
 
   };
 };

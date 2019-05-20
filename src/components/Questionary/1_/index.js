@@ -141,7 +141,8 @@ const mapStateToProps = state => {
   return {
     Subsector: state.companyReducers.AllCompany,
     getRegisterAutoEvaluation: state.registerReducers.getRegisterAutoEvaluation,
-    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID
+    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID,
+    getRegisterNaturalPersonID: state.registerReducers.getRegisterNaturalPersonID
 
   };
 };

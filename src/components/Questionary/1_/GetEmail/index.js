@@ -69,12 +69,10 @@ class GETMail extends React.Component {
               name: values.label_4,
               id: "0000"
             });
-            console.log('res del insert de auto evaluation', res.data.id)
             this.props.Auto_CompanyID({id:res.data.id});
           })
           .catch(
             err => console.log("ERR: ", err),
-            console.log("this.props", this.props.Company)
           );
       }
     });
@@ -113,7 +111,6 @@ class GETMail extends React.Component {
     if (this.state.redirect) {
       return <Redirect push to="/cuestionario" />;
     }
-    console.log("props", this.props.form);
     return (
       <Card title="Corporate Index" bordered={false} style={cardstyle}>
         <div>

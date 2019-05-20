@@ -25,7 +25,6 @@ class Selection extends React.Component {
       redirect: false
     };
     this.callback = this.callback.bind(this);
-    this.callbackAE = this.callbackAE.bind(this);
   }
 
   enterLoading = () => {
@@ -43,10 +42,6 @@ class Selection extends React.Component {
     }
   }
 
-  callbackAE(key) {
-    console.log("la llave", key);
-  }
-
   render() {
     let Booleano = this.props.CollapseReducers.Booleano;
     let CollapseActive = this.props.CollapseReducers.CollapseActive;
@@ -56,8 +51,6 @@ class Selection extends React.Component {
     //nuevo
     let autoCompanys = this.props.getRegisterAutoEvaluation;
 
-    console.log("Companys:", this.props.company_selected);
-    console.log("autoCompanys: ", autoCompanys);
     let answered = Companys.map(q => q.Index);
     if (Object.keys(this.props.company_selected).length === 0) {
       return <Redirect push to="/No" />;
@@ -124,7 +117,8 @@ const mapStateToProps = state => {
     AllTheAnswer: state.companyReducers.AllTheAnswer,
     CollapseReducers: state.CollapseReducers,
     getRegisterAutoEvaluation: state.registerReducers.getRegisterAutoEvaluation,
-    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID
+    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID,
+    getRegisterNaturalPersonID: state.registerReducers.getRegisterNaturalPersonID
   };
 };
 

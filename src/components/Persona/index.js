@@ -7,7 +7,8 @@ import { FirstChild, FormContent } from "./css";
 import { cardstyle } from "../globalcss";
 import { L_REGISTER } from "../../constants";
 
-import { getRegisterPerson, getToken ,getRegisterAutoEvaluation,getRegisterAutoEvaluationID} from "../../actions/Register";
+import { getRegisterPerson, getToken ,getRegisterAutoEvaluation,getRegisterAutoEvaluationID, 
+        getRegisterNaturalPersonID} from "../../actions/Register";
 import fetchSector from "../../actions/FetchSector";
 import InsertNaturalP from "../../API/InsertNatural_person";
 import Insert_Auto_Evaluation from "../../API/Insert_Auto_Evaluation";
@@ -58,10 +59,11 @@ class Persona extends Component {
               message.error("Este correo ya participó en una evaluación");
             } else {
               InsertNaturalP(values)
-                .then(() => {
+                .then((res => {
                   this.props.Company({ person: values, status: "isPerson" });
                   this.setState({ redirect: true });
-                })
+                  this.props.Natural_Person_ID({id:res.data.id});
+                })) 
                 .catch(err => console.log(err));
 
               Insert_Auto_Evaluation(values).then(res => {
@@ -69,12 +71,10 @@ class Persona extends Component {
                 name: values.label_4,
                 id: "0000"
               });
-              console.log('res del insert de auto evaluation', res.data.id)
               this.props.Auto_CompanyID({id:res.data.id});
           })
           .catch(
             err => console.log("ERR: ", err),
-            console.log("this.props", this.props.Company)
           );
             }
           })
@@ -268,6 +268,7 @@ const mapDispatchToPropsAction = dispatch => ({
   Company: value => dispatch(getRegisterPerson(value)),
   Auto_Company: value => dispatch(getRegisterAutoEvaluation(value)),
   Auto_CompanyID: value => dispatch(getRegisterAutoEvaluationID(value)),
+  Natural_Person_ID: value => dispatch(getRegisterNaturalPersonID(value)),
   Token: value => dispatch(getToken(value)),
   FetchSector: value => dispatch(fetchSector(value))
 });

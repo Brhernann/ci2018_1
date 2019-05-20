@@ -4,7 +4,6 @@ import { OHWS } from "../constants";
 import { token } from "../jwt";
 
 export default async data => {
-  console.log(data);
   return await axios.post(
     OHWS.InsertRelationship_Auto_Evaluation,
     qs.stringify({

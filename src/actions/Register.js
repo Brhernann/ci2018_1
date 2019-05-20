@@ -34,3 +34,8 @@ export const getRegisterAutoEvaluationID = getRegisterAutoEvaluationID => ({
   type: REDUX_R.GET_REGISTER_AUTO_EVALUATIONID,
   getRegisterAutoEvaluationID
 });
+
+export const getRegisterNaturalPersonID = getRegisterNaturalPersonID => ({
+  type: REDUX_R.GET_REGISTER_NATURAL_PERSON_ID,
+  getRegisterNaturalPersonID
+});
