@@ -163,7 +163,7 @@ class GETQuestion extends React.Component {
   }
 
   backtoFactor() {
-    // console.log(this.props.state);
+    console.log(this.props.state);
   }
 
   render() {
