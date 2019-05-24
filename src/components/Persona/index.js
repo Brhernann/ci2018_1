@@ -68,7 +68,7 @@ class Persona extends Component {
 
               Insert_Auto_Evaluation(values).then(res => {
               this.props.Auto_Company({
-                name: values.label_4,
+                name: values.label_14,
                 id: "0000"
               });
               this.props.Auto_CompanyID({id:res.data.id});
@@ -104,7 +104,7 @@ class Persona extends Component {
     }
     const label_13_Error = isFieldTouched("label_13") && getFieldError("label_13");
 
-    const label_4_Error = isFieldTouched("label_4") && getFieldError("label_4");
+    const label_14_Error = isFieldTouched("label_14") && getFieldError("label_14");
     return (
       <Card
         title="Bienvenido, te invitamos a registrar tus datos para responder la encuesta."
@@ -219,15 +219,15 @@ class Persona extends Component {
 
             <FirstChild>
               <Item
-                label={L_REGISTER.LABEL_4}
-                validateStatus={label_4_Error ? "error" : ""}
-                help={label_4_Error || ""}
+                label={L_REGISTER.LABEL_14}
+                validateStatus={label_14_Error ? "error" : ""}
+                help={label_14_Error || ""}
               >
-                {getFieldDecorator("label_4", {
+                {getFieldDecorator("label_14", {
                   rules: [
                     {
                       required: true,
-                      message: "Porfavor ingrese " + L_REGISTER.LABEL_4
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_14
                     }
                   ]
                 })(

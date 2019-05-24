@@ -66,7 +66,7 @@ class GETMail extends React.Component {
         Insert_Auto_Evaluation(values)
           .then(res => {
             this.props.Auto_Company({
-              name: values.label_4,
+              name: values.label_14,
               id: "0000"
             });
             this.props.Auto_CompanyID({id:res.data.id});
@@ -102,7 +102,7 @@ class GETMail extends React.Component {
     const label_5_Error = isFieldTouched("label_5") && getFieldError("label_5");
     const label_11_Error =
       isFieldTouched("label_11") && getFieldError("label_11");
-    const label_4_Error = isFieldTouched("label_4") && getFieldError("label_4");
+    const label_14_Error = isFieldTouched("label_14") && getFieldError("label_14");
 
     if (this.props.companyReducers.AllCompany.length === 0) {
       return <Redirect push to="/No" />;
@@ -196,15 +196,15 @@ class GETMail extends React.Component {
 
             <FirstChild>
               <Item
-                label={L_REGISTER.LABEL_4}
-                validateStatus={label_4_Error ? "error" : ""}
-                help={label_4_Error || ""}
+                label={L_REGISTER.LABEL_14}
+                validateStatus={label_14_Error ? "error" : ""}
+                help={label_14_Error || ""}
               >
-                {getFieldDecorator("label_4", {
+                {getFieldDecorator("label_14", {
                   rules: [
                     {
                       required: true,
-                      message: "Porfavor ingrese " + L_REGISTER.LABEL_4
+                      message: "Porfavor ingrese " + L_REGISTER.LABEL_14
                     }
                   ]
                 })(

@@ -49,27 +49,30 @@ export const VISION = {
   TITLE: "ÍNDICE CORPORATIVO DE EMPATÍA.",
   RESUMEN:
     '<p><b>"Empresas más empáticas con propósito, inclusivas y sostenibles"</b>.</p>' +
-    "<p>El Índice de Empatía Corporativa es nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial." +
+    "<p>El Índice de Empatía Corporativa ICE es nuestro primer producto de excelencia en la investigación de la empatía a nivel empresarial." +
     "<br>" +
-    "Es una herramienta de gestión sin costo para las empresas o instituciones que necesiten medir los niveles de empatía de su compañía " +
-    "con todos sus stakeholders o públicos estratégicos." +
+    "Es una herramienta de gestión sin costo para las empresas o instituciones que necesiten medir los niveles de empatía " +
+    "de sus compañías en sus stakeholders." +
     "</p>"
 };
 
 export const EMPATIA = {
   TITLE: "Índice Verificado.",
   RESUMEN:
-    "<p>El Índice Corporativo de Empatía tiene tres fases de evaluación de la empatía empresarial" +
-    " y consulta a siete grupos de interés, además permite la autoevaluación de las empresas participantes." +
-    " Se encuentra en proceso de verificación bajo la norma internacional ISAE 3000 por una empresa internacional de auditoria.</p>"
+    "<p>El Índice de Empatía Corporativa ICE, tiene tres fases sucesivas de evaluación, cada una de ellas pesa un 33,3% " +
+    "en la valoración de la empresa en el ranking final y en esta edición, consulta a 22 fuentes de información. " +
+    "El método permite realizar una auto-evaluación de la empresa participante. " +
+    "KPMG Chile verifica nuestra medición, a través de la norma internacional ISAE 3000." +
+    "</p>"
 };
 
 export const MISION = {
   TITLE: "Metodología.",
   RESUMEN:
-    "<p>Nuestra metodología está validada en Inglaterra, contiene una parte similar al estudio que se aplica hace algunos años" +
-    " en ese país y se encuentra adaptada a nuestra cultura local y ámbito empresarial. La propiedad intelectual del indice corporativa pertenece a Corporate Index" +
-    " y ha sido desarrollada en Chile." +
+    "<p>Se encuentra validada por un Informe que emite el Magíster de Comunicación Estratégica de la Escuela de Negocios (UAI). " +
+    "La medición contiene una parte similar al estudio que se aplica hace algunos años en Inglaterra, " +
+    "se adaptó al ámbito empresarial chileno y actualmente se miden más de 50 Industrias locales. " +
+    "La propiedad intelectual del Índice de Empatía Corporativa pertenece a Corporate Index SPA. " +
     "</p>"
 };
 
@@ -94,7 +97,9 @@ export const L_REGISTER = {
   LABEL_11:
     "Cargo que desempeña actualmente o cargo más alto que obtuvo anteriormente en una compañía. ",
   LABEL_12: "Nombre",
-  LABEL_13: "Correo"
+  LABEL_13: "Correo",
+  LABEL_14: "Nombre de su empresa (en la que Usted trabaja actualmente)",
+
 };
 
 export const END_MSSAGE = {
@@ -112,15 +117,15 @@ export const WELCOME_MESSAGE = {
 };
 
 export const QUESTIONARY_1 = {
-  title: "LAS EMPRESAS CON MEJOR EMPATÍA CORPORATIVA",
+  title: "RANKING DE LAS EMPRESAS CON MEJOR EMPATÍA CORPORATIVA",
   subtitle: " La empatía corporativa a nivel empresarial se define como:",
   resumen:
-    " El grado de compromiso, respecto a hacerse cargo de las expectativas que se generan en los públicos" +
-    " de interés - adecuando en consecuencia - sus acciones y mensajes para entregar una respuesta" +
-    " más alineada con el impacto emocional y económico que produce una entidad.",
+    "El grado de compromiso que se percibe de una compañía al hacerse cargo de las expectativas " +
+    "y económico que la entidad genera en sus públicos de interés. La Empatía Corporativa, se define también, " +
+    "como la habilidad de una compañía de ponerse en el lugar del otro.",
   question:
     "Considerando la definición anterior y según su punto de vista personal, " +
-    "señale una empresa de cada uno de los siguientes sub sectores de la industria " +
+    "seleccione una empresa de cada uno de las siguientes industrias,  " +
     "que Ud considere <b><u>Empática</u></b> en su que hacer empresarial. " +
     "<br><br>" +
     "(los nombres de las empresas se desplegarán por sub sector)" +
