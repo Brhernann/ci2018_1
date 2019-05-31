@@ -67,10 +67,11 @@ export const EMPATIA = {
 export const MISION = {
   TITLE: "Metodología.",
   RESUMEN:
-    "<p>Se encuentra validada por un Informe que emite el Magíster de Comunicación Estratégica de la Escuela de Negocios (UAI). " +
-    "La medición contiene una parte similar al estudio que se aplica hace algunos años en Inglaterra, " +
-    "se adaptó al ámbito empresarial chileno y actualmente se miden más de 50 Industrias locales. " +
-    "La propiedad intelectual del Índice de Empatía Corporativa pertenece a Corporate Index SPA. " +
+    "<p>El Índice de Empatía Corporativa tiene una metodología basada en el modelo inglés y mide " +
+    "los niveles de empatía de las empresas en torno a las expectativas " +
+    "y al impacto emocional y económico que produce una entidad en sus stakeholders " +
+    "Encontrar el equilibrio entre expectativas e impacto emocional nos permitirá entender " +
+    "las necesidades de todas las partes interesadas y es un factor clave de liderazgo para el éxito empresarial." +
     "</p>"
 };
 
