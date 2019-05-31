@@ -4,11 +4,9 @@ export const FETCHING_DATA = "FETCHING_DATA";
 export const FETCHING_DATA_SUCCESS = "FETCHING_DATA_SUCCESS";
 export const FETCHING_DATA_FAILURE = "FETCHING_DATA_FAILURE";
 
- export const URLWEB =
-  "https://corporateindex.cl/EmpatiaCorporativa/#/bienvenido/";
+ export const URLWEB = "https://corporateindex.cl/EmpatiaCorporativa/#/bienvenido/";
 
-export const URL =
-  "https://jerasport.cl/webservices/"; 
+export const URL = "https://jerasport.cl/webservices/"; 
   
 
 // export const URLWEB = "http://localhost:3001/#/bienvenido/";
