@@ -121,7 +121,7 @@ export const QUESTIONARY_1 = {
   subtitle: " La empatía corporativa a nivel empresarial se define como:",
   resumen:
     "El grado de compromiso que se percibe de una compañía al hacerse cargo de las expectativas " +
-    "y económico que la entidad genera en sus públicos de interés. La Empatía Corporativa, se define también, " +
+    "y del impacto emocional y económico que la entidad genera en sus públicos de interés. La Empatía Corporativa, se define también, " +
     "como la habilidad de una compañía de ponerse en el lugar del otro.",
   question:
     "Considerando la definición anterior y según su punto de vista personal, " +
