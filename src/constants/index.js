@@ -1,16 +1,14 @@
-export const SECRET_TOKEN = "CLIENTASHJDJHASHJB3";
+export const SECRET_TOKEN = "CLIENTASHJDJHASHJB3"
 // FETCH
-export const FETCHING_DATA = "FETCHING_DATA";
-export const FETCHING_DATA_SUCCESS = "FETCHING_DATA_SUCCESS";
-export const FETCHING_DATA_FAILURE = "FETCHING_DATA_FAILURE";
+export const FETCHING_DATA = "FETCHING_DATA"
+export const FETCHING_DATA_SUCCESS = "FETCHING_DATA_SUCCESS"
+export const FETCHING_DATA_FAILURE = "FETCHING_DATA_FAILURE"
 
- export const URLWEB = "https://corporateindex.cl/EmpatiaCorporativa/#/bienvenido/";
+//  export const URLWEB = "https://corporateindex.cl/EmpatiaCorporativa/#/bienvenido/";
+// export const URL = "https://jerasport.cl/webservices/";
 
-export const URL = "https://jerasport.cl/webservices/"; 
-  
-
-// export const URLWEB = "http://localhost:3001/#/bienvenido/";
-// export const URL = "http://localhost:3000/webservices/";
+export const URLWEB = "http://localhost:3001/#/bienvenido/"
+export const URL = "http://localhost:3000/webservices/"
 
 export const WS = {
   InsertEnterprise_evaluation: URL + "InsertEnterprise_evaluation",
@@ -23,7 +21,7 @@ export const WS = {
   GetSubsector_and_id: URL + "GetSubsector_and_id",
   getMailsubscribed: URL + "GetMailSurveyed_And_ID",
   getMailperson: URL + "getMailPerson"
-};
+}
 
 export const OHWS = {
   InsertMail_surveyed: URL + "InsertMail_surveyed",
@@ -35,13 +33,13 @@ export const OHWS = {
   InsertNatural_person: URL + "InsertNatural_person",
   Insert_Auto_Evaluation: URL + "InsertAutoEvaluation",
   InsertRelationship_Auto_Evaluation: URL + "InsertRelationshipAutoEvaluation"
-};
+}
 
 export const EMPATIA_DEFINITON =
   "Se define como  el impacto emocional, económico y de desarrollo sostenible" +
-  " que produce una entidad en la sociedad, nuevas generaciones, trabajadores, clientes, proveedores, beneficiarios, audiencias y accionistas";
+  " que produce una entidad en la sociedad, nuevas generaciones, trabajadores, clientes, proveedores, beneficiarios, audiencias y accionistas"
 
-export const INTRODUCTION = "";
+export const INTRODUCTION = ""
 
 export const VISION = {
   TITLE: "ÍNDICE CORPORATIVO DE EMPATÍA.",
@@ -52,7 +50,7 @@ export const VISION = {
     "Es una herramienta de gestión sin costo para las empresas o instituciones que necesiten medir los niveles de empatía " +
     "de sus compañías en sus stakeholders." +
     "</p>"
-};
+}
 
 export const EMPATIA = {
   TITLE: "Índice Verificado.",
@@ -62,7 +60,7 @@ export const EMPATIA = {
     "El método permite realizar una auto-evaluación de la empresa participante. " +
     "KPMG Chile verifica nuestra medición, a través de la norma internacional ISAE 3000." +
     "</p>"
-};
+}
 
 export const MISION = {
   TITLE: "Metodología.",
@@ -73,13 +71,13 @@ export const MISION = {
     "Encontrar el equilibrio entre expectativas e impacto emocional nos permitirá entender " +
     "las necesidades de todas las partes interesadas y es un factor clave de liderazgo para el éxito empresarial." +
     "</p>"
-};
+}
 
 export const LINK_CREATED = {
   TITLE: "Gracias por su participación.",
   RESUMEN:
     "Aquí puede descargar un LINK PÚBLICO, el que puede adjuntar y pegar en su correo de invitación a contestar la encuesta."
-};
+}
 
 // FORM TEXT register
 export const L_REGISTER = {
@@ -97,9 +95,8 @@ export const L_REGISTER = {
     "Cargo que desempeña actualmente o cargo más alto que obtuvo anteriormente en una compañía. ",
   LABEL_12: "Nombre",
   LABEL_13: "Correo",
-  LABEL_14: "Nombre de su empresa (en la que Usted trabaja actualmente)",
-
-};
+  LABEL_14: "Nombre de su empresa (en la que Usted trabaja actualmente)"
+}
 
 export const END_MSSAGE = {
   FROM_REGISTER: "Finalizaste exitosamente el registro.",
@@ -107,13 +104,13 @@ export const END_MSSAGE = {
   FROM_ENDFACTOR: "Tu respuesta ha sido guardada.",
   END_EMAIL_MESSAGE:
     "Si usted desea recibir los resultados finales antes de la publicación en el medio, ingrese su correo acá."
-};
+}
 
 export const WELCOME_MESSAGE = {
   FROM_REGISTER:
     "Bienvenido(a) a la plataforma del área de investigación y estudios públicos de Corporate Index.",
   FROM_QUESTIONARY: "Encuesta empresarial"
-};
+}
 
 export const QUESTIONARY_1 = {
   title: "RANKING DE LAS EMPRESAS CON MEJOR EMPATÍA CORPORATIVA",
@@ -130,7 +127,7 @@ export const QUESTIONARY_1 = {
     "(los nombres de las empresas se desplegarán por sub sector)" +
     "<br><br>" +
     "<b>Nota: Usted no puede votar aquí por su misma empresa u otras empresas del mismo Holding, más adelante se le pedirá la evaluación de su empresa.<b>"
-};
+}
 
 export const QUESTIONARY_3 = {
   resumen:
@@ -139,7 +136,7 @@ export const QUESTIONARY_3 = {
     "¿Cómo considera usted que su empresa está gestionando los ODS a nivel interno?",
   resumen2:
     "Indíquenos alguna empresa que opera en Chile, que usted considere lider en materia de empatía."
-};
+}
 
 export const INCOMPLETE_QUESTIONAY = {
   title: "¡Tienes un formulario incompleto!",
@@ -147,13 +144,13 @@ export const INCOMPLETE_QUESTIONAY = {
     "Puedes guardar el siguiente cuestionario y continuar, pero se perderá el progreso del anterior.",
   okButtom: "Continuar",
   cancelButtom: "Terminar anterior"
-};
+}
 
 export const REDUX = {
   COLLAPSE_BOOLEAN: "COLLAPSE_BOOLEAN",
   COLLAPSE_ACTIVE: "COLLAPSE_ACTIVE",
   QUESTIONARY_ACTIVE: "QUESTIONARY_ACTIVE"
-};
+}
 
 export const REDUX_Q = {
   GET_EMAIL: "GET_EMAIL",
@@ -164,7 +161,7 @@ export const REDUX_Q = {
   GET_OPENQUESTION: "GET_OPENQUESTION",
   GET_ALL_THE_ANSWER: "GET_ALL_THE_ANSWER",
   AUTO_COMPANY: "AUTO_COMPANY"
-};
+}
 
 export const REDUX_R = {
   GET_REGISTER: "GET_REGISTER",
@@ -174,4 +171,4 @@ export const REDUX_R = {
   GET_REGISTER_AUTO_EVALUATION: "GET_REGISTER_AUTO_EVALUATION",
   GET_REGISTER_AUTO_EVALUATIONID: "GET_REGISTER_AUTO_EVALUATIONID",
   GET_REGISTER_NATURAL_PERSON_ID: "GET_REGISTER_NATURAL_PERSON_ID"
-};
+}

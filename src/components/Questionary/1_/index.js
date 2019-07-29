@@ -1,21 +1,21 @@
-import React from "react";
-import "antd/dist/antd.css";
-import { Form, Card, Button, Select, Icon } from "antd";
-import propTypes from "prop-types";
-import { Redirect } from "react-router";
-import { cardstyle } from "../../globalcss";
-import { connect } from "react-redux";
-import { FirstContent, FirstChild, Paragraph, FormContent } from "./css";
-import { QUESTIONARY_1 } from "../../../constants";
-import ReactHtmlParser from "react-html-parser";
-import { Company } from "../../../actions/Questionary";
+import React from "react"
+import "antd/dist/antd.css"
+import { Form, Card, Button, Select, Icon } from "antd"
+import propTypes from "prop-types"
+import { Redirect } from "react-router"
+import { cardstyle } from "../../globalcss"
+import { connect } from "react-redux"
+import { FirstContent, FirstChild, Paragraph, FormContent } from "./css"
+import { QUESTIONARY_1 } from "../../../constants"
+import ReactHtmlParser from "react-html-parser"
+import { Company } from "../../../actions/Questionary"
 
-const Option = Select.Option;
-const Item = Form.Item;
+const Option = Select.Option
+const Item = Form.Item
 
 class Questionary extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       redirect: false,
@@ -23,48 +23,48 @@ class Questionary extends React.Component {
       label_count: ["label_1", "label_2"],
       btnactive: true,
       Enterprise_selected: []
-    };
+    }
   }
 
   handleClick() {
-    const { Enterprise_selected } = this.state;
+    const { Enterprise_selected } = this.state
 
-    let autoCompanys = this.props.getRegisterAutoEvaluation;
+    // let autoCompanys = this.props.getRegisterAutoEvaluation
 
     let companys = Enterprise_selected.map(q => {
-      return { name: q.label, id: q.id_enterprise };
-    });
+      return { name: q.label, id: q.id_enterprise }
+    })
 
-    companys.push(autoCompanys);
+    //companys.push(autoCompanys);
     //here
-    this.props.Company(companys);
-    this.setState({ redirect: true });
+    this.props.Company(companys)
+    this.setState({ redirect: true })
   }
 
   handleChange(value) {
     if (value !== undefined) {
-      const { Enterprise_selected } = this.state;
-      let key = parseInt(value.key.split("_")[1], 10);
-      let id_enterprise = parseInt(value.key.split("_")[2], 10);
-      let label = value.label;
+      const { Enterprise_selected } = this.state
+      let key = parseInt(value.key.split("_")[1], 10)
+      let id_enterprise = parseInt(value.key.split("_")[2], 10)
+      let label = value.label
 
       for (let [i, element] of Enterprise_selected.entries()) {
-        element.key === key && Enterprise_selected.splice(i, 1);
+        element.key === key && Enterprise_selected.splice(i, 1)
       }
 
-      Enterprise_selected.push({ key, label, id_enterprise });
+      Enterprise_selected.push({ key, label, id_enterprise })
       Enterprise_selected.length >= this.props.Subsector.length &&
-        this.setState({ btnactive: false });
+        this.setState({ btnactive: false })
     }
   }
 
   render() {
     if (this.state.redirect) {
-      return <Redirect push to="/Seleccion" />;
+      return <Redirect push to="/Seleccion" />
     }
 
     if (this.props.Subsector.length === 0) {
-      return <Redirect push to="/No" />;
+      return <Redirect push to="/No" />
     }
 
     return (
@@ -127,31 +127,32 @@ class Questionary extends React.Component {
           </Item>
         </FirstContent>
       </Card>
-    );
+    )
   }
 }
 
 Questionary.propTypes = {
   Company: propTypes.func.isRequired
-};
+}
 
-const thisQuestionary = Form.create()(Questionary);
+const thisQuestionary = Form.create()(Questionary)
 
 const mapStateToProps = state => {
   return {
     Subsector: state.companyReducers.AllCompany,
     getRegisterAutoEvaluation: state.registerReducers.getRegisterAutoEvaluation,
-    getRegisterAutoEvaluationID: state.registerReducers.getRegisterAutoEvaluationID,
-    getRegisterNaturalPersonID: state.registerReducers.getRegisterNaturalPersonID
-
-  };
-};
+    getRegisterAutoEvaluationID:
+      state.registerReducers.getRegisterAutoEvaluationID,
+    getRegisterNaturalPersonID:
+      state.registerReducers.getRegisterNaturalPersonID
+  }
+}
 
 const mapDispatchToPropsAction = dispatch => ({
   Company: value => dispatch(Company(value))
-});
+})
 
 export default connect(
   mapStateToProps,
   mapDispatchToPropsAction
-)(thisQuestionary);
+)(thisQuestionary)
