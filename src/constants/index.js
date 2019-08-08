@@ -5,7 +5,7 @@ export const FETCHING_DATA_SUCCESS = "FETCHING_DATA_SUCCESS"
 export const FETCHING_DATA_FAILURE = "FETCHING_DATA_FAILURE"
 
 export const URLWEB =
-  "https://corporateindex.cl/EmpatiaCorporativa/#/bienvenido/"
+  "https://corporateindex.cl/empatiacorporativa/#/bienvenido/"
 export const URL = "https://devcorporateindex.com/faseuno/webservices/"
 
 //export const URLWEB = "http://localhost:3001/#/bienvenido/"
